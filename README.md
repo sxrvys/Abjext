@@ -24,7 +24,7 @@ Build precise edits, layer and distort footage, map visual parameters to music o
 
 This repository hosts beta installers, release notes, and user documentation. Application source is maintained separately. ABJEXT is under active development; save a copy of important projects before trying a new beta.
 
-**New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 0.8.3](#changelog)
+**New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 0.8.4](#changelog)
 
 ## Requirements
 
@@ -107,7 +107,7 @@ Switching tabs changes the working view; it does not itself copy or convert anyt
 
 **Gate** is duration, measured in steps; it is not a count of repeats. A default gate of 1 only sustains for one step, so placing a single hit on step 1 can leave the rest of the bar black. **Retriggers** restarts the clip within a step. **Chance** decides whether the hit happens. For three repeats within a step, try Retriggers 3×; use a triplet subdivision for a triplet grid. Very short hits are limited by video frame rate.
 
-To add overlapping footage, put clips on **Clips B** with its target set to **Layer B**. A/B/C are three independent live video destinations. Lanes aimed at the same destination replace each other's clips. Use lane/step opacity and blend settings, or **Appearance → Framing, Text & Split Screen** on a clip step for timed split-screen layouts.
+To add overlapping footage, put clips on **Clips B**. New patterns use **Layer Stack**: each clip lane plays independently, the top row appears in front, and dragging lane headers changes the stacking order. There are up to **eight total sequencer rows**, including masks and FX. More simultaneous footage costs more decoding/rendering work; start small and use Prepare Clips. Existing patterns retain **Shared Targets** to preserve their appearance; switch them to Layer Stack while paused when ready. In Shared Targets, lanes aimed at the same destination replace each other's clips. Use lane/step opacity and blend settings, or **Appearance → Framing, Text & Split Screen** on a clip step for timed split-screen layouts. Rename a lane through its inspector or context menu.
 
 ### 4. Make it react, then make it unpredictable
 
@@ -115,14 +115,23 @@ To add overlapping footage, put clips on **Clips B** with its target set to **La
 
 **Let the music drive it:** in **Settings → Audio**, choose **Effects follow → Timeline audio** and enable audio reactivity. Click the **music-note button** beside an FX parameter, choose Bass, Mids, Highs or Level, then set its Low/High response range. Play the song. Adjust **Sensitivity** and **Release** in Audio settings if the motion is too weak or too jumpy. A live input such as BlackHole is optional; your imported song is enough.
 
+**Save a Colorizer setting:** open **Color → Creative color → Save Colorizer Preset…**. Recall it from **My Colorizer presets**; the same presets are available in the Effects inspector. This saves the creative Colorizer, including its modulation and automation. Use a saved chain for a look combining several effects.
+
 **Give a step its own effect:** select the step and its **Effects** tab to open the full-sized step FX inspector. Its parameter changes become locks for that hit. An **FX lane** can schedule effect gates without changing the footage. Keep Chance at 100% initially and check the target rack is enabled. Global, layer, clip and step targets have different scopes—check the inspector heading before turning a control.
 
 **Try a random pool:**
 
-1. Click **Clips A's lane header**, expand **Clip pool, generation & movement**, and find **Lane Clip Pool**, then drop several clips into it.
-2. Choose **Use all before reshuffling** to cycle through the choices in changing order, or **No immediate repeat** to avoid the previous choice when alternatives exist.
-3. Open **Populate / shuffle steps**. Try Density 50%, Gate 2, Chance 100%, and **Choose from pool on every visit**. Click **Populate steps**. This replaces unprotected hits, so use a spare pattern or Undo while experimenting.
-4. Play it, then reduce Chance to introduce missed hits. A missed hit does not consume the pool's choice history. An existing clip can continue through a miss until its gate ends.
+1. Click **Clips A's lane header**. Its named **Lane Clip Pool** appears directly in the inspector; drop several clips anywhere in that pool, including over existing choices.
+2. Choose **Use all before reshuffling** to cycle through choices in changing order, or **No immediate repeat** to avoid the previous choice when alternatives exist.
+3. Select empty steps (click the first, then Shift-click the last) and set **Timing → Chance**, for example 40%. Those steps now draw from the lane pool whenever their chance succeeds. **You do not need to Populate first.**
+4. A fixed clip or a step's own pool takes precedence. Choose **Use lane pool for selected steps**, or the lane's **Use this pool for all steps**, to remove those overrides while keeping Chance, gate, FX and timing settings.
+5. Play it. Each successful visit chooses from the pool; missed hits do not consume its choice history. A previous clip can continue through a miss until its gate ends.
+
+**Populate / shuffle steps** remains optional for generating a rhythm with density and other controls. Choose **Choose from pool on every visit** for fresh draws; fixed assignments keep the generated clip. Populate replaces unprotected hits, so use Undo or a spare pattern while experimenting.
+
+**Random durations:** in the lane inspector, enable **Random gate range** and set Min/Max, such as 1–5. **Whole steps** picks integer durations; turn it off for fractional values. In a step's **Timing → Gate mode**, choose **Follow lane**, **Fixed**, or **Random range**. Typing a manual gate makes that step Fixed. The next successful clip on the same lane/destination still takes over if it arrives before the previous gate ends. Recording and timeline placement use the same seeded gate decisions.
+
+**Extend a phrase:** change to **4 bars × 1/16** for 64 steps. Click step 1, Shift-click step 32, then choose **Duplicate Steps** or press **⌘D** to copy into 33–64. This copies step pools, Chance, gates and overrides while keeping lane-pool inheritance live. Destination steps must already exist and be unedited; duplication is one Undo action. It copies the probability settings, not a recording of past random outcomes.
 
 **Weight** displays as a relative percentage: 100% is normal, 50% is half as likely and 200% is twice as likely. Equal weights share selections equally; these are not absolute probabilities. Weight changes how likely a clip is relative to other choices; **Chance** changes whether the step fires at all. A step's own **Random clip choices** pool is independent of the shared lane pool. **Shuffle clips** changes assignments on existing hits without moving their timing. **Variation… → Store** saves a pattern checkpoint, **Mutate** creates a variation, and **Restore** returns to the checkpoint. The control beside Mutate selects allowed categories and amount; protect steps you want kept.
 
@@ -414,6 +423,16 @@ Each includes three presets, adjustable phosphor hue and highlight heat, glow, a
 For immediate pad/knob use, load **Racks → Phosphor Screens**. Dot Matrix and Contour Scan occupy macro slots 1 and 2, followed by Sync Bend, Signal Emergence, Wavefolder, RGB Split / Delay, Tremolo / Gate, and Video Delay. The rack starts dry; raise a macro or hold its mapped FX pad to engage it. Loading a rack changes the macro assignments; Undo restores the prior rack. Existing MIDI bindings are preserved. Both new effects also work as clip or step FX, with parameter locks, saved presets, automation and audio reactivity. Video effects do not process audio.
 
 ## Changelog
+
+### 0.8.4 beta — October 23, 2026 · build 20261023.223452 · Layers, pools and random gates
+
+- **Layer Stack** is the default for new patterns: independent clip lanes, top row in front, and drag-to-reorder compositing. Up to eight total sequencer rows. Existing patterns keep Shared Targets until explicitly switched.
+- Rename lanes; automatic names continue A, B, C, D instead of wrapping.
+- **Chance directly triggers lane-pool choices** on empty steps. Populate is optional. Clear step overrides for a selection or use the lane pool across all steps.
+- **Random gate ranges** at lane and step scope, whole/fractional durations, and explicit Follow lane/Fixed/Random range controls. Playback, recording and placement share seeded duration decisions.
+- Lane pools now show their lane name/count prominently and reset their list position when switching lanes. Step-owned pools are clearly distinguished. Asynchronous imports stay attached to the original target steps even if selection changes.
+- **Duplicate Steps / ⌘D** copies selected phrases with their pools, probabilities, gates and overrides into unedited destination steps; lane inheritance remains live and one Undo restores the edit.
+- **Save Colorizer Preset…** and **My Colorizer presets** are accessible directly from Color → Creative color and share the Effects preset library.
 
 ### 0.8.3 beta — October 23, 2026 · UI workflow refinement
 

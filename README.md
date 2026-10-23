@@ -24,7 +24,7 @@ Build precise edits, layer and distort footage, map visual parameters to music o
 
 This repository hosts beta installers, release notes, and user documentation. Application source is maintained separately. ABJEXT is under active development; save a copy of important projects before trying a new beta.
 
-**New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 0.8.2](#changelog)
+**New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 0.8.3](#changelog)
 
 ## Requirements
 
@@ -86,53 +86,59 @@ Audio stays on the timeline when you switch to Sequencer. Video FX never process
 | **Sequencer** | Rhythmic cuts, repeating phrases and controlled randomness | Drag video onto a step |
 | **Pads** | Playing clips by hand or MIDI | Drag video onto a pad |
 
-These are connected parts of one project. You can perform or sequence ideas, place them on the timeline, then refine the resulting cuts by hand.
+These are connected parts of one project. Start in either view:
 
-**A straightforward timeline edit:** drag two clips onto V1. Normal drops append to the end of that track; Option-drop places at the pointer. Move clips to arrange them, drag an edge to trim, and use **⌘B** to split selected clips at the playhead. Select a clip to access speed/reverse and **FX → Clip** for transform, crop and text. The track **+** adds more tracks.
+- **Timeline → Sequencer:** select video clips or enable a Work range, then choose **Send to Sequencer → Create Pattern from This Edit…**. Choose the subdivision and review the conversion. This makes an independent pattern; the original edit and music stay in place.
+- **Sequencer → Timeline:** stop, choose **Add to Timeline…**, and choose **Independent clips** for hand editing or **Linked sections** to keep following pattern changes. Review the start, duration and passes before adding. The timeline opens after successful placement by default.
+- **Timeline → clip pool:** choose **Send to Sequencer → Add Excerpts to a Clip Pool…** to reuse trimmed footage without converting the arrangement.
+
+Switching tabs changes the working view; it does not itself copy or convert anything. Conversion constraints and omitted material are described in the transfer dialog.
+
+**A straightforward timeline edit:** drag two clips onto V1. Normal drops append to the end of that track; Option-drop places at the pointer. Move clips to arrange them, drag an edge to trim, and use **⌘B** to split selected clips at the playhead. Select a clip to access speed/reverse and **Inspector → Appearance** for transform, crop and text. The track **+** adds more tracks.
 
 **A first sequencer pattern:**
 
 1. Switch to **Sequencer**. Keep **1 bar × 1/16** for sixteen steps in 4/4. Keep **Chance at 100%** while learning.
-2. Drag one video onto **Clips A, step 1**. Select that step and set **General → Gate length** to **8**; press Enter to commit numeric edits.
+2. Drag one video onto **Clips A, step 1**. Select that step and set **Timing → Gate length** to **8**; press Enter to commit numeric edits.
 3. Drag another video onto **step 9**, then set its gate to **8** too. This makes two sustained shots across the bar. The next successful hit on the same destination takes over from the previous one.
 4. Press **Prepare Clips** while paused and wait for the readiness count. Press the main **Play** button or Space. The pattern loops while the timeline song advances.
 5. Click a **step** for its controls in the lower-left inspector. Click the **lane header**—the box labeled Clips A—for defaults that apply across that lane. Step overrides can differ from those defaults.
 6. For a longer phrase, change **Bars** in the sequencer toolbar: **2 bars × 1/16 = 32 steps**. Choose **All lanes** to resize them together. The current maximum is 64 steps per lane.
 
-**Gate** is duration, measured in steps; it is not a count of repeats. A default gate of 1 only sustains for one step, so placing a single hit on step 1 can leave the rest of the bar black. **Hits** retriggers within a step. **Chance** decides whether the hit happens. For three repeats within a step, try Hits 3×; use a triplet subdivision for a triplet grid. Very short hits are limited by video frame rate.
+**Gate** is duration, measured in steps; it is not a count of repeats. A default gate of 1 only sustains for one step, so placing a single hit on step 1 can leave the rest of the bar black. **Retriggers** restarts the clip within a step. **Chance** decides whether the hit happens. For three repeats within a step, try Retriggers 3×; use a triplet subdivision for a triplet grid. Very short hits are limited by video frame rate.
 
-To add overlapping footage, put clips on **Clips B** with its target set to **Layer B**. A/B/C are three independent live video destinations. Lanes aimed at the same destination replace each other's clips. Use lane/step opacity and blend settings, or **General → Screen Layout…** on a clip step for timed split-screen layouts.
+To add overlapping footage, put clips on **Clips B** with its target set to **Layer B**. A/B/C are three independent live video destinations. Lanes aimed at the same destination replace each other's clips. Use lane/step opacity and blend settings, or **Appearance → Framing, Text & Split Screen** on a clip step for timed split-screen layouts.
 
 ### 4. Make it react, then make it unpredictable
 
-**Add an effect:** show **FX**, select the **Effects** tab and choose **Global** to process the combined picture. Use **+ Add**, choose an effect and raise its Mix/Amount as needed. Start with one effect so you can hear the music and see exactly what that control changes. New projects start dry; bypassed effects or Mix at zero do not change the image.
+**Add an effect:** show **Inspector**, select the **Effects** tab and choose **Global** to process the combined picture. Use **+ Add**, choose an effect and raise its Mix/Amount as needed. Start with one effect so you can hear the music and see exactly what that control changes. New projects start dry; bypassed effects or Mix at zero do not change the image.
 
 **Let the music drive it:** in **Settings → Audio**, choose **Effects follow → Timeline audio** and enable audio reactivity. Click the **music-note button** beside an FX parameter, choose Bass, Mids, Highs or Level, then set its Low/High response range. Play the song. Adjust **Sensitivity** and **Release** in Audio settings if the motion is too weak or too jumpy. A live input such as BlackHole is optional; your imported song is enough.
 
-**Give a step its own effect:** select the step and its **FX** tab to open the full-sized step FX inspector. Its parameter changes become locks for that hit. An **FX lane** can schedule effect gates without changing the footage. Keep Chance at 100% initially and check the target rack is enabled. Global, layer, clip and step targets have different scopes—check the inspector heading before turning a control.
+**Give a step its own effect:** select the step and its **Effects** tab to open the full-sized step FX inspector. Its parameter changes become locks for that hit. An **FX lane** can schedule effect gates without changing the footage. Keep Chance at 100% initially and check the target rack is enabled. Global, layer, clip and step targets have different scopes—check the inspector heading before turning a control.
 
 **Try a random pool:**
 
-1. Click **Clips A's lane header**, find **Lane Clip Pool**, and drop several clips into it.
+1. Click **Clips A's lane header**, expand **Clip pool, generation & movement**, and find **Lane Clip Pool**, then drop several clips into it.
 2. Choose **Use all before reshuffling** to cycle through the choices in changing order, or **No immediate repeat** to avoid the previous choice when alternatives exist.
 3. Open **Populate / shuffle steps**. Try Density 50%, Gate 2, Chance 100%, and **Choose from pool on every visit**. Click **Populate steps**. This replaces unprotected hits, so use a spare pattern or Undo while experimenting.
 4. Play it, then reduce Chance to introduce missed hits. A missed hit does not consume the pool's choice history. An existing clip can continue through a miss until its gate ends.
 
-**Weight** displays as a relative percentage: 100% is normal, 50% is half as likely and 200% is twice as likely. Equal weights share selections equally; these are not absolute probabilities. Weight changes how likely a clip is relative to other choices; **Chance** changes whether the step fires at all. A step's own **Random clip choices** pool is independent of the shared lane pool. **Shuffle clips** changes assignments on existing hits without moving their timing. **Store** saves a pattern checkpoint, **Mutate** creates a variation, and **Restore** returns to the checkpoint. The control beside Mutate selects allowed categories and amount; protect steps you want kept.
+**Weight** displays as a relative percentage: 100% is normal, 50% is half as likely and 200% is twice as likely. Equal weights share selections equally; these are not absolute probabilities. Weight changes how likely a clip is relative to other choices; **Chance** changes whether the step fires at all. A step's own **Random clip choices** pool is independent of the shared lane pool. **Shuffle clips** changes assignments on existing hits without moving their timing. **Variation… → Store** saves a pattern checkpoint, **Mutate** creates a variation, and **Restore** returns to the checkpoint. The control beside Mutate selects allowed categories and amount; protect steps you want kept.
 
-For a locally off-kilter phrase, click one step and Shift-click another to select the range. Use **General → Swing / traversal overrides**. The rest of the lane keeps its defaults. Reverse traversal reverses the order of steps, not the movie inside each step. Ping-pong adds return visits, so it lengthens the cycle.
+For a locally off-kilter phrase, click one step and Shift-click another to select the range. Use **Timing → Swing, movement & microtiming**. The rest of the lane keeps its defaults. Reverse traversal reverses the order of steps, not the movie inside each step. Ping-pong adds return visits, so it lengthens the cycle.
 
 ### 5. Arrange sections and keep a result you love
 
-Use **+ beside the pattern selector → New pattern** or **Duplicate pattern** for another section. The selector lets you return to edit earlier patterns. Open **Song**, drag named patterns into the arrangement, and set their pass counts—for example Verse ×4 → Chorus ×2. Enable **Play song arrangement** to follow those cards. **Loop song** repeats the arrangement; otherwise it stops at the end. The first clip lane defines each pattern's master duration.
+Use **+ beside the pattern selector → New pattern** or **Duplicate pattern** for another section. The selector lets you return to edit earlier patterns. Open **Song Arrangement**, drag named patterns into the arrangement, and set their pass counts—for example Verse ×4 → Chorus ×2. Enable **Play song arrangement** to follow those cards. **Loop song** repeats the arrangement; otherwise it stops at the end. The first clip lane defines each pattern's master duration.
 
 To work on only part of the music, set and enable a **Work range**, enable **Loop**, then use the sequencer against that section. Both views honor the same audio range. With a range enabled, placement starts at its In point.
 
 | To keep… | Use… |
 | --- | --- |
-| Patterns that stay linked to the timeline | Stop, then **Place Section → Linked Pattern / Song Sections** |
-| Independent editable cuts from the current pattern/song | **Place Section → Independent Clips (Bake)** |
-| The particular choices and live actions you perform | Performance **Record**, then stop to place the take |
+| Patterns that stay linked to the timeline | Stop, then **Add to Timeline… → Linked sections** |
+| Independent editable cuts from the current pattern/song | **Add to Timeline… → Independent clips** |
+| The particular choices and live actions you perform | Sequencer **Record to Timeline**, then **Stop & Keep Take** |
 | A moment that just happened, with preview history armed | **Keep That** |
 | A movie of the processed preview from now onward | **File → Capture Preview…** |
 | A finished timeline movie at delivery resolution | **File → Export Mix…** |
@@ -145,7 +151,7 @@ To work on only part of the music, set and enable a **Work range**, enable **Loo
 
 Changing a linked pattern's length moves subsequent song sections to make room; unrelated clips and audio stay fixed. Collisions or locked tracks prevent an update and produce a message. Hand-editing generated clips protects those edits by locking the section on its next refresh. Use **Refresh Links** after resolving an obstruction. Up to 128 timeline sections and 16 source patterns are supported; very large hit/fragment expansions are checked before placement.
 
-**Independent Clips (Bake)** resolves probability into ordinary clips, masks and FX automation. Those clips no longer follow the pattern. **Record** keeps actual live choices. Switching views alone does not transfer a sequence: place or record it before a timeline export. If a take cannot be placed, read the message and use **Take → Place pending take** after resolving the issue.
+**Independent clips** resolves probability into ordinary clips, masks and FX automation. Those clips no longer follow the pattern. **Record** keeps actual live choices. Switching views alone does not transfer a sequence: place or record it before a timeline export. If a take cannot be placed, read the message and use **Take → Place pending take** after resolving the issue.
 
 **Keep That:** open the arrow beside Keep That and enable **Arm preview history** before experimenting. Choose the last 1, 2, 4, 8 or 16 bars (4/4), then click Keep That after a good moment. It saves the actual processed preview, feedback, random outcomes and knob moves, with timeline audio, to your configured recording folder (Movies by default). It is a flattened movie at preview quality, not editable clips or a full-resolution rerender. Live-input audio must first be recorded onto the timeline. The rolling encoded-video buffer is capped at 120 seconds / 128 MB; encoding and temporary saved output use additional resources. Disarm it when not needed. Changing preview format or opening another project disarms history.
 
@@ -162,13 +168,13 @@ Before exporting, switch to **Timeline**, return to the beginning and play the r
 | Audio mapping does nothing | Check Effects follow → Timeline audio, Enable audio reactivity, that audio is playing, the selected band and Low/High range. |
 | A click edits the wrong thing | Lane headers select lane defaults; step cells select local controls; the right inspector heading identifies the FX target. |
 | Clips are preparing or playback skips | Pause, choose Prepare Clips, and inspect readiness details. “Ready ahead” means the upcoming window is prepared; it does not mean every project source is resident. Use 360p · Light and keep media drives connected. |
-| Your exported result differs from the sequence | Confirm you placed or recorded it onto the timeline. With probability below 100%, a fresh Place Pattern can make different decisions from a live performance; Record keeps what you actually played. |
+| Your exported result differs from the sequence | Confirm you placed or recorded it onto the timeline. With probability below 100%, a fresh Add to Timeline can make different decisions from a live performance; Record keeps what you actually played. |
 
 **⌘Z** is your friend. Save versions as you experiment, and report confusing behavior as well as outright bugs. Start with the short recipe above before stacking many layers, long feedback histories and large random pools.
 
 ## Unified workspace
 
-**Timeline / Sequencer** switches the lower working view without stopping playback. **Media**, **Pads**, and **FX** toggle independently in the top toolbar. **Macros** and **Automation** open above/below the working view. Macros and automation take turns in the detail space so the working area stays usable. **Focus** collapses the browser and inspector while keeping pads available; panel visibility is remembered. Source and canvas controls live in **Settings → General**. Project actions, export, and preview capture live in **File**.
+**Timeline / Sequencer** switches the lower working view without stopping playback. **Media**, **Pads**, and **Inspector** toggle independently in the top toolbar. **FX Controls** and **Automation** open above/below the working view. FX Controls is optional and starts collapsed; live recording/scenes/controller tools are grouped under its **Live tools** toggle. Sequencer **Record to Timeline** remains directly available without opening those tools. Macros and automation take turns in the detail space so the working area stays usable. **Focus** collapses the browser and inspector while keeping pads available; panel visibility is remembered. Source and canvas controls live in **Settings → General**. Project actions, export, and preview capture live in **File**.
 
 ### Editing
 
@@ -183,7 +189,7 @@ Dragging a clip edge normally trims or reveals source material. **Shift-drag the
 
 ### Crop, transform, and text
 
-Open **FX → Clip** in the right inspector, then select the video you want to edit. The **Editing** selector identifies the current target: Timeline, Media, Pad, or Step.
+Open **Inspector → Appearance** in the right inspector, then select the video you want to edit. The **Editing** selector identifies the current target: Timeline, Media, Pad, or Step.
 
 - **Media:** set source defaults before placement. New timeline clips and newly assigned pads copy these settings; existing placements stay unchanged.
 - **Timeline:** edit selected clips. Multi-selection patches the control you changed while preserving each clip’s other settings. Split, duplicate, copy/paste, and project save retain the appearance.
@@ -198,7 +204,7 @@ Expand **Text** to enter multiline text and choose a font, size, color, alignmen
 
 ### Playing clips and sequences
 
-Open **Pads** and **Macros** to play clips while keeping either the timeline or sequencer available. There is no separate Performance mode.
+Open **Pads** and **FX Controls → Live tools** to play clips while keeping either the timeline or sequencer available. There is no separate Performance mode.
 
 - Drag a Project Media thumbnail onto a pad to assign it. Use Gate, Toggle, or One shot behavior to suit the clip.
 - Ten pad banks provide space for clips and assignable performance actions.
@@ -208,13 +214,13 @@ Open **Pads** and **Macros** to play clips while keeping either the timeline or 
 - Layer **FX** opens its own rack. Global FX process the combined picture. MIDI Map can assign layer parameters, opacity, the crossfader, or scene recall without replacing existing SP-404 mappings.
 - **Scenes** saves named snapshots of clip assignments, the live layers, the global rack and macros, and the selected pattern. Recall uses the Launch interval while playing; new pad hits use the recalled assignments. Recorded scene changes replay on the timeline and can be edited in Scenes → Recorded rack changes.
 - **Sequencer** opens the step lanes in the timeline area, keeping the preview visible. Start with two clip rows, a mask row, and an FX row; expand to eight independent rows with 1–64 steps each.
-- **Reorder sequencer lanes:** drag the entire lane header (the “Clips A / Drop a clip here” box) onto another header, or right-click it and choose **Move Up / Move Down**. The row’s clips, steps, masks and FX move together; its assigned layer and playback stay unchanged. Order is saved with the project and supports undo. Audio is arranged in **Timeline** and continues playing with the sequencer. Select a step to edit its **General / FX / Pattern** controls in the left sidebar beneath Media and Pads.
-- **Media** and **FX** in the top toolbar collapse independently. **Focus** above the working view hides both; **Restore panels** brings back the previous combination. The divider above the performance controls adjusts preview versus sequencer height.
-- Drag Project Media or a pad onto a lane to choose its source, or onto a step to assign a different clip. Click empty steps to add hits; select a lit step to edit it, then click it again to disable it. The left sidebar holds General, FX, and Pattern controls. Weighted clip pools are available under **General → Random clip choices**. Drop clips anywhere in the expanded pool, including on an existing entry, to append choices. A higher Weight makes a choice more likely; Chance determines whether the step triggers at all.
+- **Reorder sequencer lanes:** drag the entire lane header (the “Clips A / Drop a clip here” box) onto another header, or right-click it and choose **Move Up / Move Down**. The row’s clips, steps, masks and FX move together; its assigned layer and playback stay unchanged. Order is saved with the project and supports undo. Audio is arranged in **Timeline** and continues playing with the sequencer. Select a step to edit its **Timing / Appearance / Source / Effects / Pattern** controls in the left sidebar beneath Media and Pads.
+- **Media** and **Inspector** in the top toolbar collapse independently. **Focus** above the working view hides both; **Restore panels** brings back the previous combination. The divider above the performance controls adjusts preview versus sequencer height.
+- Drag Project Media or a pad onto a lane to choose its source, or onto a step to assign a different clip. Click empty steps to add hits; select a lit step to edit it, then click it again to disable it. The left sidebar groups controls into Timing, Appearance, Source, Effects and Pattern. Weighted clip pools are available under **Source → Random Clip Pool**. Drop clips anywhere in the expanded pool, including on an existing entry, to append choices. A higher Weight makes a choice more likely; Chance determines whether the step triggers at all.
 - Steps support weighted clip pools, probability, gate length, retriggers, frame-aligned microtiming, per-step source starts, first/every-N/previous-result conditions, and Fill. Mask and FX rows can run at different lengths from the clip rows.
 - FX steps can gate an effect or saved chain and lock individual parameters without retriggering the footage. Use **Use for lane** to give new steps the same default FX assignment.
-- Hold **Fill**, or enable **Latch**, for Fill-only steps. **Store → Mutate → Restore** offers a reversible way to try variations. These performance buttons can be assigned through MIDI Map without changing existing controller mappings.
-- **Independent Clips (Bake):** choose **1–64 loops** beside Place Section, then choose this menu action. Each pass evaluates clip probability, weighted pools and FX gates independently using the saved seed/current Fill state. Chained patterns use the same loop count. This writes resolved clips, masks and FX automation, rather than duplicating the first pass. At less than 100% Chance a step can legitimately be absent; set Chance to 100% for guaranteed hits (Wet/Dry still controls effect strength). **Record** captures the actual live choices; stopping places editable clips, masks, and FX automation on the timeline. Probability never rerolls a recorded take during export.
+- Open **Variation…**, then hold **Fill**, or enable **Latch fill**, for Fill-only steps. **Store → Mutate → Restore** offers a reversible way to try variations. These performance buttons can be assigned through MIDI Map without changing existing controller mappings.
+- **Independent clips:** choose **Add to Timeline… → Independent clips**, then enter **1–64 passes per pattern**. Each pass evaluates clip probability, weighted pools and FX gates independently using the saved seed/current Fill state. Chained patterns use the same loop count. This writes resolved clips, masks and FX automation, rather than duplicating the first pass. At less than 100% Chance a step can legitimately be absent; set Chance to 100% for guaranteed hits (Wet/Dry still controls effect strength). **Record** captures the actual live choices; stopping places editable clips, masks, and FX automation on the timeline. Probability never rerolls a recorded take during export.
 - Open **Settings → Control Surfaces** to enable MIDI and select a detected input. The SP-404MKII setup provides clip triggering and performance controls; generic MIDI Learn supports other controllers.
 - Use **MIDI Map** in the top toolbar, click a highlighted software control, then move or press the hardware control you want to assign. Existing assignments are preserved unless explicitly changed. Settings retain the selected controller and saved mappings.
 
@@ -222,17 +228,17 @@ Pad-bank and knob behavior depends on the controller profile and your mappings. 
 
 **Selecting and moving steps:** click the first step and Shift-click the last for an inclusive range. ⌘-click toggles individual cells. Drag any selected step to move the group; right-click a destination → **Move selection here** aligns the first selected cell with that destination. Existing hits are protected from accidental replacement. Empty cells can carry lane-wide gate values without blocking a move.
 
-**Build visuals against a section of music:** set and enable the work range in Timeline (In/Out or Loop Selection), enable **Loop**, then switch to Sequencer. Both views use the same audio range. Sequencer also exposes **Loop** and **Work range…** beside the tempo. Stop, then use **Place Section** to write at the range’s In point. Placement length follows the pattern/chain and chosen loop count. Recording finishes at Out rather than overwriting its own take on subsequent audio loops.
+**Build visuals against a section of music:** set and enable the work range in Timeline (In/Out or Loop Selection), enable **Loop**, then switch to Sequencer. Both views use the same audio range. Sequencer also exposes **Loop** and **Work range…** beside the tempo. Stop, then use **Add to Timeline…** to write at the range’s In point. Placement length follows the pattern/chain and chosen loop count. Recording finishes at Out rather than overwriting its own take on subsequent audio loops.
 
-**Reuse a precise timeline excerpt:** select a trimmed video clip and click **To Pool…** in the timeline toolbar (also **Timeline → Send Timeline Selection to Sequencer Pool…**). To extract just part of it, enable **Work range**, mark In/Out, and choose **Selected clips within work range**. Choose a pattern and clip/mask lane, then **Add to Pool**. This opens that lane's inspector; use its pool and Populate steps to build a sequence. Multiple selections become separate pool choices. The same file can contribute several different excerpts, each labeled with source times. Existing steps and weights stay intact; identical excerpts are not added twice.
+**Reuse a precise timeline excerpt:** select a trimmed video clip and click **Send to Sequencer → Add Excerpts to a Clip Pool…** in the timeline toolbar (also **Timeline → Send Timeline Selection to Sequencer Pool…**). To extract just part of it, enable **Work range**, mark In/Out, and choose **Selected clips within work range**. Choose a pattern and clip/mask lane, then **Add to Pool**. This opens that lane's inspector; use its pool and Populate steps to build a sequence. Multiple selections become separate pool choices. The same file can contribute several different excerpts, each labeled with source times. Existing steps and weights stay intact; identical excerpts are not added twice.
 
 The transfer keeps source marks, speed, reverse and framing without making another media file. A longer gate loops within the excerpt. Lane/step playback overrides still take precedence. Audio, timeline FX, opacity and blending stay on the timeline; use Create Pattern for an arrangement conversion or Render in Place when you want clip processing baked into the source. One Undo removes a transfer. Maximum 160 choices per lane pool and 4096 sequencer sources per project still apply.
 
-**Timeline and patterns:** switching views does not convert cuts into steps. Sequencer clips temporarily replace timeline footage on their destination video track while playing. Linked song sections follow pattern changes; Independent Clips (Bake) creates an independent edit. Hand-editing a generated section protects it from later replacement.
+**Timeline and patterns:** switching views does not convert cuts into steps. Sequencer clips temporarily replace timeline footage on their destination video track while playing. Linked song sections follow pattern changes; Independent clips creates an independent edit. Hand-editing a generated section protects it from later replacement.
 
 ## Preparing larger arrangements
 
-Create separate patterns for sections such as a verse, chorus, and bridge, then arrange them in **Song**. The older pattern **Then** control remains available when Play song arrangement is off. Each lane can contain up to 64 steps; independent lane lengths and divisions are supported. Different patterns can use different clips and random pools.
+Create separate patterns for sections such as a verse, chorus, and bridge, then arrange them in **Song Arrangement**. The older pattern **Then** control remains available when Play song arrangement is off. Each lane can contain up to 64 steps; independent lane lengths and divisions are supported. Different patterns can use different clips and random pools.
 
 Before performing, pause and choose **Prepare Clips** in the Sequencer toolbar. Click the readiness count for source details and Retry/Replace controls. A small linked chain shows **N/N ready**. A larger chain shows **N/N ready ahead**: only the upcoming window is loaded, while later choices remain **On demand**. This is normal. The eight-second forecast uses the saved random seed and weighted choices without changing the probability decisions.
 
@@ -247,6 +253,18 @@ The toolbox includes delay and feedback, reverse and stutter processing, gated t
 The synthesis tools extend that into **Raster Synth**, scan-line displacement, **Video FM**, **Wavefolder**, **Ring Modulator**, **Polar Oscillator**, **Vector Scope**, **Clocked Noise**, and **Video Logic Mixer**. Combine oscillators, beat-clocked patterns, masks, and footage into shifting textures and geometry. Factory presets and playable racks offer starting points; individual controls remain available for automation, MIDI, and audio modulation.
 
 **Effects, chains, racks, and macros:** an effect is one processor; a chain is the ordered collection of processors. **Save Chain / Rack…** stores the chain together with its macro assignments and envelopes. **Saved Chains & Racks…** recalls that setup, adds the complete chain as one FX slot, or assigns it to one macro. A macro is a playable control that moves one or several parameters. **Save FX Preset…** stores only the selected effect. These controls are in the Effects inspector; **Racks** above the working view also offers factory performance setups.
+
+### Your first FX Control
+
+FX Controls are optional shortcuts for moving several visual parameters with one slider. You can use them with a mouse, automation, or MIDI; you do not need to be performing live.
+
+1. Open **FX Controls** above the working view. Click **Assign FX…** on an empty slot, or click a named slot to edit it.
+2. Choose **Add effect from library…**. This adds the effect and immediately maps its wet/dry control. To control an effect already in your chain, expand **Map a parameter from the current chain**, select its Effect and Parameter, then click **Map parameter**.
+3. Set **At 0%** and **At 100%** for each assignment. These are the parameter values at the two ends of the macro slider; swapping them reverses its movement. Move **Try it** to see the result. Add more assignments if one gesture should change several things.
+4. Give the control a useful name. **Save your project** to keep the setup there. Choose **Save Chain & Controls…** to reuse the complete chain and its controls in another project. This is a whole-setup save, not an individual effect preset.
+5. To connect hardware, use the top-toolbar **MIDI Map** button, select the control and move a knob. MIDI mapping chooses the hardware; the FX Control editor chooses what that hardware changes.
+
+Mapped assignments override those same parameters in the FX inspector. If a parameter seems to keep returning to a value, check its macro assignments and automation. For a single effect's reusable settings, use **Save FX Preset…** in the Effects inspector instead.
 
 **All FX process video only.** Audio tracks keep their own editing, level, and stretch controls.
 
@@ -396,6 +414,17 @@ Each includes three presets, adjustable phosphor hue and highlight heat, glow, a
 For immediate pad/knob use, load **Racks → Phosphor Screens**. Dot Matrix and Contour Scan occupy macro slots 1 and 2, followed by Sync Bend, Signal Emergence, Wavefolder, RGB Split / Delay, Tremolo / Gate, and Video Delay. The rack starts dry; raise a macro or hold its mapped FX pad to engage it. Loading a rack changes the macro assignments; Undo restores the prior rack. Existing MIDI bindings are preserved. Both new effects also work as clip or step FX, with parameter locks, saved presets, automation and audio reactivity. Video effects do not process audio.
 
 ## Changelog
+
+### 0.8.3 beta — October 23, 2026 · UI workflow refinement
+
+- Fixed a project-switch crash when a sequencer view briefly retained a clip reference absent from the newly opened project.
+- Clear transfers in both directions: Timeline **Send to Sequencer**, Sequencer **Add to Timeline…** with linked/independent choices, placement preview and editable pass count. The timeline opens only after successful placement.
+- Step controls organized into **Timing, Appearance, Source, Effects and Pattern**. Opacity is displayed/entered as percent; lane controls identify their scope.
+- Duplicate clip controls beneath preview removed; selection controls stay in the lower-left inspector, including masks and audio playhead access.
+- Optional **FX Controls** panel with visible assign/edit actions, compact percentage readouts, a Try it slider, 0%/100% parameter endpoints, and direct **Save Chain & Controls** access. Existing macros and controller mappings are retained.
+- Live tools collapse separately. Sequencer **Record to Timeline** remains visible for keeping actual probability decisions. Store, mutation and Fill are grouped under **Variation…**.
+
+
 
 ### 0.8.2 beta — October 23, 2026 · ABJEXT transition
 

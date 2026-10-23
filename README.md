@@ -2,6 +2,8 @@
 
 **Formerly Semiotic Studio. This is the official home of ABJEXT Studio.**
 
+Due to a naming conflict Semiotic Studio is now Abjext Studio. The owner of Semiotic Studio reached out and because he had chosen the name first the only sensible thing to do was change the name. 
+
 Same project, new name. We’re adopting ABJEXT as our lasting identity as development continues. Existing Semiotic projects, presets, preferences, and MIDI mappings remain compatible. All future beta releases and update checks live here at **[sxrvys/Abjext](https://github.com/sxrvys/Abjext)**. The old Semiotic repository hosts one final transition release and historical downloads.
 
 ### Moving from Semiotic to ABJEXT

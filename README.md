@@ -24,7 +24,7 @@ Build precise edits, layer and distort footage, map visual parameters to music o
 
 This repository hosts beta installers, release notes, and user documentation. Application source is maintained separately. ABJEXT is under active development; save a copy of important projects before trying a new beta.
 
-**New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 0.9.0](#changelog)
+**New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 0.9.1](#changelog)
 
 ## Requirements
 
@@ -379,6 +379,13 @@ For lighter machines, start with **360p preview**, shorter feedback/rewind histo
 
 ## Feedback
 
+Open **Settings → Beta Feedback** or **Help → Send Beta Feedback…** to write a subject and notes, then choose **Open Email Draft**. Your mail app opens a message to **abjextstudio@gmail.com**; review it and press Send there. ABJEXT itself sends nothing. There is no GitHub account requirement.
+
+**Include app version, macOS and memory** is optional and off by default. Its exact contents appear in the form before you open the email. Projects, media, file paths and logs are never attached automatically. The subject and notes are saved locally on your Mac so you can return to an unfinished draft.
+
+If you use Gmail or another webmail service, choose **Copy Feedback** and paste it into a new email to **abjextstudio@gmail.com**. This also works for long reports that will not fit in an email link. If your default mail app is not configured, use this copy option.
+
+
 Found a problem or an awkward workflow? [Open an issue](https://github.com/sxrvys/Abjext/issues) with:
 
 - ABJEXT's version and build number from About or Settings → Updates.
@@ -441,6 +448,15 @@ Each includes three presets, adjustable phosphor hue and highlight heat, glow, a
 For immediate pad/knob use, load **Racks → Phosphor Screens**. Dot Matrix and Contour Scan occupy macro slots 1 and 2, followed by Sync Bend, Signal Emergence, Wavefolder, RGB Split / Delay, Tremolo / Gate, and Video Delay. The rack starts dry; raise a macro or hold its mapped FX pad to engage it. Loading a rack changes the macro assignments; Undo restores the prior rack. Existing MIDI bindings are preserved. Both new effects also work as clip or step FX, with parameter locks, saved presets, automation and audio reactivity. Video effects do not process audio.
 
 ## Changelog
+
+### 0.9.1 beta — October 24, 2026 · Email feedback
+
+- Added **Settings → Beta Feedback** and **Help → Send Beta Feedback…** for suggestions, confusing workflows and bug reports.
+- Open a user-reviewed email draft addressed to **abjextstudio@gmail.com**, or copy the report for webmail. Nothing is sent automatically; no GitHub login is needed.
+- Optional app/macOS/memory details are off by default and shown before inclusion. No automatic project, media or log attachments.
+- Draft notes remain on your Mac between sessions. Long reports can be copied in full without truncation.
+- Includes the 0.9.0 editing and responsiveness improvements below.
+
 
 ### 0.9.0 beta — October 24, 2026 · Editing and responsiveness
 

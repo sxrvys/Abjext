@@ -24,7 +24,7 @@ Build precise edits, layer and distort footage, map visual parameters to music o
 
 This repository hosts beta installers, release notes, and user documentation. Application source is maintained separately. ABJEXT is under active development; save a copy of important projects before trying a new beta.
 
-**New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 0.8.5](#changelog)
+**New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 0.9.0](#changelog)
 
 ## Requirements
 
@@ -142,6 +142,14 @@ Changes apply on the next mask hit. Each new hit replaces the previous mask from
 **Random durations:** in the lane inspector, enable **Random gate range** and set Min/Max, such as 1–5. **Whole steps** picks integer durations; turn it off for fractional values. In a step's **Timing → Gate mode**, choose **Follow lane**, **Fixed**, or **Random range**. Typing a manual gate makes that step Fixed. The next successful clip on the same lane/destination still takes over if it arrives before the previous gate ends. Recording and timeline placement use the same seeded gate decisions.
 
 **Extend a phrase:** change to **4 bars × 1/16** for 64 steps. Click step 1, Shift-click step 32, then choose **Duplicate Steps** or press **⌘D** to copy into 33–64. This copies step pools, Chance, gates and overrides while keeping lane-pool inheritance live. Destination steps must already exist and be unedited; duplication is one Undo action. It copies the probability settings, not a recording of past random outcomes.
+
+**Copy a phrase anywhere:** select any range (click the first step, then Shift-click the last), press **⌘C**, click its destination start, and press **⌘V**. Steps 3–5 pasted at 23 become 23–25. Multi-lane selections keep their lane offsets; nonadjacent selections keep their spacing. Paste replaces the corresponding destination settings, and **⌘Z** restores them. The whole selection must fit in existing compatible lanes; nothing is partially pasted. Pools, Chance, timing, gates, FX locks and appearance are retained. Same-lane pastes keep lane inheritance; cross-lane copies retain source pool choices and playback/mask settings. Copy/paste works within the current project, including between patterns. The selection-count menu and step context menu provide mouse equivalents. **Duplicate Steps / ⌘D** remains the way to repeat a phrase immediately after itself, into unedited steps.
+
+**Move steps:** drag a step to another step in the same lane to move its complete settings. Drag any member of a selection to move the whole group, keeping its spacing and lane offsets. Occupied destination steps are replaced; the source is cleared. **⌘Z** restores both. The entire group must fit in compatible lanes, and moves are unavailable while recording. Right-click → **Move selection here** is a mouse-menu alternative.
+
+**Shuffle a lane:** click any clip, mask or FX lane header and choose **Shuffle Steps** in its inspector, or right-click the header. Whole steps and rests move anywhere within that lane, carrying their pools, Chance, gates, FX, step automation and parameter locks. Protected steps stay fixed; lane-wide settings stay with the lane. **⌘Z** restores the previous arrangement. Duplicate a pattern first to keep the original as a separate variation.
+
+**Keep a clip playing until the next hit:** select clip steps → **Timing → Gate mode → Until next clip**. Empty steps and probability misses leave the current clip playing, even across pattern loops. The source loops as needed. A successful replacement clip, Stop, or a song-section change ends it. For a lane default, click its header and enable **Lane Gate → Until next clip**, then leave the desired steps in **Follow lane**. Fixed or Random range steps still override that default. Recording and timeline placement preserve the finite result; placement ends any held clip at the chosen end boundary. The mode is for clip lanes; masks and FX retain timed gates.
 
 **Weight** displays as a relative percentage: 100% is normal, 50% is half as likely and 200% is twice as likely. Equal weights share selections equally; these are not absolute probabilities. Weight changes how likely a clip is relative to other choices; **Chance** changes whether the step fires at all. A step's own **Random clip choices** pool is independent of the shared lane pool. **Shuffle clips** changes assignments on existing hits without moving their timing. **Variation… → Store** saves a pattern checkpoint, **Mutate** creates a variation, and **Restore** returns to the checkpoint. The control beside Mutate selects allowed categories and amount; protect steps you want kept.
 
@@ -433,6 +441,39 @@ Each includes three presets, adjustable phosphor hue and highlight heat, glow, a
 For immediate pad/knob use, load **Racks → Phosphor Screens**. Dot Matrix and Contour Scan occupy macro slots 1 and 2, followed by Sync Bend, Signal Emergence, Wavefolder, RGB Split / Delay, Tremolo / Gate, and Video Delay. The rack starts dry; raise a macro or hold its mapped FX pad to engage it. Loading a rack changes the macro assignments; Undo restores the prior rack. Existing MIDI bindings are preserved. Both new effects also work as clip or step FX, with parameter locks, saved presets, automation and audio reactivity. Video effects do not process audio.
 
 ## Changelog
+
+### 0.9.0 beta — October 24, 2026 · Editing and responsiveness
+
+This release brings the recent step-editing and memory improvements to the public beta. Existing projects, presets and controller mappings remain compatible. Save a copy of important work before updating.
+
+- **Move complete steps:** drag a step or selected group, with its pools, Chance, gates, appearance and FX locks, to another compatible position. Occupied destinations are replaced; Undo restores the edit.
+- **Copy and paste any selection:** select a range with Shift-click, press **⌘C**, select a destination and press **⌘V**. Multi-lane spacing and offsets are retained. **⌘D** duplicates the selected span into unedited destination steps and explains conflicts.
+- **Shuffle a lane:** use **Shuffle Steps** in a clip, mask or FX lane's inspector or header menu. It rearranges complete steps and rests; protected positions stay in place. Undo/Redo works normally.
+- **Hold until another clip arrives:** choose **Until next clip** in Timing → Gate mode. Empty steps and probability misses let the current source continue across loops until a replacement hit, Stop or section boundary. Recording and placement resolve that performance into finite clips.
+- **More responsive color editing:** global color changes no longer rebuild the entire sequencer grid.
+- **Lower editing overhead:** bounded thumbnail decoding and cache, cancellation of unneeded thumbnail work, first-frame preparation at preview resolution, shared inspector rendering resources, and a fix for effect-editor objects remaining allocated after closing.
+- Export still uses the original media at the selected output resolution. This update does not add effects or change the project format.
+
+**For a first session:** follow [Make your first video](#start-here-your-first-video), then try a short pattern with a song before adding large random pools. Use 360p · Light preview on a smaller-memory Mac; preview resolution does not reduce export resolution. This remains a beta: please report your Mac, macOS, exact build and reproduction steps with problems.
+
+
+### 0.8.7 local preview — October 24, 2026 · Responsiveness and memory
+
+- Global color adjustments no longer rebuild the sequencer's entire step grid. Step edits and effect labels still update normally.
+- Timeline thumbnails use a bounded two-job preparation queue and a 24 MiB cache, sharing requests for identical source fragments.
+- Clip preparation uses the selected preview size for its first-frame images, reducing their memory cost in Light preview. Export continues to use original media at the chosen export resolution.
+- Effect inspector helpers share rendering resources, reducing redundant setup when opening and editing effects.
+- Fixed a retained effect-inspector renderer after closing the inspector, preventing those helper objects from accumulating across repeated editing sessions.
+- Includes the step clipboard, Shuffle Steps and Until next clip improvements below. No new effects or project-format changes in this maintenance update.
+
+### 0.8.6 local preview — October 23, 2026 · Step clipboard and held gates
+
+- **Shuffle Steps** on every clip, mask and FX lane rearranges complete steps and rests, retaining attached settings and protected positions. Available in the lane inspector and header context menu, with Undo/Redo.
+- Copy any sequencer step selection with ⌘C and paste at a chosen step with ⌘V. Multi-lane offsets, spacing, pools, Chance, gates, appearance and FX locks are preserved. Paste replaces destination settings with Undo.
+- Drag a step or selected group onto any compatible destination, including occupied steps. All step settings move together; destination steps are replaced and Undo restores both.
+- Fixed sequencer ⌘D routing and Shift-click modifier capture. Duplicate repeats the selected span into unedited steps; a visible explanation now identifies blocked destinations.
+- Added **Until next clip** for clip steps and lane defaults. Empty steps and probability misses keep the source playing across loops until a replacement hit, Stop or section boundary. Recording and placement retain the resulting finite duration.
+
 
 ### 0.8.5 beta — October 23, 2026 · build 20261024.011533 · Mask transforms and step targets
 

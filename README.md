@@ -24,7 +24,7 @@ Build precise edits, layer and distort footage, map visual parameters to music o
 
 This repository hosts beta installers, release notes, and user documentation. Application source is maintained separately. ABJEXT is under active development; save a copy of important projects before trying a new beta.
 
-**New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 0.8.4](#changelog)
+**New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 0.8.5](#changelog)
 
 ## Requirements
 
@@ -108,6 +108,16 @@ Switching tabs changes the working view; it does not itself copy or convert anyt
 **Gate** is duration, measured in steps; it is not a count of repeats. A default gate of 1 only sustains for one step, so placing a single hit on step 1 can leave the rest of the bar black. **Retriggers** restarts the clip within a step. **Chance** decides whether the hit happens. For three repeats within a step, try Retriggers 3×; use a triplet subdivision for a triplet grid. Very short hits are limited by video frame rate.
 
 To add overlapping footage, put clips on **Clips B**. New patterns use **Layer Stack**: each clip lane plays independently, the top row appears in front, and dragging lane headers changes the stacking order. There are up to **eight total sequencer rows**, including masks and FX. More simultaneous footage costs more decoding/rendering work; start small and use Prepare Clips. Existing patterns retain **Shared Targets** to preserve their appearance; switch them to Layer Stack while paused when ready. In Shared Targets, lanes aimed at the same destination replace each other's clips. Use lane/step opacity and blend settings, or **Appearance → Framing, Text & Split Screen** on a clip step for timed split-screen layouts. Rename a lane through its inspector or context menu.
+
+**Use a moving mask:** drop a black-and-white video onto a **Masks** lane step. White reveals its target video layer; black hides it. Click the Masks lane header to choose its **Mask target** and default framing/transform. Select a mask step → **Appearance** for:
+
+- **Mask target:** Follow lane, or choose a named clip lane for this hit.
+- **Mask framing:** Follow lane, Fit, or Fill. Open **Transform & Crop** for scale, position, rotation, flips and crop. Editing a transform creates a step override; **Use lane transform** returns to the lane defaults.
+- **Invert mask:** swap which source areas reveal or hide the video. Threshold and Softness shape the matte; mask opacity controls its strength.
+
+Changes apply on the next mask hit. Each new hit replaces the previous mask from that Masks lane, even if its target changes. Use separate Masks lanes for overlapping masks on different targets. Recording and Add to Timeline preserve the chosen target and transform; timeline mask clips expose the same transform controls. Scaling or moving a mask leaves uncovered canvas hidden, including when inverted. Older masks keep their previous framing until you edit it.
+
+**Make pattern variations:** use the **+** menu beside the pattern selector → **Duplicate Pattern**, then edit the copy. The selector lets you return to either pattern. Save the project with **⌘S** to keep all its patterns together; a project supports up to 16 patterns.
 
 ### 4. Make it react, then make it unpredictable
 
@@ -223,7 +233,7 @@ Open **Pads** and **FX Controls → Live tools** to play clips while keeping eit
 - Layer **FX** opens its own rack. Global FX process the combined picture. MIDI Map can assign layer parameters, opacity, the crossfader, or scene recall without replacing existing SP-404 mappings.
 - **Scenes** saves named snapshots of clip assignments, the live layers, the global rack and macros, and the selected pattern. Recall uses the Launch interval while playing; new pad hits use the recalled assignments. Recorded scene changes replay on the timeline and can be edited in Scenes → Recorded rack changes.
 - **Sequencer** opens the step lanes in the timeline area, keeping the preview visible. Start with two clip rows, a mask row, and an FX row; expand to eight independent rows with 1–64 steps each.
-- **Reorder sequencer lanes:** drag the entire lane header (the “Clips A / Drop a clip here” box) onto another header, or right-click it and choose **Move Up / Move Down**. The row’s clips, steps, masks and FX move together; its assigned layer and playback stay unchanged. Order is saved with the project and supports undo. Audio is arranged in **Timeline** and continues playing with the sequencer. Select a step to edit its **Timing / Appearance / Source / Effects / Pattern** controls in the left sidebar beneath Media and Pads.
+- **Reorder sequencer lanes:** drag the entire lane header (the “Clips A / Drop a clip here” box) onto another header, or right-click it and choose **Move Up / Move Down**. The row’s clips, steps, masks and FX move together. In Layer Stack, clip-row order also controls front-to-back composition; Shared Targets keeps its explicit routing. Order is saved with the project and supports undo. Audio is arranged in **Timeline** and continues playing with the sequencer. Select a step to edit its **Timing / Appearance / Source / Effects / Pattern** controls in the left sidebar beneath Media and Pads.
 - **Media** and **Inspector** in the top toolbar collapse independently. **Focus** above the working view hides both; **Restore panels** brings back the previous combination. The divider above the performance controls adjusts preview versus sequencer height.
 - Drag Project Media or a pad onto a lane to choose its source, or onto a step to assign a different clip. Click empty steps to add hits; select a lit step to edit it, then click it again to disable it. The left sidebar groups controls into Timing, Appearance, Source, Effects and Pattern. Weighted clip pools are available under **Source → Random Clip Pool**. Drop clips anywhere in the expanded pool, including on an existing entry, to append choices. A higher Weight makes a choice more likely; Chance determines whether the step triggers at all.
 - Steps support weighted clip pools, probability, gate length, retriggers, frame-aligned microtiming, per-step source starts, first/every-N/previous-result conditions, and Fill. Mask and FX rows can run at different lengths from the clip rows.
@@ -251,7 +261,7 @@ Create separate patterns for sections such as a verse, chorus, and bridge, then 
 
 Before performing, pause and choose **Prepare Clips** in the Sequencer toolbar. Click the readiness count for source details and Retry/Replace controls. A small linked chain shows **N/N ready**. A larger chain shows **N/N ready ahead**: only the upcoming window is loaded, while later choices remain **On demand**. This is normal. The eight-second forecast uses the saved random seed and weighted choices without changing the probability decisions.
 
-The project supports up to 4,096 sequencer source slots in addition to the controller pads. This storage allowance is separate from the shared 64-player preparation cache and is not a promise that thousands of sources can play at once. Live playback has three video destinations; masks, timeline playback, and FX/history have additional resource costs. A new hit on a destination cuts the previous clip; different destinations can overlap.
+The project supports up to 4,096 sequencer source slots in addition to the controller pads. This storage allowance is separate from the shared 64-player preparation cache and is not a promise that thousands of sources can play at once. Layer Stack supports independent clip layers within the eight-row sequencer limit; masks and FX rows count toward that limit. Masks, timeline playback, and FX/history have additional resource costs. A new hit on a destination cuts the previous clip; different destinations can overlap.
 
 Start at **360p · Light** for complex performances. Preview resolution does not reduce the resolution of an Export Mix render. Keep external source drives connected. Slow drives, difficult codecs, heavy FX, or an abrupt jump to an unprepared pattern can still cause late or missed hits. If a source is unavailable, pause, open readiness details, and retry or replace it rather than repeatedly starting playback.
 
@@ -423,6 +433,14 @@ Each includes three presets, adjustable phosphor hue and highlight heat, glow, a
 For immediate pad/knob use, load **Racks → Phosphor Screens**. Dot Matrix and Contour Scan occupy macro slots 1 and 2, followed by Sync Bend, Signal Emergence, Wavefolder, RGB Split / Delay, Tremolo / Gate, and Video Delay. The rack starts dry; raise a macro or hold its mapped FX pad to engage it. Loading a rack changes the macro assignments; Undo restores the prior rack. Existing MIDI bindings are preserved. Both new effects also work as clip or step FX, with parameter locks, saved presets, automation and audio reactivity. Video effects do not process audio.
 
 ## Changelog
+
+### 0.8.5 beta — October 23, 2026 · build 20261024.011533 · Mask transforms and step targets
+
+- **Per-step mask targets:** follow the Masks lane’s target or choose a named clip lane in **Appearance**. Targets remain attached when clip lanes are reordered.
+- **Mask transforms:** scale, position, rotation, flips, crop and Fit/Fill framing for lane defaults, step overrides and timeline masks. Use lane transform restores inheritance; Reset transform returns to neutral settings.
+- **Invert mask** remains alongside Threshold, Softness and mask opacity. Transformed masks keep uncovered canvas hidden, including when inverted.
+- Live playback, recording, timeline placement and export use the same resolved mask controls. Older projects retain their existing mask appearance.
+- Verified save/reopen of target, scale and inversion, plus rendering/export, Undo, duplication, lane reordering and recording/placement checks.
 
 ### 0.8.4 beta — October 23, 2026 · build 20261023.223452 · Layers, pools and random gates
 

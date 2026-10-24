@@ -24,7 +24,7 @@ Build precise edits, layer and distort footage, map visual parameters to music o
 
 This repository hosts beta installers, release notes, and user documentation. Application source is maintained separately. ABJEXT is under active development; save a copy of important projects before trying a new beta.
 
-**New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 0.9.3](#changelog)
+**New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 0.9.4](#changelog)
 
 ## Requirements
 
@@ -234,7 +234,11 @@ Open **Inspector → Appearance** in the right inspector, then select the video 
 - **Media:** set source defaults before placement. New timeline clips and newly assigned pads copy these settings; existing placements stay unchanged.
 - **Timeline:** edit selected clips. Multi-selection patches the control you changed while preserving each clip’s other settings. Split, duplicate, copy/paste, and project save retain the appearance.
 - **Pad:** adjust that pad’s source snapshot without changing the original media-pool item.
-- **Step:** override framing/text for a clip-lane hit, including clips selected from a weighted pool. **Use source framing & text** restores inheritance. Play the sequence to see a step’s settings.
+- **Step:** override framing/text for a clip-lane hit, including clips selected from a weighted pool. **Use source appearance** restores inheritance for the selected steps. Play the sequence to see a step’s settings.
+
+**Editing several items:** select a range of steps with Shift-click, then change an Appearance control. Only the changed fields are applied: for example, scaling two steps keeps their separate text, rotation and Noir settings. Undo reverses the batch together. Timeline video opacity and Direction show **Mixed** when selected clips differ; timeline mask opacity does too, and the mask target readout identifies whether the selection affects different targets.
+
+**Appearance from a pool:** a step follows its source defaults until you override it. If pool members have different defaults, the inspector names the clip it is showing and says **Varies by clip choice**. Editing creates one appearance override for all choices on that step. **Use source appearance** removes the override and restores each source’s own defaults.
 
 Expand **Transform & Crop** for scale, X/Y, rotation, flips, and frame-edge cropping. Position and crop values are normalized to the canvas; crop happens before transform. Transparent areas reveal lower video tracks. These are numeric/slider controls; direct on-preview transform handles are not included in this beta.
 
@@ -474,6 +478,15 @@ Each includes three presets, adjustable phosphor hue and highlight heat, glow, a
 For immediate pad/knob use, load **Racks → Phosphor Screens**. Dot Matrix and Contour Scan occupy macro slots 1 and 2, followed by Sync Bend, Signal Emergence, Wavefolder, RGB Split / Delay, Tremolo / Gate, and Video Delay. The rack starts dry; raise a macro or hold its mapped FX pad to engage it. Loading a rack changes the macro assignments; Undo restores the prior rack. Existing MIDI bindings are preserved. Both new effects also work as clip or step FX, with parameter locks, saved presets, automation and audio reactivity. Video effects do not process audio.
 
 ## Changelog
+
+### 0.9.4 beta — October 24, 2026 · Selection and appearance fixes
+
+- Batch Appearance edits on sequencer clip steps preserve unrelated settings. Changing scale across a selection keeps each step’s text, rotation, monochrome and other untouched values; the batch is one Undo action.
+- Source appearance follows the actual step-pool, fixed-clip and lane-source priority. Pools with different appearance defaults show a named representative and explain the override behavior.
+- **Use source appearance** clears overrides across selected clip steps, including when the focused step already follows its source.
+- Timeline video opacity and playback direction display **Mixed** for differing selections. Mask opacity does too; target readouts identify the affected clip/track or mixed targets.
+- Clearer selection guidance and step override summaries, including source start and mask threshold, softness and inversion.
+- Includes the Song strip, Black & White / Film Noir, beta feedback and prior features. Existing projects, presets and MIDI mappings remain compatible.
 
 ### 0.9.3 beta — October 24, 2026 · Song context and clearer inspectors
 

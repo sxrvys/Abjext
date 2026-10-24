@@ -24,7 +24,7 @@ Build precise edits, layer and distort footage, map visual parameters to music o
 
 This repository hosts beta installers, release notes, and user documentation. Application source is maintained separately. ABJEXT is under active development; save a copy of important projects before trying a new beta.
 
-**New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 0.9.2](#changelog)
+**New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 0.9.3](#changelog)
 
 ## Requirements
 
@@ -118,6 +118,19 @@ To add overlapping footage, put clips on **Clips B**. New patterns use **Layer S
 Changes apply on the next mask hit. Each new hit replaces the previous mask from that Masks lane, even if its target changes. Use separate Masks lanes for overlapping masks on different targets. Recording and Add to Timeline preserve the chosen target and transform; timeline mask clips expose the same transform controls. Scaling or moving a mask leaves uncovered canvas hidden, including when inverted. Older masks keep their previous framing until you edit it.
 
 **Make pattern variations:** use the **+** menu beside the pattern selector → **Duplicate Pattern**, then edit the copy. The selector lets you return to either pattern. Save the project with **⌘S** to keep all its patterns together; a project supports up to 16 patterns.
+
+### Keep your song visible while sequencing
+
+Expand **Song** below the sequencer toolbar to see your timeline soundtrack, markers, playhead and work range without leaving the pattern. The bar/beat readout uses your project BPM and beat-grid offset (4/4); importing music does not detect its tempo automatically.
+
+- **While paused, click the waveform** to move the shared song playhead. **Drag across it** to set the work range; this follows the Timeline Snap setting.
+- **Markers → a marker name** offers **Go to marker** and **Use section as work range**. A section runs to the next marker, or the timeline end.
+- **Focus range** zooms into the selected passage; **Go to In** returns to its beginning. The readout tells you how many full passes of the current pattern fit, plus any remaining beats. It does not calculate a chain of differently sized patterns.
+- Enable the existing **Loop** control to repeat that song range while developing your pattern. Pause before changing the range or seeking from the strip.
+- **Add to Timeline…** starts at the enabled range's In point. Choose the number of passes in that dialog; Out does not crop the resulting pattern placement. The same work range also limits file export.
+- **Edit audio in Timeline** returns to the full audio-editing view at the shared position. Collapse **Song** when you want more space for steps.
+
+The strip reuses the existing waveform analysis and audio playback. It does not create a second soundtrack or change your pattern just because you navigate the song.
 
 ### 4. Make it react, then make it unpredictable
 
@@ -461,6 +474,16 @@ Each includes three presets, adjustable phosphor hue and highlight heat, glow, a
 For immediate pad/knob use, load **Racks → Phosphor Screens**. Dot Matrix and Contour Scan occupy macro slots 1 and 2, followed by Sync Bend, Signal Emergence, Wavefolder, RGB Split / Delay, Tremolo / Gate, and Video Delay. The rack starts dry; raise a macro or hold its mapped FX pad to engage it. Loading a rack changes the macro assignments; Undo restores the prior rack. Existing MIDI bindings are preserved. Both new effects also work as clip or step FX, with parameter locks, saved presets, automation and audio reactivity. Video effects do not process audio.
 
 ## Changelog
+
+### 0.9.3 beta — October 24, 2026 · Song context and clearer inspectors
+
+- New collapsible **Song** strip in Sequencer: timeline waveform, markers, shared playhead, range selection, focus zoom and pattern-pass count.
+- Click to seek or drag to set a shared work range while paused; jump back to Timeline for audio edits. Range changes support Undo and honor Timeline Snap.
+- Inspector headings now identify the editing scope and selection. Source/inheritance readouts distinguish lane defaults, step overrides, fixed clips and pools; gate readouts show the effective fixed, random or held behavior.
+- Selecting a lane clears stale step FX/appearance controls. Multi-selection guidance and reset labels are clearer.
+- Large step selections reuse resolved lane data; the Song strip reuses existing audio analysis and keeps transport updates separate from waveform drawing.
+- Existing projects and playback behavior are retained. Includes 0.9.2 Black & White / Film Noir and 0.9.1 beta feedback.
+
 
 ### 0.9.2 beta — October 24, 2026 · Black & White / Film Noir
 

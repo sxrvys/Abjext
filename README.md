@@ -24,7 +24,7 @@ Build precise edits, layer and distort footage, map visual parameters to music o
 
 This repository hosts beta installers, release notes, and user documentation. Application source is maintained separately. ABJEXT is under active development; save a copy of important projects before trying a new beta.
 
-**New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 0.9.1](#changelog)
+**New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 0.9.2](#changelog)
 
 ## Requirements
 
@@ -365,6 +365,19 @@ Ripple delete removes the selected material and closes its gap on the affected t
 | Larger preview window | Double-click the preview |
 | Add or manage tracks | Timeline + or track context menu |
 
+## Black & White and Film Noir
+
+Select a video clip and open **Inspector → Appearance**. For a sequencer clip step, choose **Appearance → Clip Appearance…** in the step inspector to open the full controls on the right.
+
+- **Black & White** converts the picture to neutral grayscale.
+- **Film Noir** adds deeper blacks and brighter whites, starting at **0.65 Noir strength**.
+- **Noir strength** adjusts the contrast from neutral monochrome at 0 to a harder look at 1.
+- **Original** removes this monochrome adjustment without resetting framing, text or other effects.
+
+The **Editing** selector identifies whether you are changing a timeline clip, media source defaults, a pad or a step. Media defaults are copied into new placements; existing placements retain their own settings. Step appearance overrides also apply to clips drawn from that step's random pool. The adjustment is saved with the project and follows clips into timeline placement, preview and export. Source media files are never rewritten.
+
+This is a source appearance adjustment **before clip and global FX**. A later Colorizer or other effect can add color again. Text keeps its own color. Masks retain their separate threshold, inversion and framing controls.
+
 ## Media and export
 
 Common verified inputs include **H.264 MP4/MOV**, **HEVC MOV**, and **ProRes 422 MOV**, plus **MP3, WAV, FLAC, AIFF, AAC/M4A, ALAC/M4A, and CAF** audio. Import uses macOS decoders and checks the actual file; an extension alone does not guarantee compatibility. DRM-protected files are unsupported.
@@ -448,6 +461,14 @@ Each includes three presets, adjustable phosphor hue and highlight heat, glow, a
 For immediate pad/knob use, load **Racks → Phosphor Screens**. Dot Matrix and Contour Scan occupy macro slots 1 and 2, followed by Sync Bend, Signal Emergence, Wavefolder, RGB Split / Delay, Tremolo / Gate, and Video Delay. The rack starts dry; raise a macro or hold its mapped FX pad to engage it. Loading a rack changes the macro assignments; Undo restores the prior rack. Existing MIDI bindings are preserved. Both new effects also work as clip or step FX, with parameter locks, saved presets, automation and audio reactivity. Video effects do not process audio.
 
 ## Changelog
+
+### 0.9.2 beta — October 24, 2026 · Black & White / Film Noir
+
+- One-click **Black & White** and **Film Noir** in clip Appearance, with adjustable Noir strength and an **Original** reset.
+- Available for timeline clips, media defaults, pads and sequencer clip steps; retained during pattern placement and export.
+- Noir contrast is applied around perceptual mid-gray to preserve useful midtone detail. Uses image filters without rebuilding a color lookup table.
+- Monochrome settings follow Copy/Paste, Paste Color Attributes, project saving and Undo. Existing projects keep their original appearance.
+- Includes the **Settings → Beta Feedback** and **Help → Send Beta Feedback…** workflow from 0.9.1, sending user-reviewed drafts to **abjextstudio@gmail.com**.
 
 ### 0.9.1 beta — October 24, 2026 · Email feedback
 

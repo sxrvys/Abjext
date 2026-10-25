@@ -24,7 +24,7 @@ Build precise edits, layer and distort footage, map visual parameters to music o
 
 This repository hosts beta installers, release notes, and user documentation. Application source is maintained separately. ABJEXT is under active development; save a copy of important projects before trying a new beta.
 
-**New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 0.9.4](#changelog)
+**New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 0.9.5](#changelog)
 
 ## Requirements
 
@@ -477,7 +477,35 @@ Each includes three presets, adjustable phosphor hue and highlight heat, glow, a
 
 For immediate pad/knob use, load **Racks → Phosphor Screens**. Dot Matrix and Contour Scan occupy macro slots 1 and 2, followed by Sync Bend, Signal Emergence, Wavefolder, RGB Split / Delay, Tremolo / Gate, and Video Delay. The rack starts dry; raise a macro or hold its mapped FX pad to engage it. Loading a rack changes the macro assignments; Undo restores the prior rack. Existing MIDI bindings are preserved. Both new effects also work as clip or step FX, with parameter locks, saved presets, automation and audio reactivity. Video effects do not process audio.
 
+## Prepare sources and organize pools
+
+While playback is stopped, click a **Project Media** thumbnail to audition it in the large viewer. The controls directly below the picture let you scrub, **Mark In**, **Mark Out**, enter exact seconds, restore **Full** length, and enable **Source audio**. Press Enter after typing a number. **Crop, scale & text…** opens source Appearance. Expand **Place marked source on timeline** to choose a track and edit operation. Source marks affect new placements; existing timeline clips retain their own trims. Selecting media does not interrupt an actively playing timeline or sequence. Choose **Program** to return to the composition.
+
+Use **⌘-click** for individual media selections or **Shift-click** for a range. Drag the group onto a project folder, or use **Move To**. Right-click **Remove from Project Media**, the trash button, **Delete**, **⇧Delete**, or **⌘Delete** removes the selected group while the grid has focus. This removes bin entries, never files from disk or existing timeline/pattern placements. **⌘Z** restores the removal.
+
+Lane and step random pools now have selectable lists too. Select rows with ⌘/Shift, then delete the group or use **Move To**. Drag selected pool rows onto a **lane header** to move them into that lane’s pool, or onto a **step** to move them into that step’s pool. Moves retain weights and are one Undo action. Dropping new media into a pool adds choices; moving existing pool rows removes them from the original pool. A step pool list edits that individual step; when multiple steps are selected, the inspector explains which add operations apply to the group.
+
+## New creative controls in 0.9.5
+
+**Video Gristleizer:** choose **Effects → Add → Video synthesis → Video Gristleizer**. Try **Discipline**, **Hostile circuitry**, or **Total refusal**, then adjust its wet/dry amount. Circuit mode offers amplitude chopping, spatial-detail filtering, or both; Bias, Depth, Drive and Signal fold shape the damage. Select **One, Two or Three oscillators** and increase Cross-modulation to make them interact. **Sync to project beat** follows the musical clock; free-running mode uses Hz. **New chaos pattern** changes the seed. It supports FX steps, parameter locks, macros, audio mappings and saved presets/chains. This is an independent video homage, not an endorsed or circuit-accurate hardware emulation. Strong settings can flash rapidly.
+
+**Half- and double-time:** pause and use **Timing ½× / 1× / 2×** beside Sequencer BPM. With a 50 BPM song, steps run at an effective 25, 50 or 100 BPM. Audio and individual clip playback speed stay unchanged. Gates, retriggers and pattern duration follow the multiplier; the setting saves per pattern and carries into timeline placement.
+
+**Different footage on each hit:** select a clip or mask lane, enable **Random start position**, and choose minimum/maximum percentages. Each successful trigger picks a position inside that source’s marked In/Out range. A step can override it under **Source → Start position → Random range**, or keep a Fixed start. Retriggers choose again. Playback, recorded takes and timeline placement use the same seeded choice logic.
+
 ## Changelog
+
+### 0.9.5 beta — October 25, 2026 · Gristleizer, creative timing and faster source preparation
+
+- **Video Gristleizer**, including one, two or three coupled oscillators, amplitude/filter modes, drive/folding, scan fracture, beat sync, seeded instability and three starting presets. Supports existing automation, mappings, sequencer FX and export.
+- Saved **½× / 1× / 2× pattern timing**, independent of song tempo and clip playback speed.
+- **Random source start ranges** on clip/mask lanes and individual steps, including retriggers, recording and timeline placement.
+- **Large source preparation viewer:** scrub, mark or type In/Out, audition audio, open source Appearance and place the marked source from controls under the main picture.
+- **Project Media group removal** now honors the selection, including right-click and Delete/Shift-Delete/Command-Delete. Group folder moves remain available; source files and existing placements are preserved.
+- **Lane and step pool multi-selection**, group removal and moves with weights preserved, plus Undo. Number fields retain text-editing keyboard behavior.
+- Corrected a floating-point boundary case when marking a source range exactly one frame long.
+- Includes all previous Song strip, inspector, Film Noir, editing and export improvements. Existing projects, presets and MIDI mappings remain compatible.
+
 
 ### 0.9.4 beta — October 24, 2026 · Selection and appearance fixes
 

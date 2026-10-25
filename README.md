@@ -24,7 +24,7 @@ Build precise edits, layer and distort footage, map visual parameters to music o
 
 This repository hosts beta installers, release notes, and user documentation. Application source is maintained separately. ABJEXT is under active development; save a copy of important projects before trying a new beta.
 
-**New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 0.9.5](#changelog)
+**New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 0.9.6](#changelog)
 
 ## Requirements
 
@@ -494,6 +494,14 @@ Lane and step random pools now have selectable lists too. Select rows with ⌘/S
 **Different footage on each hit:** select a clip or mask lane, enable **Random start position**, and choose minimum/maximum percentages. Each successful trigger picks a position inside that source’s marked In/Out range. A step can override it under **Source → Start position → Random range**, or keep a Fixed start. Retriggers choose again. Playback, recorded takes and timeline placement use the same seeded choice logic.
 
 ## Changelog
+
+### 0.9.6 beta — October 25, 2026 · Export audio sync hotfix
+
+- Fixed exports whose audio could decode approximately **44 ms late through FFmpeg** while appearing aligned through Apple's decoder. The final movie now preserves the audio encoder's timing information.
+- Rendered video is copied without re-encoding. Corrected an AAC-source edge case that could trim the soundtrack tail.
+- Added Apple/FFmpeg regression checks covering full and trimmed exports, H.264, ProRes 422/4444, and WAV/MP3/AAC source audio.
+- **Huge thanks to @mvbrtr for finding and reporting the sync issue!**
+- Applies to new exports: re-export your project to correct an older movie. No manual audio offset is required. Existing projects remain compatible.
 
 ### 0.9.5 beta — October 25, 2026 · Gristleizer, creative timing and faster source preparation
 

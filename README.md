@@ -24,7 +24,9 @@ Build precise edits, layer and distort footage, map visual parameters to music o
 
 This repository hosts beta installers, release notes, and user documentation. Application source is maintained separately. ABJEXT is under active development; save a copy of important projects before trying a new beta.
 
-**New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 0.9.6](#changelog)
+**New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 0.9.7](#changelog)
+
+**Current beta: 0.9.7.** Includes the export audio-sync fix reported by **@mvbrtr**, plus **[Global Thermonuclear War](#optional-bonus-global-thermonuclear-war)**, an optional audio plug-in for making your soundtrack. If you missed 0.9.6, update and re-export older videos to receive the sync correction.
 
 ## Requirements
 
@@ -44,6 +46,22 @@ No Terminal commands, Python, pip, Xcode, TouchDesigner, Max, Ableton, additiona
 If macOS instead reports malware or a damaged application, keep the warning intact and report the exact message. You do not need to disable Gatekeeper or run a quarantine-removal command. See [Apple's instructions for opening an app from an unidentified developer](https://support.apple.com/102445).
 
 Allow access to folders containing your media when macOS asks. Microphone permission is needed only when using live audio input, including a virtual audio device.
+
+## Optional bonus: Global Thermonuclear War
+
+ABJEXT 0.9.7 includes **Global Thermonuclear War 0.1.4**, a separate Audio Unit effect for your DAW. Look inside the DMG's **Bonus - Global Thermonuclear War** folder, or download the **plug-in-only ZIP** from the same release. Installing the ABJEXT app does not automatically install this optional plug-in.
+
+Five simultaneous repeat engines, waveform shuffle and reversing feed a three-oscillator Gristleizer, Percolator-inspired saturation, and digital destruction. Add wavefolding, hard chopping and CD skips, or turn stages off individually. Four presets provide starting points; **Wet / dry** and **Output** control the final blend and level. It captures incoming audio live, so no sample preparation is needed.
+
+**Install:** save and quit your DAW. In Finder, choose **Go → Go to Folder…** and enter `~/Library/Audio/Plug-Ins/Components`. Copy **ABJEXT Global Thermonuclear War.component** there, then reopen the DAW. Create the Components folder inside Plug-Ins if it is missing. The included **Read Me - Audio Plugin.txt** walks through installation and use.
+
+- **Ableton Live:** enable Audio Units in its Plug-Ins settings if needed, then search **Global Thermonuclear War** under **Audio Units → ABJEXT**.
+- **Logic Pro:** look in an Audio FX slot under **Audio Units → ABJEXT → Global Thermonuclear War**. An actual Logic session has not yet been verified; the plug-in passes Apple's AU validation and has been used locally in Ableton.
+- **Requirements:** Apple Silicon, macOS 14 or later, and an AU host. This download is not an Intel, Windows or VST3 build. Locally signed beta, not yet notarized by Apple.
+
+Start with **Broken Playback** and a low wet amount. Click a stage title to toggle it. For parallel processing, use 100% wet on the effect track and blend with its track fader. **Six-band EQ…** opens a graph: drag numbered points for frequency/gain, scroll for the selected band's width/Q, or type exact values. Gray shows the spectrum before EQ, red after EQ, and white the combined response curve. The left scale is EQ gain; the right is spectrum level in dBFS. The EQ and analyzer operate on the **processed signal before Wet / dry and Output**, not on your final master bus.
+
+This bonus processes **audio in a DAW**. ABJEXT's video effects continue to leave soundtrack audio untouched. You do not need the bonus to make or export videos. Send plug-in feedback to **abjextstudio@gmail.com**, including your DAW, macOS version and plug-in version.
 
 ## Stay current
 
@@ -494,6 +512,13 @@ Lane and step random pools now have selectable lists too. Select rows with ⌘/S
 **Different footage on each hit:** select a clip or mask lane, enable **Random start position**, and choose minimum/maximum percentages. Each successful trigger picks a position inside that source’s marked In/Out range. A step can override it under **Source → Start position → Random range**, or keep a Fixed start. Retriggers choose again. Playback, recorded takes and timeline placement use the same seeded choice logic.
 
 ## Changelog
+
+### 0.9.7 beta — October 25, 2026 · Sync fix + optional audio bonus
+
+- Carries forward the **export audio-sync correction** from 0.9.6. Thanks again to **@mvbrtr**: audio that could arrive about 44 ms late in FFmpeg-based decoding now retains its correct encoder-delay timing. Re-export older videos to apply the fix; no manual offset is needed.
+- Includes **Global Thermonuclear War 0.1.4** as an optional AU in the DMG and a separate plug-in-only ZIP, with installation and getting-started instructions.
+- The audio plug-in includes the corrected sliders, graphical six-band EQ, and live before/after frequency spectra.
+- Video-app behavior and project compatibility are unchanged from 0.9.6. The bonus is installed separately in your DAW.
 
 ### 0.9.6 beta — October 25, 2026 · Export audio sync hotfix
 

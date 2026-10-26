@@ -12,9 +12,9 @@ Build precise edits, layer and distort footage, map visual parameters to music o
 
 This repository hosts beta installers, release notes, and user documentation. Application source is maintained separately. ABJEXT is under active development; save a copy of important projects before trying a new beta.
 
-**New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 0.9.8](#changelog)
+**New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 1.0](#changelog)
 
-**Current beta: 0.9.8.** Adds detailed timeline waveforms, draggable beat-grid alignment, video warp anchors, and **⌘J Bounce Selection** for turning a finished passage into one clip you can retime. Includes the export sync fix reported by **@mvbrtr** and the optional **[Global Thermonuclear War](#optional-bonus-global-thermonuclear-war)** audio plug-in.
+**Current beta: 1.0.0.** Adds per-pattern color, saved-chain step controls and continuous FX audition, alongside individual pool-clip editing with preview, random playback speed and direction on successful sequencer triggers, and global Black point / White point controls. Includes the earlier beat alignment, warp anchors, bounce, export sync fix reported by **@mvbrtr**, and optional **[Global Thermonuclear War](#optional-bonus-global-thermonuclear-war)** audio plug-in.
 
 <details>
 <summary><strong>Formerly Semiotic Studio · migration and update information</strong></summary>
@@ -52,15 +52,15 @@ No Terminal commands, Python, pip, Xcode, TouchDesigner, Max, Ableton, additiona
 1. Open **[Releases](https://github.com/sxrvys/Abjext/releases)** and choose the newest beta. Download the file ending in **`AppleSilicon.dmg`** under Assets. GitHub's automatic “Source code” archives are not the application.
 2. Open the DMG and drag **ABJEXT Studio.app** onto **Applications**.
 3. Eject the DMG and open ABJEXT Studio from Applications. For an update, save your project and quit the old app before replacing it; launch the copy in Applications, not the copy inside the DMG.
-4. If macOS says the developer cannot be verified, first attempt to open the app, then go to **System Settings → Privacy & Security → Open Anyway** and confirm. These beta builds are locally signed but are not yet notarized by Apple. Only approve an installer from this repository or the developer.
+4. **Version 1.0.0 is Developer ID signed and notarized by Apple.** macOS may ask you to confirm opening a downloaded app; an Open Anyway workaround should not be needed. Older releases were locally signed and may still show the older warning.
 
-If macOS instead reports malware or a damaged application, keep the warning intact and report the exact message. You do not need to disable Gatekeeper or run a quarantine-removal command. See [Apple's instructions for opening an app from an unidentified developer](https://support.apple.com/102445).
+If macOS reports malware or a damaged application, stop and report the exact message to **abjextstudio@gmail.com**. Do not disable Gatekeeper or remove quarantine to bypass the warning.
 
 Allow access to folders containing your media when macOS asks. Microphone permission is needed only when using live audio input, including a virtual audio device.
 
 ## Optional bonus: Global Thermonuclear War
 
-ABJEXT 0.9.8 includes **Global Thermonuclear War 0.1.4**, a separate Audio Unit effect for your DAW. Look inside the DMG's **Bonus - Global Thermonuclear War** folder, or download the **plug-in-only ZIP** from the same release. Installing the ABJEXT app does not automatically install this optional plug-in.
+ABJEXT 1.0.0 includes **Global Thermonuclear War 0.1.4**, a separate Audio Unit effect for your DAW. Look inside the DMG's **Bonus - Global Thermonuclear War** folder, or download the **plug-in-only ZIP** from the same release. Installing the ABJEXT app does not automatically install this optional plug-in.
 
 Five simultaneous repeat engines, waveform shuffle and reversing feed a three-oscillator Gristleizer, Percolator-inspired saturation, and digital destruction. Add wavefolding, hard chopping and CD skips, or turn stages off individually. Four presets provide starting points; **Wet / dry** and **Output** control the final blend and level. It captures incoming audio live, so no sample preparation is needed.
 
@@ -68,7 +68,7 @@ Five simultaneous repeat engines, waveform shuffle and reversing feed a three-os
 
 - **Ableton Live:** enable Audio Units in its Plug-Ins settings if needed, then search **Global Thermonuclear War** under **Audio Units → ABJEXT**.
 - **Logic Pro:** look in an Audio FX slot under **Audio Units → ABJEXT → Global Thermonuclear War**. An actual Logic session has not yet been verified; the plug-in passes Apple's AU validation and has been used locally in Ableton.
-- **Requirements:** Apple Silicon, macOS 14 or later, and an AU host. This download is not an Intel, Windows or VST3 build. Locally signed beta, not yet notarized by Apple.
+- **Requirements:** Apple Silicon, macOS 14 or later, and an AU host. This download is not an Intel, Windows or VST3 build. The bundled 1.0.0 release copy is Developer ID signed and accepted by Apple’s notarization service.
 
 Start with **Broken Playback** and a low wet amount. Click a stage title to toggle it. For parallel processing, use 100% wet on the effect track and blend with its track fader. **Six-band EQ…** opens a graph: drag numbered points for frequency/gain, scroll for the selected band's width/Q, or type exact values. Gray shows the spectrum before EQ, red after EQ, and white the combined response curve. The left scale is EQ gain; the right is spectrum level in dBFS. The EQ and analyzer operate on the **processed signal before Wet / dry and Output**, not on your final master bus.
 
@@ -80,7 +80,7 @@ In a build with the updater, open **Settings → Updates → Check for Updates**
 
 Read the release notes and choose **Download DMG…**. ABJEXT downloads the installer directly and verifies its size and SHA-256 checksum before saving it. Use **Show Installer in Finder** when it is ready.
 
-Save your project, quit ABJEXT, then open the DMG and replace the older copy in Applications. Your project files, source media, and saved preferences remain in their existing locations. A new beta may need macOS approval again. Older builds without the updater can download directly from Releases.
+Save your project, quit ABJEXT, then open the DMG and replace the older copy in Applications. Your project files, source media, and saved preferences remain in their existing locations. Older builds without the updater can download directly from Releases.
 
 Update checks and installation are **manual and optional**. No GitHub account, signup, or background update service is required. The updater sends no project or media data. GitHub receives the ordinary network request needed to check or download a release.
 
@@ -267,7 +267,7 @@ Open **Inspector → Appearance** in the right inspector, then select the video 
 
 **Editing several items:** select a range of steps with Shift-click, then change an Appearance control. Only the changed fields are applied: for example, scaling two steps keeps their separate text, rotation and Noir settings. Undo reverses the batch together. Timeline video opacity and Direction show **Mixed** when selected clips differ; timeline mask opacity does too, and the mask target readout identifies whether the selection affects different targets.
 
-**Appearance from a pool:** a step follows its source defaults until you override it. If pool members have different defaults, the inspector names the clip it is showing and says **Varies by clip choice**. Editing creates one appearance override for all choices on that step. **Use source appearance** removes the override and restores each source’s own defaults.
+**Appearance from a pool:** a step follows its chosen pool entry’s appearance (or source defaults) until you override it. If pool members have different defaults, the inspector names the clip it is showing and says **Varies by clip choice**. Editing creates one appearance override for all choices on that step. **Use source appearance** removes the override and restores each source’s own defaults.
 
 Expand **Transform & Crop** for scale, X/Y, rotation, flips, and frame-edge cropping. Position and crop values are normalized to the canvas; crop happens before transform. Transparent areas reveal lower video tracks. These are numeric/slider controls; direct on-preview transform handles are not included in this beta.
 
@@ -545,6 +545,25 @@ Lane and step random pools now have selectable lists too. Select rows with ⌘/S
 **Different footage on each hit:** select a clip or mask lane, enable **Random start position**, and choose minimum/maximum percentages. Each successful trigger picks a position inside that source’s marked In/Out range. A step can override it under **Source → Start position → Random range**, or keep a Fixed start. Retriggers choose again. Playback, recorded takes and timeline placement use the same seeded choice logic.
 
 ## Changelog
+
+### 1.0.0 beta — October 26, 2026 · Pattern looks and continuous FX audition
+
+- **Developer ID signed and Apple-notarized:** the app and DMG carry attached tickets, and the bonus AU is signed and accepted by Apple’s notarization service.
+
+- **A color look for each pattern:** in Sequencer, open **Color → Pattern / Project** and choose **Use pattern color**. Adjust Colorizer, grading, black/white points and hue for that pattern. **Follow project color** restores inheritance. Duplicates keep their look, and Timeline placement, linked sections, recording and export preserve color changes between patterns. Explicit step FX overrides still take priority while active.
+- **Get inside a saved FX chain:** select a step, open **Effects**, choose its chain, then expand an effect name. Adjust its numeric parameters and Wet / dry as step-specific locks without changing the saved preset or other steps. Random ranges and modulation remain available. Chain routing and bypass switches stay part of the saved rack; a step can hold up to 64 parameter overrides.
+- **Audition FX continuously:** click **Audition FX** in the step inspector. The sequence plays while the selected effect stays active, with live parameter edits. Footage continues through short gates and loops as needed. **End FX Audition** restores normal triggers; playback stops only if audition started it. Stop, leaving the inspector, changing patterns or beginning recording also ends audition. Knob edits are saved; the temporary audition is never written to a recording or export.
+
+Includes the pool editing, random playback, tonal controls, startup and output recovery changes described below. Projects now use format 31. Older projects remain readable; save a backup before upgrading.
+
+### 0.9.9 beta — October 25, 2026 · Pool clip editing, playback variation and tonal levels
+
+- **Edit a pool clip without assigning it to a step:** select one entry in a clip lane or step pool and choose **Edit Clip…**, or double-click it. Preview the source and set fixed speed (¼×–10×), forward/reverse, scale, position, rotation, flips, crop, color inversion and Black & White / Film Noir. **Apply** saves one undoable change; **Cancel** discards it. Settings belong to that entry, so the same source in other pools/patterns and existing timeline edits stays unchanged. Moves and copies carry entry settings with them.
+- **Random speed and direction:** lane controls choose speed within a range when the Speed-change chance passes, and choose reverse independently. Choices stay fixed for each hit and are preserved by Record and Add to Timeline. Fixed pool-entry playback settings take precedence over lane randomness; explicit step settings take precedence over both. Use **Use lane speed / random speed** and **Use lane / random direction** in the pool editor to inherit. Gates and soundtrack speed are unchanged. Extremely short marked excerpts limit speed to preserve one video frame.
+- **Black point / White point:** under **Color → Color Grading**, raise Black point to deepen washed-out shadows or lower White point to brighten dull highlights. These work independently of Creative Colorizer without replacing its palette or settings. Enable Color Grading to see the changes. Grading runs before artistic FX by default; reorder it after Colorizer if you want to adjust the finished colors. This is manual tonal control, not automatic per-clip exposure matching. Presets, automation and export preserve the values.
+- **Startup and precision:** a stopped sequencer prepares and resolves its initial events before starting the soundtrack; BPM now displays up to five decimal places for precise grid alignment.
+- **Audio-output recovery:** output route, hardware data-source and sample-rate changes rebuild the playback connection while retaining the soundtrack position and honoring Pause/Stop. **Settings → Audio → Reconnect Output** retries the selected device without restarting ABJEXT. System Default follows macOS; an explicitly selected disconnected device stays muted until it returns or another output is selected.
+- Projects now save as **format 30**. Older projects open normally; keep a backup if you need to return to an older app version. The blackletter A app icon and optional Global Thermonuclear War 0.1.4 AU remain included.
 
 ### 0.9.8 beta — October 25, 2026 · Waveforms, beat alignment, video warp and bounce
 

@@ -24,9 +24,9 @@ Build precise edits, layer and distort footage, map visual parameters to music o
 
 This repository hosts beta installers, release notes, and user documentation. Application source is maintained separately. ABJEXT is under active development; save a copy of important projects before trying a new beta.
 
-**New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 0.9.7](#changelog)
+**New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 0.9.8](#changelog)
 
-**Current beta: 0.9.7.** Includes the export audio-sync fix reported by **@mvbrtr**, plus **[Global Thermonuclear War](#optional-bonus-global-thermonuclear-war)**, an optional audio plug-in for making your soundtrack. If you missed 0.9.6, update and re-export older videos to receive the sync correction.
+**Current beta: 0.9.8.** Adds detailed timeline waveforms, draggable beat-grid alignment, video warp anchors, and **⌘J Bounce Selection** for turning a finished passage into one clip you can retime. Includes the export sync fix reported by **@mvbrtr** and the optional **[Global Thermonuclear War](#optional-bonus-global-thermonuclear-war)** audio plug-in.
 
 ## Requirements
 
@@ -49,7 +49,7 @@ Allow access to folders containing your media when macOS asks. Microphone permis
 
 ## Optional bonus: Global Thermonuclear War
 
-ABJEXT 0.9.7 includes **Global Thermonuclear War 0.1.4**, a separate Audio Unit effect for your DAW. Look inside the DMG's **Bonus - Global Thermonuclear War** folder, or download the **plug-in-only ZIP** from the same release. Installing the ABJEXT app does not automatically install this optional plug-in.
+ABJEXT 0.9.8 includes **Global Thermonuclear War 0.1.4**, a separate Audio Unit effect for your DAW. Look inside the DMG's **Bonus - Global Thermonuclear War** folder, or download the **plug-in-only ZIP** from the same release. Installing the ABJEXT app does not automatically install this optional plug-in.
 
 Five simultaneous repeat engines, waveform shuffle and reversing feed a three-oscillator Gristleizer, Percolator-inspired saturation, and digital destruction. Add wavefolding, hard chopping and CD skips, or turn stages off individually. Four presets provide starting points; **Wet / dry** and **Output** control the final blend and level. It captures incoming audio live, so no sample preparation is needed.
 
@@ -338,6 +338,28 @@ If compressed source media is expensive to seek/decode, pause and click the **bo
 
 This is separate from **Prepare Clips**, which warms the upcoming sequencer voices. Proxies reduce decoding work; they cannot remove heavy FX processing costs. **Clear Preview Copies** removes only the generated cache while stopped. Original media remains required. The status bar's clickable millisecond reading shows recent median/p95 frame completion time; it is not a measurement of total MIDI-to-display latency. Preview remains 30 fps; export frame-rate choices are unchanged.
 
+## Align music and video precisely
+
+**The song stays unchanged throughout this workflow.** Adjust the beat grid to the recording, then retime video actions to those beats.
+
+1. Open **Timeline** and zoom into the audio waveform. You can now zoom to 2,000 pixels per second; the waveform retains short transients instead of becoming a sparse set of bars.
+2. Click **Align Grid** beside BPM. Drag **◆ 1** onto the first musical hit. This moves the grid origin while keeping BPM fixed.
+3. Drag a later numbered beat onto its corresponding hit. This adjusts BPM around beat 1. Use a hit farther into the song for a more precise estimate. The project uses one constant BPM, not a variable tempo map. Existing timeline clips and the audio do not move; sequencer timing follows the updated BPM.
+4. For a specific visual action, select its timeline video clip, seek to the action, choose **Warp** in the edit-tool selector, and click **Add Warp Anchor**. You can also right-click the clip and choose **Add Warp Anchor at Playhead**.
+5. Drag the new diamond onto the intended beat. The adjacent video sections stretch while surrounding anchors stay fixed. **Option** bypasses beat snapping. Add more anchors wherever needed; there is no arbitrary count limit. Sections must remain at least one timeline frame and within **¼×–4× speed**. Audio stays fixed. Undo restores each edit.
+
+Warp anchors appear as boundaries between editable, source-preserving sections. They are saved with the project. This changes playback speed; it does not synthesize new in-between frames.
+
+### Turn a sequencer passage into one warpable clip
+
+Use the sequencer's **Add to Timeline** to place your chosen result, then select the timeline video clips that define the passage and press **⌘J**, or choose **Timeline → Bounce Selection…**.
+
+**Bounce Passage** renders the complete visible picture over that time range: all overlapping video tracks, masks, local and global FX, and automation. It replaces the selected clips with one ProRes movie on a new top track. Other clips remain underneath, and the soundtrack remains separate. You can now add warp anchors inside the finished mix.
+
+The finished clip is marked **MIX / FX BAKED**. **Global FX are bypassed while it is visible**, so baked effects are not applied twice. That bypass also affects other layers visible alongside the finished mix. Clip-level effects remain available. Use **Render in Place** instead when you want individual clip processing baked while global effects stay live.
+
+Save the project before bouncing. The app needs one free top video track. Bounces use the chosen export resolution at 30 fps; ProRes files are larger than delivery MP4s. Keep the adjacent **Renders** folder: it contains the new movie and a complete pre-bounce project backup. **⌘Z** restores the selected originals. Select a bounced clip and choose **Timeline → Reveal Pre-Bounce Project** to locate the backup and reopen the full original arrangement later. New saves use project format 28 and require ABJEXT 0.9.8 or newer.
+
 ## Default shortcuts
 
 These are the factory bindings. Timeline commands apply when you are editing the timeline, not typing into a text field. Customize them in **Settings → Shortcuts**; the Timeline menu shows current bindings.
@@ -512,6 +534,16 @@ Lane and step random pools now have selectable lists too. Select rows with ⌘/S
 **Different footage on each hit:** select a clip or mask lane, enable **Random start position**, and choose minimum/maximum percentages. Each successful trigger picks a position inside that source’s marked In/Out range. A step can override it under **Source → Start position → Random range**, or keep a Fixed start. Retriggers choose again. Playback, recorded takes and timeline placement use the same seeded choice logic.
 
 ## Changelog
+
+### 0.9.8 beta — October 25, 2026 · Waveforms, beat alignment, video warp and bounce
+
+- High-resolution audio waveforms preserve brief hits at deep zoom, with cached peak summaries and viewport-only drawing.
+- **Align Grid:** drag the first beat to set the origin; drag a later beat to adjust BPM without changing the soundtrack.
+- **Timeline video warp anchors:** align visual moments to music by stretching adjacent sections; supports repeated anchors, beat snapping, Undo and project recall.
+- **⌘J Bounce Selection:** capture all visible layers, masks and FX across a selected passage as one warpable ProRes movie, with a full pre-bounce project backup. Audio remains separate.
+- The export audio-sync repair and optional Global Thermonuclear War 0.1.4 AU remain included.
+
+See [the timing walkthrough](#align-music-and-video-precisely) for use, speed limits, backup files and how baked global FX behave.
 
 ### 0.9.7 beta — October 25, 2026 · Sync fix + optional audio bonus
 

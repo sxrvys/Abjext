@@ -1,5 +1,24 @@
 # ABJEXT Studio
 
+<p align="center">
+  <img src="assets/abjext-studio.png" alt="ABJEXT Studio — blackletter wordmark, warm white and oxide red on near black" width="100%">
+</p>
+
+ABJEXT Studio is a native Mac application for experimental music videos, glitch art, and live visual performance. It brings a multitrack timeline, a playable clip sampler, and a video effects and synthesis engine into one workspace.
+
+Build precise edits, layer and distort footage, map visual parameters to music or MIDI, and record a pad performance back into an editable timeline. From restrained processing to harsh feedback and rhythmic noise, the emphasis is on making the picture something you can perform.
+
+**[Download the latest beta](https://github.com/sxrvys/Abjext/releases)** · **[Report an issue](https://github.com/sxrvys/Abjext/issues)**
+
+This repository hosts beta installers, release notes, and user documentation. Application source is maintained separately. ABJEXT is under active development; save a copy of important projects before trying a new beta.
+
+**New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 0.9.8](#changelog)
+
+**Current beta: 0.9.8.** Adds detailed timeline waveforms, draggable beat-grid alignment, video warp anchors, and **⌘J Bounce Selection** for turning a finished passage into one clip you can retime. Includes the export sync fix reported by **@mvbrtr** and the optional **[Global Thermonuclear War](#optional-bonus-global-thermonuclear-war)** audio plug-in.
+
+<details>
+<summary><strong>Formerly Semiotic Studio · migration and update information</strong></summary>
+
 **Formerly Semiotic Studio. This is the official home of ABJEXT Studio.**
 
 Due to a naming conflict Semiotic Studio is now Abjext Studio. The owner of Semiotic Studio reached out and because he had chosen the name first the only sensible thing to do was change the name. 
@@ -16,17 +35,9 @@ Same project, new name. We’re adopting ABJEXT as our lasting identity as devel
 
 The installer on the old repository keeps a `Semiotic-Studio-…` filename so existing updaters recognize it. It contains the same ABJEXT app as the installer here.
 
-ABJEXT Studio is a native Mac application for experimental music videos, glitch art, and live visual performance. It brings a multitrack timeline, a playable clip sampler, and a video effects and synthesis engine into one workspace.
+</details>
 
-Build precise edits, layer and distort footage, map visual parameters to music or MIDI, and record a pad performance back into an editable timeline. From restrained processing to harsh feedback and rhythmic noise, the emphasis is on making the picture something you can perform.
-
-**[Download the latest beta](https://github.com/sxrvys/Abjext/releases)** · **[Report an issue](https://github.com/sxrvys/Abjext/issues)**
-
-This repository hosts beta installers, release notes, and user documentation. Application source is maintained separately. ABJEXT is under active development; save a copy of important projects before trying a new beta.
-
-**New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 0.9.8](#changelog)
-
-**Current beta: 0.9.8.** Adds detailed timeline waveforms, draggable beat-grid alignment, video warp anchors, and **⌘J Bounce Selection** for turning a finished passage into one clip you can retime. Includes the export sync fix reported by **@mvbrtr** and the optional **[Global Thermonuclear War](#optional-bonus-global-thermonuclear-war)** audio plug-in.
+---
 
 ## Requirements
 

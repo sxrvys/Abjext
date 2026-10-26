@@ -14,7 +14,17 @@ The Octatrack comparison describes the approach: patterns, parameter locks, and 
 
 **[Download ABJEXT](https://github.com/sxrvys/Abjext/releases)** · **[Make your first video](docs/USER_GUIDE.md#start-here-your-first-video)** · **[User guide](docs/USER_GUIDE.md)** · **[Report an issue](https://github.com/sxrvys/Abjext/issues)**
 
-**Current release: 1.0.0 beta.** Developer ID signed and notarized by Apple. Built for Apple Silicon Macs running macOS 14 Sonoma or later. No account or separate development tools required.
+**Current release: 1.0.1 beta.** Developer ID signed and notarized by Apple. Built for Apple Silicon Macs running macOS 14 Sonoma or later. No account or separate development tools required.
+
+## New in 1.0.1
+
+**Bad reception, readable images.** Twelve new broadcast, satellite, VHS, film and DVD effects interrupt the picture with sparkles, echoes, collisions, tracking errors, splices and skips. Start with **Readable faults**, then dial in the damage. **Moth Lung** and **Audio Playhead / Live Memory** add audio-driven breathing and recent-frame scrubbing.
+
+**Keep your palette.** Halftone, Dot Matrix and Contour Scan offer **Use incoming colors**; place Colorizer earlier in the chain. RGB Split can use three colors you choose.
+
+**Prepare the footage faster.** Click a lane/step pool clip while paused to edit it under the main viewer. Set its own In/Out, black/white points, contrast, framing and playback. Select several entries and use **Apply & Next** to prepare them one at a time. Project Media's **Move To → Add to Lane Pool** sends a selection straight to its destination.
+
+Older projects open normally. Newly saved projects use format 32 and require 1.0.1 or newer; keep a copy if you need to return to an older app. [Details and controls →](CHANGELOG.md#101--reception-faults-your-palette-faster-clip-preparation)
 
 ## Compose with footage
 
@@ -60,7 +70,7 @@ You need an **Apple Silicon Mac (M1 or newer)** running **macOS 14 Sonoma or lat
 2. Open the DMG and drag **ABJEXT Studio.app** into **Applications**.
 3. Eject the DMG and launch ABJEXT from Applications.
 
-**Version 1.0.0 is Developer ID signed and notarized by Apple.** macOS may ask you to confirm opening a downloaded app. An Open Anyway workaround should not be needed for this release. If macOS reports malware or a damaged application, report the exact message to **abjextstudio@gmail.com** rather than bypassing the warning.
+**Version 1.0.1 is Developer ID signed and notarized by Apple.** macOS may ask you to confirm opening a downloaded app. An Open Anyway workaround should not be needed for this release. If macOS reports malware or a damaged application, report the exact message to **abjextstudio@gmail.com** rather than bypassing the warning.
 
 No Terminal commands, Python, Xcode, Ableton, Max, TouchDesigner, separate codecs, or font installation are required. BlackHole is optional if you want to route live audio from another app into the visual controls; soundtrack reactivity works without it.
 

@@ -3,6 +3,34 @@
 [Back to ABJEXT Studio](README.md) · [User guide](docs/USER_GUIDE.md)
 
 
+### 1.0.1 · Reception faults, your palette, faster clip preparation
+
+**Twelve new interruption effects**, organized into three families:
+
+- **Analog reception:** Analog Sparkles, RF Interference, Sync Slip, Signal Echo, Channel Collision and Line Scramble.
+- **Tape and film damage:** VHS Tracking Error, Tape Dropout, Film Gate Jump and Film Splice.
+- **Digital reception:** Satellite Breakdown and DVD Skip.
+
+Start with **Readable faults** to retain the subject. Use Strength, Coverage, Size, Instability, Interval in beats, Duration, Recovery and Chance to shape brief faults or sustained interference. The stronger **Unstable reception** and **Signal collapse** presets are available too. These are artistic interpretations of signal failures, not certified broadcast simulations or products endorsed by FCC/DISH.
+
+**Channel Collision** uses the actual picture underneath the affected clip; in Global scope it uses the composite beneath the top clip. It needs overlapping visible footage. Without a lower image it leaves the input unchanged; it does not choose a second source from your pools.
+
+**Breathing and live memory:** Moth Lung maps configured audio level or bass/mid/treble energy to scale and exposure swells. Audio Playhead / Live Memory scrubs a bounded recent-picture buffer (up to one second, 16 snapshots at 15 captures/second). Configure Audio Reactive input first. This is separate from the timeline clip's whole-source Audio Playhead control. Live microphone reactions cannot be reconstructed from a silent export source.
+
+**Your colors stay yours:** Halftone, Dot Matrix and Contour Scan now offer **Use incoming colors**. Put Colorizer earlier in the chain to use its output palette. New starter looks use incoming colors; existing saved settings retain their previous look. Halftone also has cleaner balanced dot/line coverage. RGB Split has three optional custom channel colors.
+
+**Prepare clips without leaving the pool:**
+
+1. Pause playback, then click a clip in a lane or step pool. Its picture opens in the main viewer with controls underneath. Preparation temporarily uses the center workspace; Done or starting playback returns to the sequencer.
+2. Set **In / Out** to exclude unwanted footage. Adjust **Black point, White point and Contrast**, Black & White / Film Noir, framing, inversion, speed or direction.
+3. Click **Apply** to update just that pool entry, with Undo. Other pool entries and source files remain unchanged.
+4. Select several entries to work through them individually with **Back, Skip, Apply & Next**. Unapplied drafts survive switching entries or starting playback; apply changes before replacing the project. Done asks before discarding remaining drafts.
+
+Random starts stay within the entry's trim; reverse, speed and resolved timeline captures retain it. Explicit step overrides still take priority. **Project Media → Move To → Add to Lane Pool** adds the whole media selection to a chosen pool while keeping it in Project Media.
+
+**Compatibility:** older projects open normally. Newly saved projects use format 32 and need 1.0.1 or newer to preserve pool trims and levels. Keep a copy before saving if you need to return to an older build. Apple Silicon, macOS 14+. Optional Global Thermonuclear War AU remains version 0.1.4; its installation is separate.
+
+
 ### 1.0.0 beta — October 26, 2026 · Pattern looks and continuous FX audition
 
 - **Developer ID signed and Apple-notarized:** the app and DMG carry attached tickets, and the bonus AU is signed and accepted by Apple’s notarization service.

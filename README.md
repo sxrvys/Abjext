@@ -14,17 +14,19 @@ The Octatrack comparison describes the approach: patterns, parameter locks, and 
 
 **[Download ABJEXT](https://github.com/sxrvys/Abjext/releases)** · **[Make your first video](docs/USER_GUIDE.md#start-here-your-first-video)** · **[User guide](docs/USER_GUIDE.md)** · **[Report an issue](https://github.com/sxrvys/Abjext/issues)**
 
-**Current release: 1.0.1 beta.** Developer ID signed and notarized by Apple. Built for Apple Silicon Macs running macOS 14 Sonoma or later. No account or separate development tools required.
+**Current release: 1.0.2 beta.** Developer ID signed and notarized by Apple. Built for Apple Silicon Macs running macOS 14 Sonoma or later. No account or separate development tools required.
 
-## New in 1.0.1
+## New in 1.0.2
 
-**Bad reception, readable images.** Twelve new broadcast, satellite, VHS, film and DVD effects interrupt the picture with sparkles, echoes, collisions, tracking errors, splices and skips. Start with **Readable faults**, then dial in the damage. **Moth Lung** and **Audio Playhead / Live Memory** add audio-driven breathing and recent-frame scrubbing.
+**Edit sections, not thousands of tiny hits.** Add to Timeline now defaults to **Prepared sections**: one section per video lane for each pattern pass, with optional bar divisions. Move, trim, copy and warp these larger pieces. Right-click **Show original cuts** to reopen the detail of just one section. Initial preparation renders new media once; keep the project's Renders folder with it.
 
-**Keep your palette.** Halftone, Dot Matrix and Contour Scan offer **Use incoming colors**; place Colorizer earlier in the chain. RGB Split can use three colors you choose.
+**A more responsive timeline.** Dense overviews draw compact clips together, lane headers stay pinned, and edits reuse unchanged media and playback state. Command-J replaces cuts on their existing lanes. Paste uses the chosen lane and position, supports overwriting neighbors, and can be undone. Warp markers stay inside the clip. Reverse export avoids repeated frame seeks.
 
-**Prepare the footage faster.** Click a lane/step pool clip while paused to edit it under the main viewer. Set its own In/Out, black/white points, contrast, framing and playback. Select several entries and use **Apply & Next** to prepare them one at a time. Project Media's **Move To → Add to Lane Pool** sends a selection straight to its destination.
+**See the color story.** The **Pattern Color Board** compares representative stills across patterns. Edit a whole pattern's look, copy it to another pattern, and rename patterns in place. Linked timeline color ranges update without rewriting your cuts.
 
-Older projects open normally. Newly saved projects use format 32 and require 1.0.1 or newer; keep a copy if you need to return to an older app. [Details and controls →](CHANGELOG.md#101--reception-faults-your-palette-faster-clip-preparation)
+**Arrange against the song.** Fractional pattern passes and **From / To** marker choices fit sections to your soundtrack. Explicit Pattern / Song arrangement preview modes and scrollable controls make the workflow easier to follow. FX menus are grouped into families.
+
+Includes all 1.0.1 reception effects, palette controls and pool preparation tools. Older projects open normally; new saves use **format 33 and require 1.0.2 or newer**. Keep a backup if you need to return to an older app. Existing timelines are not automatically consolidated. [Release details →](CHANGELOG.md#102--timeline-sections-and-pattern-workflow)
 
 ## Compose with footage
 
@@ -55,7 +57,7 @@ ABJEXT’s video effects change the picture; they leave your soundtrack untouche
 The timeline, sequencer, and pads are connected parts of one project. Move between them as the piece takes shape.
 
 - **Start with an edit.** Arrange and trim footage on a multitrack timeline, then turn an edit into a pattern or send excerpts into a clip pool.
-- **Start with a pattern.** Add sequences to the timeline as independent editable clips, or keep sections linked to their patterns.
+- **Start with a pattern.** Prepare one section per lane and pattern pass for broader editing, keep pattern-linked sections, or choose individual cuts.
 - **Start with a performance.** Trigger clips and effects with pads or MIDI, move your controls, and record the result to the timeline. Captured random choices stay fixed when you export.
 - **Get the timing right.** Use the beat grid and video warp markers to bring visual action onto specific musical moments.
 - **Rework your own material.** Bounce clips with their effects, then use the result as fresh footage to sequence and process again.
@@ -70,7 +72,7 @@ You need an **Apple Silicon Mac (M1 or newer)** running **macOS 14 Sonoma or lat
 2. Open the DMG and drag **ABJEXT Studio.app** into **Applications**.
 3. Eject the DMG and launch ABJEXT from Applications.
 
-**Version 1.0.1 is Developer ID signed and notarized by Apple.** macOS may ask you to confirm opening a downloaded app. An Open Anyway workaround should not be needed for this release. If macOS reports malware or a damaged application, report the exact message to **abjextstudio@gmail.com** rather than bypassing the warning.
+**Version 1.0.2 is Developer ID signed and notarized by Apple.** macOS may ask you to confirm opening a downloaded app. An Open Anyway workaround should not be needed for this release. If macOS reports malware or a damaged application, report the exact message to **abjextstudio@gmail.com** rather than bypassing the warning.
 
 No Terminal commands, Python, Xcode, Ableton, Max, TouchDesigner, separate codecs, or font installation are required. BlackHole is optional if you want to route live audio from another app into the visual controls; soundtrack reactivity works without it.
 

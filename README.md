@@ -14,9 +14,15 @@ The Octatrack comparison describes the approach: patterns, parameter locks, and 
 
 **[Download ABJEXT](https://github.com/sxrvys/Abjext/releases)** · **[Make your first video](docs/USER_GUIDE.md#start-here-your-first-video)** · **[User guide](docs/USER_GUIDE.md)** · **[Report an issue](https://github.com/sxrvys/Abjext/issues)**
 
-**Current release: 1.0.2 beta.** Developer ID signed and notarized by Apple. Built for Apple Silicon Macs running macOS 14 Sonoma or later. No account or separate development tools required.
+**Current release: 1.0.3 beta.** Developer ID signed and notarized by Apple. Built for Apple Silicon Macs running macOS 14 Sonoma or later. No account or separate development tools required.
 
-## New in 1.0.2
+## New in 1.0.3
+
+**More dependable sideways scrolling.** Horizontal trackpad gestures now move the timeline and step sequencer directly. The timeline reuses its visible drawing area during small scrolls, and manual navigation pauses playhead-follow so the view stays where you move it. Lane headers avoid unnecessary layout work.
+
+Includes all 1.0.2 improvements below. Project format remains unchanged. [Release details →](CHANGELOG.md#103--trackpad-scrolling)
+
+## Included from 1.0.2
 
 **Edit sections, not thousands of tiny hits.** Add to Timeline now defaults to **Prepared sections**: one section per video lane for each pattern pass, with optional bar divisions. Move, trim, copy and warp these larger pieces. Right-click **Show original cuts** to reopen the detail of just one section. Initial preparation renders new media once; keep the project's Renders folder with it.
 
@@ -72,7 +78,7 @@ You need an **Apple Silicon Mac (M1 or newer)** running **macOS 14 Sonoma or lat
 2. Open the DMG and drag **ABJEXT Studio.app** into **Applications**.
 3. Eject the DMG and launch ABJEXT from Applications.
 
-**Version 1.0.2 is Developer ID signed and notarized by Apple.** macOS may ask you to confirm opening a downloaded app. An Open Anyway workaround should not be needed for this release. If macOS reports malware or a damaged application, report the exact message to **abjextstudio@gmail.com** rather than bypassing the warning.
+**Version 1.0.3 is Developer ID signed and notarized by Apple.** macOS may ask you to confirm opening a downloaded app. An Open Anyway workaround should not be needed for this release. If macOS reports malware or a damaged application, report the exact message to **abjextstudio@gmail.com** rather than bypassing the warning.
 
 No Terminal commands, Python, Xcode, Ableton, Max, TouchDesigner, separate codecs, or font installation are required. BlackHole is optional if you want to route live audio from another app into the visual controls; soundtrack reactivity works without it.
 

@@ -3,6 +3,16 @@
 [Back to ABJEXT Studio](README.md) · [User guide](docs/USER_GUIDE.md)
 
 
+### 1.0.3 · Trackpad scrolling
+
+- Direct horizontal trackpad routing in Timeline and Sequencer, preserving fractional movement and momentum.
+- Buffered timeline drawing reduces repeated clip-control, ruler, grid and waveform rebuilds.
+- Manual scrolling suspends playhead-follow until Play or re-enabling Follow.
+- Pinned lane headers skip unchanged layout assignments.
+
+Project format 33 is unchanged from 1.0.2. Includes all previous release features. This is a navigation fix; prepared-section rendering and export performance are unchanged. Targeted regression tests passed, live navigation was checked, and physical trackpad scrolling was confirmed improved.
+
+
 ### 1.0.2 · Timeline sections and pattern workflow
 
 Timeline sections, faster editing, and a clearer pattern workflow.

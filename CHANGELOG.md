@@ -3,6 +3,80 @@
 [Back to ABJEXT Studio](README.md) · [User guide](docs/USER_GUIDE.md)
 
 
+### 1.0.2 · Timeline sections and pattern workflow
+
+Timeline sections, faster editing, and a clearer pattern workflow.
+
+#### Edit sections instead of thousands of hits
+
+**Add to Timeline → Prepared sections** prepares one video section per lane for
+each pattern pass. Choose one-, two- or four-bar divisions when you want smaller
+pieces. Fractional final passes are retained. Trim, move, copy and warp these
+sections as ordinary clips; right-click **Show original cuts** to reopen the
+detail of just one section.
+
+Preparation takes time once and creates ProRes media on disk. Keep those files
+with your project. Source footage is not deleted. Existing edits are not
+automatically consolidated. Masks and global processing remain live; blend
+changes can require separate sections. Unsupported context-dependent effects
+produce an explanation instead of a silently altered render. Linked sections
+and individual-cut transfer remain optional workflows.
+
+#### Timeline fixes
+
+- Dense timeline views draw their compact clips together, with detailed controls
+  restricted to visible larger clips. Lane headers remain fixed during scrolling.
+- Timeline indexes and source metadata are reused. Edits reuse unaffected lanes'
+  playback decoders; color-only edits do not rebuild them.
+- **Command-J** replaces selected cuts on the same lanes and time span, with
+  project backup and Undo. Multi-lane selections prepare separate lane sections.
+- **Enable Warp** and warp markers operate inside one clip, without splitting
+  the timeline into new placements.
+- Range copy retains selected fragments and gaps. Paste uses the chosen lane and
+  time, can trim overlapping neighbors, and supports Undo. The overwrite warning
+  can be disabled.
+- Reverse export reads bounded groups of frames, reducing repeated seeks while
+  retaining original-resolution frames.
+- Empty MIDI performance pads no longer trigger repeated workspace updates.
+- Fast reversed trims remain within valid source bounds, and failed saves now
+  show the error instead of leaving a previous render-success message visible.
+
+#### Included from the private testing builds
+
+- **Pattern Color Board:** compare representative stills side by side and edit
+  each pattern's complete color look. These are color studies, not simulations
+  of the full moving composite or every effect.
+- **Copy this look to…** transfers the color settings to another pattern for
+  further adjustment. Rename is available on the board and beside the pattern
+  selector.
+- Pattern color changes can update associated timeline color ranges without
+  replacing resolved clip choices or timing. Older ranges require explicit linking.
+- Arrangement cards accept fractional passes and **From / To** song boundaries,
+  including Beginning of song, named markers and Soundtrack end. Fitting computes
+  the needed duration at the current tempo; refit after changing tempo or order.
+- Explicit **Pattern / Song arrangement** preview choices and scrollable
+  sequencer controls make the active playback mode easier to find.
+- Effect menus are organized into families. Reverse preview preparation is cached,
+  with loading/progress and playhead-follow improvements.
+
+Projects save as format 33. Keep a copy before upgrading if you need to return
+to an older build. Apple Silicon / macOS 14 or later; optional Global Thermonuclear
+War AU remains a separate installation.
+
+#### Performance and verification
+
+The regression suite passed 783 tests (40 optional skips). Subsequent focused
+checks covered MIDI idle behavior, pinned headers and saveable reverse trims.
+Live checks exercised same-lane bounce, overwrite paste and Undo, internal warp
+anchors, prepared transfer, single-section expansion, and save/reopen.
+
+A 3:34 project with thousands of existing cuts exported at 1080p60 in 6:13 on
+the development Mac; it is not a real-time export guarantee. Prepared sections
+reduce repeated work during later editing, but initial preparation and complex
+effects still take time. Older timelines retain their original cuts until you
+explicitly bounce or regenerate them.
+
+
 ### 1.0.1 · Reception faults, your palette, faster clip preparation
 
 **Twelve new interruption effects**, organized into three families:

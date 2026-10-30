@@ -14,9 +14,26 @@ The Octatrack comparison describes the approach: patterns, parameter locks, and 
 
 **[Download ABJEXT](https://github.com/sxrvys/Abjext/releases)** · **[Make your first video](docs/USER_GUIDE.md#start-here-your-first-video)** · **[User guide](docs/USER_GUIDE.md)** · **[Report an issue](https://github.com/sxrvys/Abjext/issues)**
 
-**Current release: 1.0.3 beta.** Developer ID signed and notarized by Apple. Built for Apple Silicon Macs running macOS 14 Sonoma or later. No account or separate development tools required.
+**Current release: 1.0.4 beta.** Developer ID signed and notarized by Apple. Built for Apple Silicon Macs running macOS 14 Sonoma or later. No account or separate development tools required.
 
-## New in 1.0.3
+## New in 1.0.4
+
+**More visual variety.** Clip-pool shuffle history continues across song cards and passes. Fresh variations are the default for new arrangement generation; choose Repeat when you want the same take. Existing timeline edits remain fixed.
+
+**Build a random FX pool.** Add individual effects or complete chains to a lane pool, then use Chance, gate ranges and choice rules. Optional step color cards activate with successful FX hits and release with their gates.
+
+**Keep experimenting on the timeline.** Try another variation of a prepared section, including footage from another pattern's lane. Shuffle scattered selected sections across tracks while keeping their destination slots. Apply clip FX to a scattered selection without changing the clips between it.
+
+**Organize and start faster.** Color-code lanes, tracks and individual timeline clips. Start with a Probability Pool project or save your own sequencer template. Wider audio-mapping controls and progress inside the transfer dialog make work easier to follow.
+
+**Bring in still images.** Drop PNG, JPEG, TIFF, HEIC or BMP files into Project Media, a lane pool or the timeline. Images are prepared once as reusable 30-second sources, up to 4096 pixels on the longest side, with transparency retained. Gates control their screen time just like video; source files remain untouched. Prepared stills live in `~/Library/Application Support/ABJEXT Studio/Imported Stills/`—include that media when moving a project to another Mac.
+
+**Optional audio bonus:** Global Thermonuclear War 0.1.5 adds a separate wet/dry blend for each destruction stage and the EQ, alongside its overall mix.
+
+Includes the timeline and scrolling improvements below. New settings need 1.0.4 to replay fully; keep a project backup before returning to an older version. [Release details →](CHANGELOG.md#104--creative-variation-and-still-images)
+
+## Included from 1.0.3
+
 
 **More dependable sideways scrolling.** Horizontal trackpad gestures now move the timeline and step sequencer directly. The timeline reuses its visible drawing area during small scrolls, and manual navigation pauses playhead-follow so the view stays where you move it. Lane headers avoid unnecessary layout work.
 

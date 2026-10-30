@@ -3,6 +3,20 @@
 [Back to ABJEXT Studio](README.md) · [User guide](docs/USER_GUIDE.md)
 
 
+### 1.0.4 · Creative variation and still images
+
+- Fresh arrangement variations by default; clip-pool bags persist across cards and passes instead of repeating the same early choices. Repeat remains available. Saved timeline choices are not rerolled.
+- Random FX pools accept individual effects and complete editable chains, with weighted/no-repeat/use-all choice rules, step Chance and gates. Step color cards follow successful FX gates.
+- Timeline **Try another variation** can use any clip lane from any pattern, fitting the selected slot and preserving its position, outer effects and track. Only that replacement is prepared; Undo restores the previous section.
+- **Shuffle selected sections** works on scattered selections across tracks. Destination positions and durations stay fixed, source treatments travel with their clips, and unselected sections and the independent soundtrack stay unchanged. Unequal lengths are fitted within supported playback-speed limits.
+- Identification colors for sequencer lanes, timeline tracks and selected timeline clips; these labels do not alter the rendered image.
+- Blank and Probability Pool starts, plus save/load sequencer templates without source media. Templates retain rhythm, probability, gates, FX and color setup.
+- Audio modulation choices use a wider, scrollable panel. Timeline transfer progress appears in its own dialog.
+- Still-image import for PNG/JPEG/TIFF/HEIC/BMP across media, pools and timeline. One durable, reusable 30-second prepared source per image; orientation applied, transparency retained, longest side capped at 4096 pixels. Image changes create a new source rather than changing existing edits. Keep Imported Stills media with transferred projects.
+- Global Thermonuclear War AU 0.1.5: individual blends for repeats, shuffle, direction, Gristleizer, Percolator, destruction and EQ. Older sessions retain their previous sound at default stage blends.
+
+Project format remains 33 with optional new fields. Older versions may ignore new creative settings; use 1.0.4 for full recall. No new account, network dependency or background update polling.
+
 ### 1.0.3 · Trackpad scrolling
 
 - Direct horizontal trackpad routing in Timeline and Sequencer, preserving fractional movement and momentum.

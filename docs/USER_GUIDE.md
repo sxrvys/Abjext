@@ -16,7 +16,7 @@ This repository hosts beta installers, release notes, and user documentation. Ap
 
 **New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 1.0](../CHANGELOG.md)
 
-**Current beta: 1.0.0.** Adds per-pattern color, saved-chain step controls and continuous FX audition, alongside individual pool-clip editing with preview, random playback speed and direction on successful sequencer triggers, and global Black point / White point controls. Includes the earlier beat alignment, warp anchors, bounce, export sync fix reported by **@mvbrtr**, and optional **[Global Thermonuclear War](#optional-bonus-global-thermonuclear-war)** audio plug-in.
+See the [latest release notes](https://github.com/sxrvys/Abjext/releases) for the current build and its changes. This guide covers the timeline, layered sequencer, live performance and export workflows.
 
 <details>
 <summary><strong>Formerly Semiotic Studio · migration and update information</strong></summary>
@@ -54,7 +54,7 @@ No Terminal commands, Python, pip, Xcode, TouchDesigner, Max, Ableton, additiona
 1. Open **[Releases](https://github.com/sxrvys/Abjext/releases)** and choose the newest beta. Download the file ending in **`AppleSilicon.dmg`** under Assets. GitHub's automatic “Source code” archives are not the application.
 2. Open the DMG and drag **ABJEXT Studio.app** onto **Applications**.
 3. Eject the DMG and open ABJEXT Studio from Applications. For an update, save your project and quit the old app before replacing it; launch the copy in Applications, not the copy inside the DMG.
-4. **Version 1.0.0 is Developer ID signed and notarized by Apple.** macOS may ask you to confirm opening a downloaded app; an Open Anyway workaround should not be needed. Older releases were locally signed and may still show the older warning.
+4. **Public releases are Developer ID signed and notarized by Apple.** macOS may ask you to confirm opening a downloaded app; an Open Anyway workaround should not be needed. Older releases were locally signed and may still show the older warning.
 
 If macOS reports malware or a damaged application, stop and report the exact message to **abjextstudio@gmail.com**. Do not disable Gatekeeper or remove quarantine to bypass the warning.
 
@@ -62,7 +62,7 @@ Allow access to folders containing your media when macOS asks. Microphone permis
 
 ## Optional bonus: Global Thermonuclear War
 
-ABJEXT 1.0.0 includes **Global Thermonuclear War 0.1.4**, a separate Audio Unit effect for your DAW. Look inside the DMG's **Bonus - Global Thermonuclear War** folder, or download the **plug-in-only ZIP** from the same release. Installing the ABJEXT app does not automatically install this optional plug-in.
+The current public download includes **Global Thermonuclear War 0.1.5**, a separate Audio Unit effect for your DAW. Look inside the DMG's **Bonus - Global Thermonuclear War** folder, or download the **plug-in-only ZIP** from the same release. Installing the ABJEXT app does not automatically install this optional plug-in.
 
 Five simultaneous repeat engines, waveform shuffle and reversing feed a three-oscillator Gristleizer, Percolator-inspired saturation, and digital destruction. Add wavefolding, hard chopping and CD skips, or turn stages off individually. Four presets provide starting points; **Wet / dry** and **Output** control the final blend and level. It captures incoming audio live, so no sample preparation is needed.
 
@@ -70,7 +70,7 @@ Five simultaneous repeat engines, waveform shuffle and reversing feed a three-os
 
 - **Ableton Live:** enable Audio Units in its Plug-Ins settings if needed, then search **Global Thermonuclear War** under **Audio Units → ABJEXT**.
 - **Logic Pro:** look in an Audio FX slot under **Audio Units → ABJEXT → Global Thermonuclear War**. An actual Logic session has not yet been verified; the plug-in passes Apple's AU validation and has been used locally in Ableton.
-- **Requirements:** Apple Silicon, macOS 14 or later, and an AU host. This download is not an Intel, Windows or VST3 build. The bundled 1.0.0 release copy is Developer ID signed and accepted by Apple’s notarization service.
+- **Requirements:** Apple Silicon, macOS 14 or later, and an AU host. This download is not an Intel, Windows or VST3 build. The bundled release copy is Developer ID signed and accepted by Apple’s notarization service.
 
 Start with **Broken Playback** and a low wet amount. Click a stage title to toggle it. For parallel processing, use 100% wet on the effect track and blend with its track fader. **Six-band EQ…** opens a graph: drag numbered points for frequency/gain, scroll for the selected band's width/Q, or type exact values. Gray shows the spectrum before EQ, red after EQ, and white the combined response curve. The left scale is EQ gain; the right is spectrum level in dBFS. The EQ and analyzer operate on the **processed signal before Wet / dry and Output**, not on your final master bus.
 
@@ -89,6 +89,10 @@ Update checks and installation are **manual and optional**. No GitHub account, s
 ## Start here: your first video
 
 You only need a mouse/trackpad, **two or three video clips**, and optionally a song. Start small and add complexity once you can see and hear your first sequence. No MIDI controller is required.
+
+### Guided first project
+
+Choose **Try a guided first project…** on the welcome screen to work with eight supplied clips and a soundtrack. The movable **Guide** starts by aligning the supplied soundtrack: tap its pulse, set the known tempo, position the first beat, and check it with the monitor-only metronome. It then walks through pools, Chance, gates, FX, pattern variations, arrangement, timeline editing and export. Each card waits for the relevant action before **Continue** becomes available. You can hide the guide and reopen it with **Guide** beneath the preview; saving the project preserves your progress.
 
 ### 1. Make a project and bring in media
 
@@ -120,7 +124,7 @@ Audio stays on the timeline when you switch to Sequencer. Video FX never process
 These are connected parts of one project. Start in either view:
 
 - **Timeline → Sequencer:** select video clips or enable a Work range, then choose **Send to Sequencer → Create Pattern from This Edit…**. Choose the subdivision and review the conversion. This makes an independent pattern; the original edit and music stay in place.
-- **Sequencer → Timeline:** stop, choose **Add to Timeline…**, and choose **Independent clips** for hand editing or **Linked sections** to keep following pattern changes. Review the start, duration and passes before adding. The timeline opens after successful placement by default.
+- **Sequencer → Timeline:** stop and choose **Add to Timeline…**. **Prepared sections**, the default, renders one reusable section per lane and pattern pass. Choose **Independent clips** to expose every resolved cut or **Linked sections** to keep following pattern changes. Review the start, duration and passes before adding. The timeline opens after successful placement by default.
 - **Timeline → clip pool:** choose **Send to Sequencer → Add Excerpts to a Clip Pool…** to reuse trimmed footage without converting the arrangement.
 
 Switching tabs changes the working view; it does not itself copy or convert anything. Conversion constraints and omitted material are described in the transfer dialog.
@@ -207,12 +211,18 @@ To work on only part of the music, set and enable a **Work range**, enable **Loo
 
 | To keep… | Use… |
 | --- | --- |
+| Larger rendered sections you can move, trim and warp | **Add to Timeline… → Prepared sections** |
 | Patterns that stay linked to the timeline | Stop, then **Add to Timeline… → Linked sections** |
 | Independent editable cuts from the current pattern/song | **Add to Timeline… → Independent clips** |
 | The particular choices and live actions you perform | Sequencer **Record to Timeline**, then **Stop & Keep Take** |
 | A moment that just happened, with preview history armed | **Keep That** |
 | A movie of the processed preview from now onward | **File → Capture Preview…** |
 | A finished timeline movie at delivery resolution | **File → Export Mix…** |
+
+**Prepared sections:** footage, masks and per-hit FX are rendered into larger editable sections. Initial preparation takes time; keep the project’s **Renders** folder with the project. Right-click **Show original cuts** to reopen a section’s source edits. The resulting media can be trimmed, warped or processed again without managing every original hit.
+
+In the private 1.0.5 candidate, **Show original cuts** asks you to locate any missing original media before restoring. Cancel leaves the prepared clips untouched. Restoring the cuts is one undoable edit; opening and playing an already prepared project does not require those originals. When opening a project with missing active sources, relinking also updates its retained original snapshots.
+
 
 **Linked sections:** named blocks appear above the timeline. Click a block for its inspector; double-click to edit its pattern. Pattern edits update linked occurrences once playback stops. Drag a block to move its clips, masks and FX together. **Play from Section** starts timeline playback there. **Make Unique** gives that occurrence its own pattern.
 
@@ -363,15 +373,15 @@ This is separate from **Prepare Clips**, which warms the upcoming sequencer voic
 
 Warp anchors appear as boundaries between editable, source-preserving sections. They are saved with the project. This changes playback speed; it does not synthesize new in-between frames.
 
-### Turn a sequencer passage into one warpable clip
+### Turn sequencer cuts into warpable sections
 
-Use the sequencer's **Add to Timeline** to place your chosen result, then select the timeline video clips that define the passage and press **⌘J**, or choose **Timeline → Bounce Selection…**.
+Use the sequencer's **Add to Timeline** to place your chosen result, then select the timeline video clips you want to join and press **⌘J**, or choose **Timeline → Bounce Selection…**. In the dialog, click **Join on Existing Lanes**.
 
-**Bounce Passage** renders the complete visible picture over that time range: all overlapping video tracks, masks, local and global FX, and automation. It replaces the selected clips with one ProRes movie on a new top track. Other clips remain underneath, and the soundtrack remains separate. You can now add warp anchors inside the finished mix.
+Bounce Selection prepares the selected cuts into ProRes sections on their existing video lanes. Cuts with different blend settings remain separate sections. Speed, reverse, crop and clip FX are baked into the prepared video. Global color and FX, track masks and blending remain live; the soundtrack stays unchanged. No extra video track is required or created. You can add warp anchors inside each prepared section.
 
-The finished clip is marked **MIX / FX BAKED**. **Global FX are bypassed while it is visible**, so baked effects are not applied twice. That bypass also affects other layers visible alongside the finished mix. Clip-level effects remain available. Use **Render in Place** instead when you want individual clip processing baked while global effects stay live.
+Original cuts remain stored with each section. Right-click a prepared section and choose **Show original cuts** to edit its source cuts again; **⌘Z** also restores the original selection. If you have added appearance or FX edits to the prepared section, undo those edits before showing its original cuts so they are not lost.
 
-Save the project before bouncing. The app needs one free top video track. Bounces use the chosen export resolution at 30 fps; ProRes files are larger than delivery MP4s. Keep the adjacent **Renders** folder: it contains the new movie and a complete pre-bounce project backup. **⌘Z** restores the selected originals. Select a bounced clip and choose **Timeline → Reveal Pre-Bounce Project** to locate the backup and reopen the full original arrangement later. New saves use project format 28 and require ABJEXT 0.9.8 or newer.
+Save the project before bouncing. Prepared sections use the chosen export resolution and frame rate, encoded as ProRes 4444; these files are larger than delivery MP4s. Keep the adjacent **Renders** folder: it contains the prepared movies and a complete **Before-Prepare-…semiotic.json** project backup. Open that backup to return to the full pre-bounce arrangement. New saves use project format 33; use the same or a newer ABJEXT build to reopen them.
 
 ## Default shortcuts
 
@@ -546,3 +556,27 @@ Lane and step random pools now have selectable lists too. Select rows with ⌘/S
 
 **Different footage on each hit:** select a clip or mask lane, enable **Random start position**, and choose minimum/maximum percentages. Each successful trigger picks a position inside that source’s marked In/Out range. A step can override it under **Source → Start position → Random range**, or keep a Fixed start. Retriggers choose again. Playback, recorded takes and timeline placement use the same seeded choice logic.
 
+
+
+## Dirty Video Mixer (1.0.5)
+
+Open **Dirty Mixer** beneath the main preview. Save the project first. Add media to the bank, selected timeline clips, or a selected timeline passage. A passage brings its existing composite; individual clips use mixer levels rather than their timeline blend modes.
+
+Assign bank entries to channels using each Source menu or the bank's arrow buttons. Play to rehearse; Record Take starts capturing without restarting an ongoing rehearsal. Channel Previous/Next/Random use that channel's Pool menu. Use all before repeating applies to random pool selection. Auto cycle alternates the currently loaded channels rather than loading new footage.
+
+Cut here brings one channel to full level, mutes the other three and disables cycling. Blend all restores all four levels. The XY pad rides the levels together. Hold a punch for Freeze, Blackout, Invert or Damage; releasing it restores the baseline. Control edits made while a punch is held remain after release.
+
+Save named snapshots to recall all four assignments and settings. Switch controls choose Immediate, Next beat or Next bar, following the project grid (four beats per bar). The mixer does not play the soundtrack or synchronize to external MIDI clock. MIDI learn icons map continuous controls to CC knobs/faders; right-click clears a mapping.
+
+Choose 360p/720p/1080p preview and Live clock or Every frame before Play. Live clock keeps time and repeats the last captured image for missed ticks; Every frame can slow down. Neither promises drop-free playback on every Mac. Export still uses the project output resolution.
+
+Finish and Add to Timeline renders a take onto a new Normal video track. The movie and recipe persist; this is not an editable automation-lane replay interface. Render failure/cancellation retains the take for retry. Recover unfinished take restores a checkpoint after reopening the saved project. Save the project again after committing. Keep its Renders folder, original media and .mixer-session.json/.mixer-recovery.json sidecars when moving work.
+
+
+## Datamosh (1.0.5)
+
+Open **Timeline → Datamosh…**. Choose an **Image source** (its first trimmed frame supplies the reference picture) and a **Motion source** (its moving frames break that picture apart). The menus use your project's video media. Alternatively, select exactly two timeline clips and click **Use two selected timeline clips**; the earlier clip supplies the image. Swap changes their roles.
+
+Choose 0.5–15 seconds, compression and resolution. **Re-seed** at zero inserts the image at the start; a nonzero interval restores that image repeatedly before letting motion distort it again. Some codec-generated keyframes may also re-seed. Moving, textured footage gives clearer results than static footage. Donor footage loops if the chosen duration exceeds its trim. Trim, speed and reverse are respected. Clip FX, masks and timeline blending are not included: bounce first when those should be part of the source. The result contains video only.
+
+**Generate Preview** makes genuine H.264 reference-frame corruption and decodes it into a stable video. It does not merely imitate datamoshing with a shader. Inspect the preview, then choose **Commit to New Track**. That exact result is inserted at the timeline playhead on a new Normal track. Original clips are unchanged. Changing settings or closing before committing discards the temporary preview. Cancel leaves the timeline unchanged. Keep the committed movie and its `.datamosh.json` recipe in the project's Renders folder. This prepared process is separate from the real-time Motion Corruption rack effect.

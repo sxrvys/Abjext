@@ -3,6 +3,42 @@
 [Back to ABJEXT Studio](README.md) · [User guide](docs/USER_GUIDE.md)
 
 
+### 1.0.5 · Dirty mixer, datamosh and a guided first project
+
+ABJEXT now has a four-channel dirty video mixer: bring in footage, blend it live, push it into unstable territory, and keep the performance as an editable timeline clip.
+
+#### Play the mixer
+
+- Mix four sources simultaneously with independent level, mute, tearing, instability and luma controls. A four-way pad rides all four levels together.
+- Swap sources while playing or recording. Give each channel its own pool, move to the previous or next clip, or choose randomly without repeating until the pool has been used.
+- Hold Freeze, Blackout, Invert or Damage for momentary interruptions. Release to return to your settings.
+- Save named snapshots of channel assignments and controls; recall them immediately or on the next project-grid beat or bar.
+- Push sync roll, cross-modulation, color bleed, drive and shared damage, or map continuous controls to MIDI CC knobs and faders.
+- Record source changes and gestures together. Finish renders the take to a new timeline track while retaining its recipe and leaving original clips alone.
+- Choose a lighter preview independently of export resolution. Live clock holds frames when overloaded; Every frame preserves every processed frame but may run slowly.
+- Unfinished takes have recovery checkpoints, including a final checkpoint on normal Quit. Failed or cancelled rendering keeps the take available for retry.
+
+#### Real datamoshing
+
+Choose **Timeline → Datamosh…** to let one image inherit another clip’s motion. ABJEXT substitutes actual H.264 reference frames, decodes the resulting corruption, and renders a stable movie you can preview before committing.
+
+Choose sources from the media pool or two selected timeline clips. Adjust compression, duration and repeated re-seeding; swap the sources to explore a different result. Commit adds a new Normal track and keeps the originals. This is a prepared effect rather than a real-time rack effect: 0.5–15 seconds per render, at 360p or 720p. Trim, speed and reverse are respected; bounce first to include clip FX. Source audio is not included. The recipe is saved next to the rendered movie.
+
+#### From the first pattern to a finished piece
+
+The guided first project includes supplied footage and music, beat alignment, probability, gates, FX pools, contrasting patterns, song arrangement, timeline editing and export. Progress saves with the project. This release also refines the instructions, recognizes the selected pattern when names are duplicated, and keeps the song-pass arrows stationary as values change.
+
+Clip editing, mask inspection, pinned controls and audio-modulation feedback make it easier to see what you are changing. Restoring prepared sections can locate retained originals without damaging the prepared edit. Export cancellation preserves an existing destination, and a failed preview soundtrack merge retains the completed video for recovery.
+
+#### Before you update
+
+Apple Silicon Mac, macOS 14 or later. Save your project and quit ABJEXT before replacing the app. Keep your source media and Renders folder with your project. Mixer session/recovery sidecars also belong beside the project; these files do not make the project self-contained.
+
+Mixer takes are limited to ten minutes. Rendering speed depends on footage, codec, resolution and effects; no drop-free real-time guarantee is made. Beat/bar switching follows the project grid, uses four beats per bar and does not play the soundtrack or follow external MIDI clock. The mixer records video; use timeline audio for the finished soundtrack. Recovery checkpoints require available storage and cannot protect against losing the source drive. A crash can lose the final moments since the last checkpoint.
+
+Questions, work made with ABJEXT, and reproducible bug reports are welcome: **abjextstudio@gmail.com**.
+
+
 ### 1.0.4 · Creative variation and still images
 
 - Fresh arrangement variations by default; clip-pool bags persist across cards and passes instead of repeating the same early choices. Repeat remains available. Saved timeline choices are not rerolled.

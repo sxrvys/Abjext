@@ -1,41 +1,41 @@
-# ABJEXT Studio — User Guide
+# Phosphor Studio — User Guide
 
 [Back to the project](../README.md) · [Release history](../CHANGELOG.md)
 
 <p align="center">
-  <img src="../assets/abjext-studio.png" alt="ABJEXT Studio — blackletter wordmark, warm white and oxide red on near black" width="100%">
+  <img src="../assets/abjext-studio.png" alt="Phosphor Studio — blackletter wordmark, warm white and oxide red on near black" width="100%">
 </p>
 
-ABJEXT Studio is a native Mac application for experimental music videos, glitch art, and live visual performance. It brings a multitrack timeline, a playable clip sampler, and a video effects and synthesis engine into one workspace.
+Phosphor Studio is a native Mac application for experimental music videos, glitch art, and live visual performance. It brings a multitrack timeline, a playable clip sampler, and a video effects and synthesis engine into one workspace.
 
 Build precise edits, layer and distort footage, map visual parameters to music or MIDI, and record a pad performance back into an editable timeline. From restrained processing to harsh feedback and rhythmic noise, the emphasis is on making the picture something you can perform.
 
-**[Download the latest beta](https://github.com/sxrvys/Abjext/releases)** · **[Report an issue](https://github.com/sxrvys/Abjext/issues)**
+**[Download the latest beta](https://github.com/sxrvys/Phosphor-Studio/releases)** · **[Report an issue](https://github.com/sxrvys/Phosphor-Studio/issues)**
 
-This repository hosts beta installers, release notes, and user documentation. Application source is maintained separately. ABJEXT is under active development; save a copy of important projects before trying a new beta.
+This repository hosts beta installers, release notes, and user documentation. Application source is maintained separately. Phosphor Studio is under active development; save a copy of important projects before trying a new beta.
 
 **New here?** [Install](#install) → [Make your first video](#start-here-your-first-video) → [Learn the workspace](#unified-workspace). [Shortcuts](#default-shortcuts) · [Troubleshooting](#if-something-seems-wrong) · [What changed in 1.0](../CHANGELOG.md)
 
-See the [latest release notes](https://github.com/sxrvys/Abjext/releases) for the current build and its changes. This guide covers the timeline, layered sequencer, live performance and export workflows.
+See the [latest release notes](https://github.com/sxrvys/Phosphor-Studio/releases) for the current build and its changes. This guide covers the timeline, layered sequencer, live performance and export workflows.
 
 <details>
 <summary><strong>Formerly Semiotic Studio · migration and update information</strong></summary>
 
-**Formerly Semiotic Studio. This is the official home of ABJEXT Studio.**
+**Formerly Semiotic Studio. This is the official home of Phosphor Studio.**
 
 Due to a naming conflict Semiotic Studio is now Abjext Studio. The owner of Semiotic Studio reached out and because he had chosen the name first the only sensible thing to do was change the name. 
 
-Same project, new name. We’re adopting ABJEXT as our lasting identity as development continues. Existing Semiotic projects, presets, preferences, and MIDI mappings remain compatible. All future beta releases and update checks live here at **[sxrvys/Abjext](https://github.com/sxrvys/Abjext)**. The old Semiotic repository hosts one final transition release and historical downloads.
+Same project, new name. We’re adopting Phosphor Studio as our lasting identity as development continues. Existing Semiotic projects, presets, preferences, and MIDI mappings remain compatible. All future beta releases and update checks live here at **[sxrvys/Phosphor-Studio](https://github.com/sxrvys/Phosphor-Studio)**. The old Semiotic repository hosts one final transition release and historical downloads.
 
-### Moving from Semiotic to ABJEXT
+### Moving from Semiotic to Phosphor Studio
 
-1. Save your project. In Semiotic, choose **Check for Updates** and download the final **0.8.2 transition release**, or download ABJEXT directly from this repository’s [Releases](https://github.com/sxrvys/Abjext/releases).
-2. Quit Semiotic. Open the DMG and drag **ABJEXT Studio.app** into **Applications**.
-3. Launch **ABJEXT Studio** and open your saved project. Your settings and mappings use the same storage as before; `.semiotic.json` project names remain valid.
-4. After confirming everything is available, you may remove **Semiotic Studio.app** and replace its Dock shortcut with ABJEXT. Because the app’s name changed, macOS may keep both apps rather than replace the old one automatically. **Keep your project files, media, and application-support folders.**
-5. From now on, **ABJEXT → Check for Updates** checks only this repository. Checks and downloads remain optional; no account or signup is needed.
+1. Save your project. In Semiotic, choose **Check for Updates** and download the final **0.8.2 transition release**, or download Phosphor Studio directly from this repository’s [Releases](https://github.com/sxrvys/Phosphor-Studio/releases).
+2. Quit Semiotic. Open the DMG and drag **Phosphor Studio.app** into **Applications**.
+3. Launch **Phosphor Studio** and open your saved project. Your settings and mappings use the same storage as before; `.semiotic.json` project names remain valid.
+4. After confirming everything is available, you may remove **Semiotic Studio.app** and replace its Dock shortcut with Phosphor Studio. Because the app’s name changed, macOS may keep both apps rather than replace the old one automatically. **Keep your project files, media, and application-support folders.**
+5. From now on, **Phosphor Studio → Check for Updates** checks only this repository. Checks and downloads remain optional; no account or signup is needed.
 
-The installer on the old repository keeps a `Semiotic-Studio-…` filename so existing updaters recognize it. It contains the same ABJEXT app as the installer here.
+The installer on the old repository keeps a `Semiotic-Studio-…` filename so existing updaters recognize it. It contains the same Phosphor Studio app as the installer here.
 
 </details>
 
@@ -47,13 +47,13 @@ The installer on the old repository keeps a `Semiotic-Studio-…` filename so ex
 - **macOS 14 Sonoma or later**, unless an individual release specifies a newer requirement.
 - Your own video and audio files. A MIDI controller is optional.
 
-No Terminal commands, Python, pip, Xcode, TouchDesigner, Max, Ableton, additional codec package, or separate VCR-font installation are required. The app includes its resources and uses the media and graphics frameworks supplied with macOS. BlackHole is optional for routing audio from another application into ABJEXT's visual reactivity controls; ordinary editing, playback, export, MIDI, and soundtrack reactivity work without it.
+No Terminal commands, Python, pip, Xcode, TouchDesigner, Max, Ableton, additional codec package, or separate VCR-font installation are required. The app includes its resources and uses the media and graphics frameworks supplied with macOS. BlackHole is optional for routing audio from another application into Phosphor Studio's visual reactivity controls; ordinary editing, playback, export, MIDI, and soundtrack reactivity work without it.
 
 ## Install
 
-1. Open **[Releases](https://github.com/sxrvys/Abjext/releases)** and choose the newest beta. Download the file ending in **`AppleSilicon.dmg`** under Assets. GitHub's automatic “Source code” archives are not the application.
-2. Open the DMG and drag **ABJEXT Studio.app** onto **Applications**.
-3. Eject the DMG and open ABJEXT Studio from Applications. For an update, save your project and quit the old app before replacing it; launch the copy in Applications, not the copy inside the DMG.
+1. Open **[Releases](https://github.com/sxrvys/Phosphor-Studio/releases)** and choose the newest beta. Download the file ending in **`AppleSilicon.dmg`** under Assets. GitHub's automatic “Source code” archives are not the application.
+2. Open the DMG and drag **Phosphor Studio.app** onto **Applications**.
+3. Eject the DMG and open Phosphor Studio from Applications. For an update, save your project and quit the old app before replacing it; launch the copy in Applications, not the copy inside the DMG.
 4. **Public releases are Developer ID signed and notarized by Apple.** macOS may ask you to confirm opening a downloaded app; an Open Anyway workaround should not be needed. Older releases were locally signed and may still show the older warning.
 
 If macOS reports malware or a damaged application, stop and report the exact message to **abjextstudio@gmail.com**. Do not disable Gatekeeper or remove quarantine to bypass the warning.
@@ -62,27 +62,27 @@ Allow access to folders containing your media when macOS asks. Microphone permis
 
 ## Optional bonus: Global Thermonuclear War
 
-The current public download includes **Global Thermonuclear War 0.1.5**, a separate Audio Unit effect for your DAW. Look inside the DMG's **Bonus - Global Thermonuclear War** folder, or download the **plug-in-only ZIP** from the same release. Installing the ABJEXT app does not automatically install this optional plug-in.
+The current public download includes **Global Thermonuclear War 0.1.5**, a separate Audio Unit effect for your DAW. Look inside the DMG's **Bonus - Global Thermonuclear War** folder, or download the **plug-in-only ZIP** from the same release. Installing the Phosphor Studio app does not automatically install this optional plug-in.
 
 Five simultaneous repeat engines, waveform shuffle and reversing feed a three-oscillator Gristleizer, Percolator-inspired saturation, and digital destruction. Add wavefolding, hard chopping and CD skips, or turn stages off individually. Four presets provide starting points; **Wet / dry** and **Output** control the final blend and level. It captures incoming audio live, so no sample preparation is needed.
 
-**Install:** save and quit your DAW. In Finder, choose **Go → Go to Folder…** and enter `~/Library/Audio/Plug-Ins/Components`. Copy **ABJEXT Global Thermonuclear War.component** there, then reopen the DAW. Create the Components folder inside Plug-Ins if it is missing. The included **Read Me - Audio Plugin.txt** walks through installation and use.
+**Install:** save and quit your DAW. In Finder, choose **Go → Go to Folder…** and enter `~/Library/Audio/Plug-Ins/Components`. Copy **Phosphor Studio Global Thermonuclear War.component** there, then reopen the DAW. Create the Components folder inside Plug-Ins if it is missing. The included **Read Me - Audio Plugin.txt** walks through installation and use.
 
-- **Ableton Live:** enable Audio Units in its Plug-Ins settings if needed, then search **Global Thermonuclear War** under **Audio Units → ABJEXT**.
-- **Logic Pro:** look in an Audio FX slot under **Audio Units → ABJEXT → Global Thermonuclear War**. An actual Logic session has not yet been verified; the plug-in passes Apple's AU validation and has been used locally in Ableton.
+- **Ableton Live:** enable Audio Units in its Plug-Ins settings if needed, then search **Global Thermonuclear War** under **Audio Units → Phosphor Studio**.
+- **Logic Pro:** look in an Audio FX slot under **Audio Units → Phosphor Studio → Global Thermonuclear War**. An actual Logic session has not yet been verified; the plug-in passes Apple's AU validation and has been used locally in Ableton.
 - **Requirements:** Apple Silicon, macOS 14 or later, and an AU host. This download is not an Intel, Windows or VST3 build. The bundled release copy is Developer ID signed and accepted by Apple’s notarization service.
 
 Start with **Broken Playback** and a low wet amount. Click a stage title to toggle it. For parallel processing, use 100% wet on the effect track and blend with its track fader. **Six-band EQ…** opens a graph: drag numbered points for frequency/gain, scroll for the selected band's width/Q, or type exact values. Gray shows the spectrum before EQ, red after EQ, and white the combined response curve. The left scale is EQ gain; the right is spectrum level in dBFS. The EQ and analyzer operate on the **processed signal before Wet / dry and Output**, not on your final master bus.
 
-This bonus processes **audio in a DAW**. ABJEXT's video effects continue to leave soundtrack audio untouched. You do not need the bonus to make or export videos. Send plug-in feedback to **abjextstudio@gmail.com**, including your DAW, macOS version and plug-in version.
+This bonus processes **audio in a DAW**. Phosphor Studio's video effects continue to leave soundtrack audio untouched. You do not need the bonus to make or export videos. Send plug-in feedback to **abjextstudio@gmail.com**, including your DAW, macOS version and plug-in version.
 
 ## Stay current
 
-In a build with the updater, open **Settings → Updates → Check for Updates**, or choose **ABJEXT Studio → Check for Updates…** from the menu bar.
+In a build with the updater, open **Settings → Updates → Check for Updates**, or choose **Phosphor Studio → Check for Updates…** from the menu bar.
 
-Read the release notes and choose **Download DMG…**. ABJEXT downloads the installer directly and verifies its size and SHA-256 checksum before saving it. Use **Show Installer in Finder** when it is ready.
+Read the release notes and choose **Download DMG…**. Phosphor Studio downloads the installer directly and verifies its size and SHA-256 checksum before saving it. Use **Show Installer in Finder** when it is ready.
 
-Save your project, quit ABJEXT, then open the DMG and replace the older copy in Applications. Your project files, source media, and saved preferences remain in their existing locations. Older builds without the updater can download directly from Releases.
+Save your project, quit Phosphor Studio, then open the DMG and replace the older copy in Applications. Your project files, source media, and saved preferences remain in their existing locations. Older builds without the updater can download directly from Releases.
 
 Update checks and installation are **manual and optional**. No GitHub account, signup, or background update service is required. The updater sends no project or media data. GitHub receives the ordinary network request needed to check or download a release.
 
@@ -143,6 +143,9 @@ Switching tabs changes the working view; it does not itself copy or convert anyt
 **Gate** is duration, measured in steps; it is not a count of repeats. A default gate of 1 only sustains for one step, so placing a single hit on step 1 can leave the rest of the bar black. **Retriggers** restarts the clip within a step. **Chance** decides whether the hit happens. For three repeats within a step, try Retriggers 3×; use a triplet subdivision for a triplet grid. Very short hits are limited by video frame rate.
 
 To add overlapping footage, put clips on **Clips B**. New patterns use **Layer Stack**: each clip lane plays independently, the top row appears in front, and dragging lane headers changes the stacking order. There are up to **eight total sequencer rows**, including masks and FX. More simultaneous footage costs more decoding/rendering work; start small and use Prepare Clips. Existing patterns retain **Shared Targets** to preserve their appearance; switch them to Layer Stack while paused when ready. In Shared Targets, lanes aimed at the same destination replace each other's clips. Use lane/step opacity and blend settings, or **Appearance → Framing, Text & Split Screen** on a clip step for timed split-screen layouts. Rename a lane through its inspector or context menu.
+
+**Rotating split screen (private candidate):** click **Rotating Split** above the sequencer, or open it from **Track Screen Layout** in the timeline. Choose two output lanes and click **Create rotating split**. Choose clockwise/counterclockwise and either **Smooth** turns or **Quarter-turn jumps**. Sync each quarter turn to project beats, or disable sync and set seconds per full turn. **Starting angle** offsets the divider; **Edge softness** feathers its boundary. Enable **Rotate footage with divider** to turn both pictures as well; it is off by default and fills the frame by cropping edges. The pair is a project track layout, shared across patterns and timeline clips, with the same clock in preview and export. Both tracks need overlapping video. Other full-screen tracks can cover the result, and explicit step layout gates take precedence. Removing the rotating split restores clip layouts. Preparation leaves the track layout live so it is applied once after the lane section is rendered.
+
 
 **Use a moving mask:** drop a black-and-white video onto a **Masks** lane step. White reveals its target video layer; black hides it. Click the Masks lane header to choose its **Mask target** and default framing/transform. Select a mask step → **Appearance** for:
 
@@ -357,7 +360,7 @@ For music-driven visuals, start with the timeline soundtrack, then use the **mus
 
 ### Optional lightweight preview copies
 
-If compressed source media is expensive to seek/decode, pause and click the **bolt-circle button in Project Media**. Choose **Prepare Selected Media** or **Prepare Project Video**. ABJEXT makes 360p/30 fps ProRes preview copies one at a time, with a 4 GB disk budget. Timeline and pad/sequencer playback use available copies; offline export still reads the originals. Audio is unchanged. Alpha-channel sources remain original. Live capture/Keep That naturally reflects the preview quality.
+If compressed source media is expensive to seek/decode, pause and click the **bolt-circle button in Project Media**. Choose **Prepare Selected Media** or **Prepare Project Video**. Phosphor Studio makes 360p/30 fps ProRes preview copies one at a time, with a 4 GB disk budget. Timeline and pad/sequencer playback use available copies; offline export still reads the originals. Audio is unchanged. Alpha-channel sources remain original. Live capture/Keep That naturally reflects the preview quality.
 
 This is separate from **Prepare Clips**, which warms the upcoming sequencer voices. Proxies reduce decoding work; they cannot remove heavy FX processing costs. **Clear Preview Copies** removes only the generated cache while stopped. Original media remains required. The status bar's clickable millisecond reading shows recent median/p95 frame completion time; it is not a measurement of total MIDI-to-display latency. Preview remains 30 fps; export frame-rate choices are unchanged.
 
@@ -381,7 +384,7 @@ Bounce Selection prepares the selected cuts into ProRes sections on their existi
 
 Original cuts remain stored with each section. Right-click a prepared section and choose **Show original cuts** to edit its source cuts again; **⌘Z** also restores the original selection. If you have added appearance or FX edits to the prepared section, undo those edits before showing its original cuts so they are not lost.
 
-Save the project before bouncing. Prepared sections use the chosen export resolution and frame rate, encoded as ProRes 4444; these files are larger than delivery MP4s. Keep the adjacent **Renders** folder: it contains the prepared movies and a complete **Before-Prepare-…semiotic.json** project backup. Open that backup to return to the full pre-bounce arrangement. New saves use project format 33; use the same or a newer ABJEXT build to reopen them.
+Save the project before bouncing. Prepared sections use the chosen export resolution and frame rate, encoded as ProRes 4444; these files are larger than delivery MP4s. Keep the adjacent **Renders** folder: it contains the prepared movies and a complete **Before-Prepare-…semiotic.json** project backup. Open that backup to return to the full pre-bounce arrangement. New saves use project format 33; use the same or a newer Phosphor Studio build to reopen them.
 
 ## Default shortcuts
 
@@ -472,16 +475,16 @@ For lighter machines, start with **360p preview**, shorter feedback/rewind histo
 
 ## Feedback
 
-Open **Settings → Beta Feedback** or **Help → Send Beta Feedback…** to write a subject and notes, then choose **Open Email Draft**. Your mail app opens a message to **abjextstudio@gmail.com**; review it and press Send there. ABJEXT itself sends nothing. There is no GitHub account requirement.
+Open **Settings → Beta Feedback** or **Help → Send Beta Feedback…** to write a subject and notes, then choose **Open Email Draft**. Your mail app opens a message to **abjextstudio@gmail.com**; review it and press Send there. Phosphor Studio itself sends nothing. There is no GitHub account requirement.
 
 **Include app version, macOS and memory** is optional and off by default. Its exact contents appear in the form before you open the email. Projects, media, file paths and logs are never attached automatically. The subject and notes are saved locally on your Mac so you can return to an unfinished draft.
 
 If you use Gmail or another webmail service, choose **Copy Feedback** and paste it into a new email to **abjextstudio@gmail.com**. This also works for long reports that will not fit in an email link. If your default mail app is not configured, use this copy option.
 
 
-Found a problem or an awkward workflow? [Open an issue](https://github.com/sxrvys/Abjext/issues) with:
+Found a problem or an awkward workflow? [Open an issue](https://github.com/sxrvys/Phosphor-Studio/issues) with:
 
-- ABJEXT's version and build number from About or Settings → Updates.
+- Phosphor Studio's version and build number from About or Settings → Updates.
 - Your Mac model and macOS version.
 - Steps to reproduce, what you expected, and what happened.
 - A screenshot or a short sample you have permission to share, if helpful.

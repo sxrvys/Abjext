@@ -3,6 +3,36 @@
 [Back to ABJEXT Studio](README.md) · [User guide](docs/USER_GUIDE.md)
 
 
+### 1.0.6 · Phosphor Studio (formerly known as ABJEXT)
+
+- Renamed the application to **Phosphor Studio**, formerly known as **ABJEXT**. Old projects remain readable; preferences, shortcuts, looks, effect presets and templates migrate without overwriting newer settings. The MIDI destination is now Phosphor Studio, so external DAW/controller routes must target that new port.
+- Future Phosphor Studio updates come from [sxrvys/Phosphor-Studio](https://github.com/sxrvys/Phosphor-Studio).
+- A migration release is available through the existing ABJEXT update feed so installed copies can discover the renamed app. The updater downloads a DMG; installation remains a manual drag into Applications. Remove the old ABJEXT app after confirming Phosphor Studio opens your work.
+
+
+#### Editing and responsiveness
+
+- Pool clip preparation uses the main viewer, with independent per-entry trim, appearance, crop, scale, playback and sequential preparation. Editing one entry does not change other pool entries.
+- Targeted multi-selection changes preserve unrelated clip settings. LUT-aware batch edits and lightweight section fingerprints avoid repeatedly copying full color tables.
+- Media availability checks run in the background with progress and cancellation. Playback clock sampling and preview cadence avoid unnecessary work on the UI thread.
+
+#### CRT, audio and color
+
+- Refined CRT surfaces separate phosphor masks, scanlines, interlace, persistence, color bleed and dot crawl, with palette-aware controls and image-preserving presets. Fixed dot crawl disappearing at exact video-frame timestamps.
+- Audio modulation shows its source, range and activity beside the parameter, with sensitivity and separate rise/fall response controls.
+- Soundtrack accent analysis can drive rhythmic sequencer triggering while retaining Chance and gate behavior.
+- Import supported 3D `.cube` creative LUTs with Amount and bypass. Eight CC0 DAEDAL film/monochrome looks are included with their license. Projects retain their LUT data.
+
+#### Keep experimenting on the timeline
+
+- Selected timeline passages can draw variations from sequencer FX pools; reroll generated choices while retaining manual edits and Undo.
+- Rotating Split pairs two output tracks with smooth or quarter-turn motion, clockwise/counterclockwise direction, beat/free timing, starting angle and edge softness. Optionally rotate both pictures with the divider. Track layouts remain live after preparing timeline sections.
+
+#### Known beta behavior
+
+Occasional live-preview hesitation remains under investigation. Most measured frames arrived regularly, but isolated delayed frames were observed. Export processes every frame in order; these preview delays have not produced missing frames in the exports checked. Performance depends on media, resolution, active layers and effects. Please report the project conditions and steps that reproduce a pause.
+
+
 ### 1.0.5 · Dirty mixer, datamosh and a guided first project
 
 ABJEXT now has a four-channel dirty video mixer: bring in footage, blend it live, push it into unstable territory, and keep the performance as an editable timeline clip.

@@ -1,30 +1,38 @@
-# ABJEXT Studio
+# Phosphor Studio
+
+**Formerly known as ABJEXT.** The same video instrument and editor, with a new name. Existing projects remain readable. Preferences, shortcuts and preset libraries migrate to the new identity. MIDI routing and the optional AU identity also change; see migration notes.
 
 <p align="center">
-  <img src="assets/abjext-studio.png" alt="ABJEXT Studio — warm white and oxide red on near black" width="100%">
+  <img src="assets/phosphor-studio.png" alt="Phosphor Studio — phosphor green and electric blue on near black" width="100%">
 </p>
 
-**I wanted an Octatrack for video, so I built ABJEXT.**
+**I wanted an Octatrack for video, so I built Phosphor Studio.**
 
-ABJEXT is a native Mac video editor and performance instrument for experimental music videos, glitch art, and live visuals. Sequence footage like samples, give each hit its own effects, and let your music shape the picture. Build a precise arrangement, play clips with a MIDI controller, or set a pattern loose with probability and see where it goes.
+Phosphor Studio is a native Mac video editor and performance instrument for experimental music videos, glitch art, and live visuals. Sequence footage like samples, give each hit its own effects, and let your music shape the picture. Build a precise arrangement, play clips with a MIDI controller, or set a pattern loose with probability and see where it goes.
 
 When something works, keep it. Record your performance—including the choices made by probability and the effects you played—into an editable timeline. You can return to the details without having to recreate the moment.
 
-The Octatrack comparison describes the approach: patterns, parameter locks, and hands-on manipulation, applied to moving images. ABJEXT is an independent project, not affiliated with Elektron.
+The Octatrack comparison describes the approach: patterns, parameter locks, and hands-on manipulation, applied to moving images. Phosphor Studio is an independent project, not affiliated with Elektron.
 
-**[Download ABJEXT](https://github.com/sxrvys/Abjext/releases)** · **[Make your first video](docs/USER_GUIDE.md#start-here-your-first-video)** · **[User guide](docs/USER_GUIDE.md)** · **[Report an issue](https://github.com/sxrvys/Abjext/issues)**
+**[Download Phosphor Studio](https://github.com/sxrvys/Phosphor-Studio/releases)** · **[Make your first video](docs/USER_GUIDE.md#start-here-your-first-video)** · **[User guide](docs/USER_GUIDE.md)** · **[Report an issue](https://github.com/sxrvys/Phosphor-Studio/issues)**
 
-**Current release: 1.0.5 beta.** Developer ID signed and notarized by Apple. Built for Apple Silicon Macs running macOS 14 Sonoma or later. No account or separate development tools required.
+**Current release: 1.0.6 beta.** Developer ID signed and notarized by Apple. Built for Apple Silicon Macs running macOS 14 Sonoma or later. No account or separate development tools required.
 
-## New to ABJEXT? Make your first video
+## New to Phosphor Studio? Make your first video
 
 Choose **Try a guided first project…** on the welcome screen. The short, hands-on walkthrough includes footage and music, so you can start experimenting straight away.
 
-Build a layered sequence, give it clip pools and probability, add per-step effects, create a more energetic pattern variation, arrange it against the music, and turn it into an editable timeline and finished video. You learn some of ABJEXT’s most useful creative tools by making something with them. Hide the guide whenever you want to explore; your progress saves with the project.
+Build a layered sequence, give it clip pools and probability, add per-step effects, create a more energetic pattern variation, arrange it against the music, and turn it into an editable timeline and finished video. You learn some of Phosphor Studio’s most useful creative tools by making something with them. Hide the guide whenever you want to explore; your progress saves with the project.
 
 **[Start the walkthrough →](docs/USER_GUIDE.md#start-here-your-first-video)**
 
-## New in 1.0.5
+## New in 1.0.6: Phosphor Studio
+
+This build improves clip-editing scope, preparation and responsiveness, clearer audio/rhythmic modulation, refined CRT surfaces, imported film LUTs, timeline FX variations and rotating split-screen composition. **[Read the full changes →](CHANGELOG.md#106--phosphor-studio-formerly-known-as-abjext)**
+
+**Updating from ABJEXT:** a migration release is available in ABJEXT’s existing **Settings → Updates** feed. Download its DMG, install **Phosphor Studio.app**, and confirm your projects open before removing the old ABJEXT app. Future updates come from this repository. Your original files remain in place. Preferences and preset libraries migrate; route external MIDI to the new Phosphor Studio port. The renamed optional AU is a new host component, so retain the previous AU for old sets or replace it manually.
+
+## Previous release: 1.0.5
 
 ### Four sources. One dirty video mixer.
 
@@ -62,7 +70,7 @@ Random FX pools, weighted clip choices, per-pattern color, prepared timeline sec
 
 A glance can become a repeated phrase. A machine can land on every beat. A single shot can reveal a different moment each time it appears.
 
-ABJEXT’s layered step sequencer gives you control over both the rhythm and the uncertainty:
+Phosphor Studio’s layered step sequencer gives you control over both the rhythm and the uncertainty:
 
 - **Parameter locks and per-step FX:** give individual hits their own settings, effects, and saved chains.
 - **Probability and weighted clip pools:** decide whether a step fires and which footage it chooses. Use every clip before reshuffling, or avoid immediate repeats.
@@ -80,7 +88,7 @@ Explore temporal echoes, trails, reversals, stutters, VHS damage, film-like disr
 
 Stack effects, save chains, assign them to steps, and build macro racks for performance. Continuous FX audition lets you adjust an effect without waiting for it to come around again. Per-pattern color looks, Creative Colorizer, and Black & White / Film Noir controls give each section its own character.
 
-ABJEXT’s video effects change the picture; they leave your soundtrack untouched.
+Phosphor Studio’s video effects change the picture; they leave your soundtrack untouched.
 
 ## Play it, capture it, keep editing
 
@@ -98,15 +106,15 @@ A MIDI controller is optional. You can build, perform, and export with a mouse o
 
 You need an **Apple Silicon Mac (M1 or newer)** running **macOS 14 Sonoma or later**, plus your own video and audio files. Check individual release notes for any newer requirements.
 
-1. Open **[Releases](https://github.com/sxrvys/Abjext/releases)** and download the newest **`AppleSilicon.dmg`** from Assets. GitHub’s “Source code” archives are not the app.
-2. Open the DMG and drag **ABJEXT Studio.app** into **Applications**.
-3. Eject the DMG and launch ABJEXT from Applications.
+1. Open **[Releases](https://github.com/sxrvys/Phosphor-Studio/releases)** and download the newest **`AppleSilicon.dmg`** from Assets. GitHub’s “Source code” archives are not the app.
+2. Open the DMG and drag **Phosphor Studio.app** into **Applications**.
+3. Eject the DMG and launch Phosphor Studio from Applications.
 
 **The current public release is Developer ID signed and notarized by Apple.** macOS may ask you to confirm opening a downloaded app. An Open Anyway workaround should not be needed for this release. If macOS reports malware or a damaged application, report the exact message to **abjextstudio@gmail.com** rather than bypassing the warning.
 
 No Terminal commands, Python, Xcode, Ableton, Max, TouchDesigner, separate codecs, or font installation are required. BlackHole is optional if you want to route live audio from another app into the visual controls; soundtrack reactivity works without it.
 
-For updates, choose **Settings → Updates → Check for Updates** or **ABJEXT Studio → Check for Updates…**. Save your project and quit the app before replacing it. Updates are manual and optional. [Installation and update details →](docs/USER_GUIDE.md#stay-current)
+For updates, choose **Settings → Updates → Check for Updates** or **Phosphor Studio → Check for Updates…**. Save your project and quit the app before replacing it. Updates are manual and optional. [Installation and update details →](docs/USER_GUIDE.md#stay-current)
 
 ## Your first session
 
@@ -116,21 +124,21 @@ Start with **Try a guided first project…** on the welcome screen for a hands-o
 
 The guide covers [the workspace](docs/USER_GUIDE.md#unified-workspace), [effects and modulation](docs/USER_GUIDE.md#effects-and-video-synthesis), [timing and warp markers](docs/USER_GUIDE.md#align-music-and-video-precisely), [keyboard shortcuts](docs/USER_GUIDE.md#default-shortcuts), and [troubleshooting](docs/USER_GUIDE.md#if-something-seems-wrong).
 
-Projects reference your original media rather than packing it into the project file. Keep those files available, and include them when sharing a project. ABJEXT is still in beta; save copies of important projects before trying a new release.
+Projects reference your original media rather than packing it into the project file. Keep those files available, and include them when sharing a project. Phosphor Studio is still in beta; save copies of important projects before trying a new release.
 
 ## Also included: Global Thermonuclear War
 
 The download includes an optional **Audio Unit effect for your DAW**: Global Thermonuclear War. It combines five repeat engines, shuffle and reverse, a three-oscillator Gristleizer, saturation, wavefolding, chopping, and CD skips.
 
-It is a separate audio plug-in, installed separately, and is not required for ABJEXT. **[Installation and host details →](docs/USER_GUIDE.md#optional-bonus-global-thermonuclear-war)**
+It is a separate audio plug-in, installed separately, and is not required for Phosphor Studio. **[Installation and host details →](docs/USER_GUIDE.md#optional-bonus-global-thermonuclear-war)**
 
-## Help shape ABJEXT
+## Help shape Phosphor Studio
 
-I built ABJEXT to make videos for my own music. I’m interested in what happens when other artists bring their footage, habits, and ideas to it.
+I built Phosphor Studio to make videos for my own music. I’m interested in what happens when other artists bring their footage, habits, and ideas to it.
 
-Tell me what works, what gets in your way, and what you expected to happen. Confusing controls and awkward workflows are useful feedback, too. If you make something with ABJEXT, I’d love to see it.
+Tell me what works, what gets in your way, and what you expected to happen. Confusing controls and awkward workflows are useful feedback, too. If you make something with Phosphor Studio, I’d love to see it.
 
-**[Open an issue](https://github.com/sxrvys/Abjext/issues)** or email **abjextstudio@gmail.com**. For bugs, include your Mac model, macOS version, ABJEXT version, and the steps that reproduce the problem. Screenshots or short recordings help.
+**[Open an issue](https://github.com/sxrvys/Phosphor-Studio/issues)** or email **abjextstudio@gmail.com**. For bugs, include your Mac model, macOS version, Phosphor Studio version, and the steps that reproduce the problem. Screenshots or short recordings help.
 
 ---
 

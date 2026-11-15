@@ -1,9 +1,11 @@
 # Release history
 
-[Back to ABJEXT Studio](README.md) · [User guide](docs/USER_GUIDE.md)
+[Back to Phosphor Studio](README.md) · [User guide](docs/USER_GUIDE.md)
 
 
 ### 1.0.6 · Phosphor Studio (formerly known as ABJEXT)
+
+**November 15 branding revision:** new Terminal Raster identity with ivory scanline lettering, displaced strokes and a restrained green phosphor afterimage. Updated welcome screen, compact editor header, public banner and Dock icon. Small icons use fewer, thicker bars for readability. Editor selection and warning colors are unchanged.
 
 - Renamed the application to **Phosphor Studio**, formerly known as **ABJEXT**. Old projects remain readable; preferences, shortcuts, looks, effect presets and templates migrate without overwriting newer settings. The MIDI destination is now Phosphor Studio, so external DAW/controller routes must target that new port.
 - Future Phosphor Studio updates come from [sxrvys/Phosphor-Studio](https://github.com/sxrvys/Phosphor-Studio).

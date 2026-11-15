@@ -3,7 +3,7 @@
 **Formerly known as ABJEXT.** The same video instrument and editor, with a new name. Existing projects remain readable. Preferences, shortcuts and preset libraries migrate to the new identity. MIDI routing and the optional AU identity also change; see migration notes.
 
 <p align="center">
-  <img src="assets/phosphor-studio.png" alt="Phosphor Studio — phosphor green and electric blue on near black" width="100%">
+  <img src="assets/phosphor-studio.png" alt="Phosphor Studio — ivory raster lettering with terminal-green signal accents" width="100%">
 </p>
 
 **I wanted an Octatrack for video, so I built Phosphor Studio.**

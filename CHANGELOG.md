@@ -3,6 +3,23 @@
 [Back to Phosphor Studio](README.md) · [User guide](docs/USER_GUIDE.md)
 
 
+### 1.0.7 · Shape the signal
+
+Phosphor Studio, formerly known as **ABJEXT**, gains time and displacement maps, more deliberate print and CRT treatments, and a clearer path from experimentation to a finished edit.
+
+- **Time Map:** use brightness, patterns, a named video lane or an imported still to choose moments from recent footage. Smooth or stepped transitions, explicit cross-cut history, map inspection and history readiness. History is bounded per instance and fills during playback; seeking starts fresh.
+- **Displacement Map:** luminance or red/green displacement, neutral-gray controls, clamp/wrap/mirror edges, named-lane and portable imported-image maps. Start with readable refraction and push toward fracture.
+- **Dither and CRT:** Bayer, clustered print, stable or animated grain, custom three-ink palettes and stronger print presets. CRT highlight bloom has its own threshold and radius, independent of phosphor surface and scanline controls.
+- **Find a look visually:** bundled examples rendered by the actual effects, readable families and direct preset choices. Six curated starting chains explain how to push their look further. Their thumbnails show the base effect; the complete chain acts on your footage after adding.
+- **Clip Editor:** clearer occurrence-only scope, visible warp/navigation controls, source/clip/song positions and Blend alongside playback/appearance controls.
+- **Audio mapping:** source activity and a preview-only full-response test. Tests are isolated to their clip/effect and clear when the panel closes or editing scope changes; they never enter saved projects or offline exports.
+- **Timeline experiments:** compare the original and proposed shuffle, rhythm or generated-FX edit, then keep or discard it. Unrelated edits remain intact; changed targets are checked before comparison.
+- **Preparation and responsiveness:** selectable compact, seeking-oriented or detail preview copies; on-demand storage estimates, source-count progress and cancellation. Cached preparation, scope-aware appearance edits and isolated activity readouts avoid redundant work. The welcome screen shows eight recent projects.
+- **Portable maps:** imported map artwork is reduced to at most 512 pixels on its longest edge and stored once per unique image in a project, rather than repeated for every timeline occurrence. Up to 64 unique images / 24 MiB of compressed artwork per project.
+
+Offline export continues to process frames in order from original media. Heavy combinations can still exceed real-time preview budgets; history effects need playback to build their recent frames. The new hints explain these dependencies beside the controls.
+
+
 ### 1.0.6 · Phosphor Studio (formerly known as ABJEXT)
 
 **November 15 branding revision:** new Terminal Raster identity with ivory scanline lettering, displaced strokes and a restrained green phosphor afterimage. Updated welcome screen, compact editor header, public banner and Dock icon. Small icons use fewer, thicker bars for readability. Editor selection and warning colors are unchanged.

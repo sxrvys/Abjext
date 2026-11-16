@@ -494,13 +494,29 @@ Open **FX → Add → Signal damage** to find **Signal Emergence**, **Halftone /
 
 For a ready-to-play set, open **Racks → Signal Interruptions**. Its eight macros start dry. With the SP-404 profile, hold an assigned FX macro pad and turn CTRL 3 to adjust that macro; release the momentary pad to restore its previous value. Toggle pads deliberately remain engaged until pressed again.
 
-In the sequencer, use an FX step and its gate to interrupt all footage for a chosen duration, or put FX on an individual clip step. Open that step’s FX inspector to set parameter locks. Click a parameter’s music note to map it to bass, mids, highs, level or beat modulation.
+In the sequencer, use an FX step and its gate to interrupt all footage for a chosen duration, or put FX on an individual clip step. Open that step’s FX inspector to set parameter locks. Click a parameter’s Mod button to map it to bass, mids, highs, level or beat modulation.
 
 - **Signal Emergence:** sweep Signal reveal to make forms appear in static; use Density to starve the image and Scatter to tear it apart. Beat sync holds a random pattern for each division. Free rate zero freezes the random pattern while footage keeps moving.
 - **Halftone:** start with Bootleg photocopy, then play Screen size and Ink spread. Choose Color screens to enable misregistration. Paper damage and New chaos pattern produce repeatable broken print.
 - **Pixel Sorting:** play Sorted cell width and the brightness limits. Horizontal/Vertical and Reverse change the direction; Sort by chooses brightness or a color channel. Out-of-range cells remain in place. Block scatter can change on the beat. Width is rounded to physical pixels at the current render resolution.
 
 The new effects do not add automatic decay or frozen tails. Draw a wet/dry envelope for a fade-out, or deliberately combine them with existing delay/freeze tools. Video FX never process your soundtrack.
+
+## Shape motion and automation
+
+Click **Mod** beside a parameter to choose an audio source or LFO. Free-running oscillators use Hz; musical oscillators use project-beat divisions. Choose a song clock for continuous motion through the arrangement, or an effect/clip clock for local timing. Older mappings retain their original timing until you change it. Set the output range beside the parameter and use the small activity display to see the response. The waveform diagram shows the oscillator shape, not the audio waveform.
+
+Open a parameter's envelope editor to draw its change over time. The labeled effect and parameter selectors identify what you are editing. **Follow envelope** enables the drawn values; turn it off to use the manual value. Choose Linear, Hold or Smooth interpolation. Click to add points, Shift-click to select several, then drag or delete the selection together. **Insert shape** adds an editable shape within the visible time window, preserving the envelope outside it. Undo restores the edit. Global envelopes initially focus on an enabled loop; **Loop** returns to that range, and **Fit** shows the whole envelope.
+
+For a short audition, select timeline sections and choose **Experiment → Audition selected passage**. Playback switches to Program and loops that selection. This sets the work range, which also affects export. Disable **Work range** when you want the full song again.
+
+### Camera hits and stutters
+
+In **Impact / Aftershock**, choose camera shake, zoom punch or frame recoil. Set its trigger to a manual gate, project beats or an audio accent. Audio triggers use a threshold and a minimum interval between hits; a sustained loud sound does not continually retrigger. Adjust strength and recovery, then raise Wet / dry. Automatic overscan keeps moving frame edges covered and may crop the picture slightly.
+
+**Beat Repeat / Stutter** also offers freeze, time recoil, ping-pong and fragment shuffle. Recovery blends back to the live picture. Fragment shuffle uses each captured fragment before repeating; it remains repeatable for the saved seed. Preview history is bounded and may use reduced-resolution frames. Offline rendering uses disk-backed history. Seeking clears temporal history, so allow playback to build it before judging a burst.
+
+For other effects, **Trigger & recovery → Burst → Fire from** can use wet/dry gate rises, project beats or audio accents. Use attack, hold, decay and repeat count to shape the interruption. The Kick signal shock, Exposure strike, Focus shock and Elastic split starting looks demonstrate these controls. Audio-reactive exports need the soundtrack or recorded audio source; a live input alone cannot be reproduced later.
 
 ## Physical and analog interruptions
 
@@ -525,7 +541,7 @@ Each has five mappable controls and three presets. All process video only. Motio
 
 **Trigger & recovery**, beneath Wet / dry in the FX and sequencer FX inspectors, adds a shared **Burst** option. A rise from zero fires attack, hold and decay, in beats or seconds, with 1–8 hits and seeded hit-strength variation. Releasing the pad lets the burst finish. Return the gate to zero to rearm it; consecutive sequencer gates without a zero gap are one trigger. Record the gates to reproduce the same envelope on the timeline and in export. Clear Tails cancels active bursts.
 
-Choose **Follow gate / latch** for normal wet/dry control: Gate pads hold an effect; Toggle pads latch it. Trigger configuration belongs to the effect instance, so steps sharing it share the envelope. Duplicate an instance for another shape. Processor parameters still support step locks and music-note mappings. The new racks preconfigure their impact/recovery effects as bursts.
+Choose **Follow gate / latch** for normal wet/dry control: Gate pads hold an effect; Toggle pads latch it. Trigger configuration belongs to the effect instance, so steps sharing it share the envelope. Duplicate an instance for another shape. Processor parameters still support step locks and Mod mappings. The new racks preconfigure their impact/recovery effects as bursts.
 
 Temporal effects capture a bounded history after activation, so the very first short hit has less past footage available. Returning to dry releases that history. Multiple temporal effects at high resolution still use more resources; use the light preview while performing and Render in Place for finished heavy passages.
 

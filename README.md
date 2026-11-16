@@ -28,7 +28,7 @@ Build a layered sequence, give it clip pools and probability, add per-step effec
 
 ## New in 1.0.7: Shape the signal
 
-Paint with time and displacement maps. Refine phosphor glow, scanlines and three-ink print texture. Browse real rendered FX examples and six curated starting looks, test audio mappings in isolation, and compare timeline experiments before keeping them. Clip-editor navigation, preparation controls and targeted updates make the workflow clearer and reduce redundant work. **[Read the full changes →](CHANGELOG.md#107--shape-the-signal)**
+Paint with time and displacement maps. Refine phosphor glow, scanlines and three-ink print texture. Browse real rendered FX examples and ten curated starting looks, test audio mappings in isolation, and compare timeline experiments before keeping them. Clip-editor navigation, preparation controls and targeted updates make the workflow clearer and reduce redundant work. **[Read the full changes →](CHANGELOG.md#107--shape-the-signal)**
 
 **Updating from ABJEXT:** a migration release is available in ABJEXT’s existing **Settings → Updates** feed. Download its DMG, install **Phosphor Studio.app**, and confirm your projects open before removing the old ABJEXT app. Future updates come from this repository. Your original files remain in place. Preferences and preset libraries migrate; route external MIDI to the new Phosphor Studio port. The renamed optional AU is a new host component, so retain the previous AU for old sets or replace it manually.
 

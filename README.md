@@ -16,7 +16,7 @@ The Octatrack comparison describes the approach: patterns, parameter locks, and 
 
 **[Download Phosphor Studio](https://github.com/sxrvys/Phosphor-Studio/releases)** · **[Make your first video](docs/USER_GUIDE.md#start-here-your-first-video)** · **[User guide](docs/USER_GUIDE.md)** · **[Report an issue](https://github.com/sxrvys/Phosphor-Studio/issues)**
 
-**Current release: 1.0.6 beta.** Developer ID signed and notarized by Apple. Built for Apple Silicon Macs running macOS 14 Sonoma or later. No account or separate development tools required.
+**Current release: 1.0.7 beta.** Developer ID signed and notarized by Apple. Built for Apple Silicon Macs running macOS 14 Sonoma or later. No account or separate development tools required.
 
 ## New to Phosphor Studio? Make your first video
 
@@ -26,9 +26,9 @@ Build a layered sequence, give it clip pools and probability, add per-step effec
 
 **[Start the walkthrough →](docs/USER_GUIDE.md#start-here-your-first-video)**
 
-## New in 1.0.6: Phosphor Studio
+## New in 1.0.7: Shape the signal
 
-This build improves clip-editing scope, preparation and responsiveness, clearer audio/rhythmic modulation, refined CRT surfaces, imported film LUTs, timeline FX variations and rotating split-screen composition. **[Read the full changes →](CHANGELOG.md#106--phosphor-studio-formerly-known-as-abjext)**
+Paint with time and displacement maps. Refine phosphor glow, scanlines and three-ink print texture. Browse real rendered FX examples and six curated starting looks, test audio mappings in isolation, and compare timeline experiments before keeping them. Clip-editor navigation, preparation controls and targeted updates make the workflow clearer and reduce redundant work. **[Read the full changes →](CHANGELOG.md#107--shape-the-signal)**
 
 **Updating from ABJEXT:** a migration release is available in ABJEXT’s existing **Settings → Updates** feed. Download its DMG, install **Phosphor Studio.app**, and confirm your projects open before removing the old ABJEXT app. Future updates come from this repository. Your original files remain in place. Preferences and preset libraries migrate; route external MIDI to the new Phosphor Studio port. The renamed optional AU is a new host component, so retain the previous AU for old sets or replace it manually.
 

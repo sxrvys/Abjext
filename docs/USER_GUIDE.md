@@ -3,7 +3,7 @@
 [Back to the project](../README.md) · [Release history](../CHANGELOG.md)
 
 <p align="center">
-  <img src="../assets/abjext-studio.png" alt="Phosphor Studio — blackletter wordmark, warm white and oxide red on near black" width="100%">
+  <img src="../assets/abjext-studio.png" alt="Phosphor Studio — displaced terminal lettering in warm white and green on near black" width="100%">
 </p>
 
 Phosphor Studio is a native Mac application for experimental music videos, glitch art, and live visual performance. It brings a multitrack timeline, a playable clip sampler, and a video effects and synthesis engine into one workspace.
@@ -19,27 +19,22 @@ This repository hosts beta installers, release notes, and user documentation. Ap
 See the [latest release notes](https://github.com/sxrvys/Phosphor-Studio/releases) for the current build and its changes. This guide covers the timeline, layered sequencer, live performance and export workflows.
 
 <details>
-<summary><strong>Formerly Semiotic Studio · migration and update information</strong></summary>
+<summary><strong>Formerly ABJEXT · migration and updates</strong></summary>
 
-**Formerly Semiotic Studio. This is the official home of Phosphor Studio.**
+**Phosphor Studio was formerly known as ABJEXT**, and earlier as Semiotic Studio. The application and its development continue here under the Phosphor Studio name.
 
-Due to a naming conflict Semiotic Studio is now Abjext Studio. The owner of Semiotic Studio reached out and because he had chosen the name first the only sensible thing to do was change the name. 
+1. Save your project before updating. Download Phosphor Studio from this repository’s [Releases](https://github.com/sxrvys/Phosphor-Studio/releases), or use the migration update offered by your ABJEXT installation.
+2. Quit the old application and drag **Phosphor Studio.app** from the installer into **Applications**.
+3. Open Phosphor Studio and your saved project. Keep your original media, project files and associated **Renders** folders. A Renders folder can contain media required to reconstruct the edit.
+4. Once you have checked the new installation, remove the old application and replace its Dock shortcut if desired. Keep project data unless you deliberately want to delete it.
 
-Same project, new name. We’re adopting Phosphor Studio as our lasting identity as development continues. Existing Semiotic projects, presets, preferences, and MIDI mappings remain compatible. All future beta releases and update checks live here at **[sxrvys/Phosphor-Studio](https://github.com/sxrvys/Phosphor-Studio)**. The old Semiotic repository hosts one final transition release and historical downloads.
-
-### Moving from Semiotic to Phosphor Studio
-
-1. Save your project. In Semiotic, choose **Check for Updates** and download the final **0.8.2 transition release**, or download Phosphor Studio directly from this repository’s [Releases](https://github.com/sxrvys/Phosphor-Studio/releases).
-2. Quit Semiotic. Open the DMG and drag **Phosphor Studio.app** into **Applications**.
-3. Launch **Phosphor Studio** and open your saved project. Your settings and mappings use the same storage as before; `.semiotic.json` project names remain valid.
-4. After confirming everything is available, you may remove **Semiotic Studio.app** and replace its Dock shortcut with Phosphor Studio. Because the app’s name changed, macOS may keep both apps rather than replace the old one automatically. **Keep your project files, media, and application-support folders.**
-5. From now on, **Phosphor Studio → Check for Updates** checks only this repository. Checks and downloads remain optional; no account or signup is needed.
-
-The installer on the old repository keeps a `Semiotic-Studio-…` filename so existing updaters recognize it. It contains the same Phosphor Studio app as the installer here.
+Phosphor Studio checks the new repository for updates. The [old ABJEXT repository](https://github.com/sxrvys/Abjext) provides a migration release for existing installations; its installer filename retains the old prefix so the old updater recognizes it.
 
 </details>
 
 ---
+
+The welcome screen shows your eight most recent projects; older shortcuts remain under **File → Open Recent**. Right-click a recent project to **Show Project in Finder** or **Remove from Recent**. Removing it from the list removes only the shortcut; the saved project and its media stay where they are.
 
 ## Requirements
 
@@ -362,6 +357,8 @@ For music-driven visuals, start with the timeline soundtrack, then use the **mus
 
 If compressed source media is expensive to seek/decode, pause and click the **bolt-circle button in Project Media**. Choose **Prepare Selected Media** or **Prepare Project Video**. Phosphor Studio makes 360p/30 fps ProRes preview copies one at a time, with a 4 GB disk budget. Timeline and pad/sequencer playback use available copies; offline export still reads the originals. Audio is unchanged. Alpha-channel sources remain original. Live capture/Keep That naturally reflects the preview quality.
 
+The preparation window shows the current file, a progress bar, and how many source files have been checked. Progress counts sources, so a long clip can take longer than a short one. **Cancel** changes to **Cancelling…** while the current encode stops; completed copies remain available for reuse. A request that finds all copies already cached leaves the editor untouched.
+
 This is separate from **Prepare Clips**, which warms the upcoming sequencer voices. Proxies reduce decoding work; they cannot remove heavy FX processing costs. **Clear Preview Copies** removes only the generated cache while stopped. Original media remains required. The status bar's clickable millisecond reading shows recent median/p95 frame completion time; it is not a measurement of total MIDI-to-display latency. Preview remains 30 fps; export frame-rate choices are unchanged.
 
 ## Align music and video precisely
@@ -583,3 +580,91 @@ Open **Timeline → Datamosh…**. Choose an **Image source** (its first trimmed
 Choose 0.5–15 seconds, compression and resolution. **Re-seed** at zero inserts the image at the start; a nonzero interval restores that image repeatedly before letting motion distort it again. Some codec-generated keyframes may also re-seed. Moving, textured footage gives clearer results than static footage. Donor footage loops if the chosen duration exceeds its trim. Trim, speed and reverse are respected. Clip FX, masks and timeline blending are not included: bounce first when those should be part of the source. The result contains video only.
 
 **Generate Preview** makes genuine H.264 reference-frame corruption and decodes it into a stable video. It does not merely imitate datamoshing with a shader. Inspect the preview, then choose **Commit to New Track**. That exact result is inserted at the timeline playhead on a new Normal track. Original clips are unchanged. Changing settings or closing before committing discards the temporary preview. Cancel leaves the timeline unchanged. Keep the committed movie and its `.datamosh.json` recipe in the project's Renders folder. This prepared process is separate from the real-time Motion Corruption rack effect.
+
+
+## Develop a take on the timeline
+
+Select the video sections you want to change, then open **Experiment** in the timeline toolbar. Its selection count tells you how many sections the actions will affect.
+
+- **Rhythmic FX on selection** shapes effects within the selected passage.
+- **Try random FX from pool** draws from a sequencer FX lane’s pool. Running it again replaces that generated choice rather than stacking another copy.
+- **Shuffle selected sections** swaps footage among the selected positions. Their positions and lanes stay in place; the content is fitted to each slot. Very different lengths can exceed supported playback speeds, in which case the edit is declined with an explanation.
+- For a prepared section, **Try another variation** can generate footage from its original pattern/lane or another available pattern/lane.
+
+These edits support Undo. Pause playback before changing the arrangement.
+
+In the right inspector, **Global** affects the combined picture. **Timeline clips** limits edits to the selected timeline occurrences; their source media and other occurrences keep their settings. Selecting a clip does not automatically change the inspector’s scope.
+
+## Give a parameter an understandable response
+
+Open the parameter’s mapping controls. Each mapping names its destination and source, such as **Effect wet / dry ← Bass**. The source-status panel tells you whether project audio or live input is available.
+
+**Starting point…** offers Gentle movement, Sharp accents and Slow swell. These deliberately reset that mapping’s range and response times; they do not change other mappings. Low is the destination value at minimum response, and High is its value at full response. You can reverse them for downward movement. Sensitivity changes how strongly the source drives the mapping. Rise and Fall control how quickly it builds and settles.
+
+Existing mappings are preserved when projects open. These starting points are applied only when you choose one.
+
+## Understand preparation storage and performance
+
+In **Settings → Locations**, click **Measure Storage** for an on-demand accounting of preview copies and the open project’s Renders folder. Measurement reads file metadata, runs in the background, and can be cancelled. It does not delete media. The folder paths and **Show in Finder** buttons make the location of each category explicit.
+
+Lightweight previews are rebuildable. **Saved project renders are project-dependent media**: prepared sections, bounces and other generated assets can reference them, and several projects can share one Renders folder. Keep these folders with the projects that use them. The clear-preview action removes only lightweight copies, after confirmation.
+
+For a performance report, use **Settings → General → Performance capture**, repeat the slow action, then stop the capture. The summary separates frame lookup, effect submission, GPU queue wait, GPU execution and UI queue delay where samples exist. P95 describes the most recent 256 measurements per stage; stages can overlap, so their values should not be added together. This measures software timing, not physical audio-to-screen latency.
+
+
+### Time Map and Displacement Map
+
+**Time Map** is in **Time & rhythm**. It uses a map to select different moments of recent footage across the picture. Dark map areas show the present; bright areas select older frames, up to **Maximum delay**. Start with **Time ribbons**, then try **Delayed silhouette** or **Temporal fracture**. **Time steps** controls how many distinct moments appear. The effect amount and rack Wet/dry let you retain the current image.
+
+**Displacement Map** is in **Space & geometry**. Its map moves pixels rather than choosing their time. Half-gray is neutral; brighter and darker map areas move in opposite directions. Start with **Readable refraction** and small horizontal/vertical offsets. **Red / Green → X / Y** lets each map channel control an axis independently. **Clamp**, **Wrap**, and **Mirror** choose what happens at frame edges.
+
+Both effects offer **This image**, **Underlying layers**, horizontal/vertical gradients, a radial gradient, and seeded noise. Underlying layers reads the lower composite when that context is available; otherwise it uses this image. Named lane and imported-image choices are described below. Use **Show map only** to inspect the map, then turn it off to see the result. Contrast, bias and map scale shape the displacement. Noise can remain static or change at a chosen rate.
+
+Time Map uses past frames only and adds no lookahead. Its frame ring is limited to 32 MiB per active instance, with a one-second capacity, adaptive resolution based on output size/frame rate and a maximum 960-pixel long edge; in-flight rendering has additional memory costs. Delay modulation reuses the same ring instead of repeatedly reallocating it. Missing history uses the current image rather than black. Seeks/reset paths clear history, and a dry effect releases its history. History is built by playing or exporting the passage; an isolated paused frame cannot reconstruct earlier footage that has not been rendered.
+
+### Expanded Dither
+
+Dither retains **Legacy**, **Bayer**, and **Noise**, and adds **Clustered dots** and **Fine grain**. **Readable color grain** is the starting preset for new instances; saved settings keep their previous behavior. **Preserve incoming hue** quantizes brightness while retaining incoming color proportions. It does not discover a palette or guarantee exact membership in a set of palette colors. **Monochrome** takes priority when enabled.
+
+Use **Pixel size**, **Dither contrast**, color levels, effect amount and rack Wet/dry to balance detail against texture. **Pattern changes per second** defaults to zero for a stable pattern. Increase it deliberately for moving electronic grain. Pattern motion uses render time and saved timing offsets, rather than UI redraw timing. The new controls apply to non-Legacy patterns; Legacy remains available for older looks.
+
+### Finding a look visually
+
+**Add** in an FX rack opens rendered examples grouped by family. These are actual starting-preset studies on the same supplied geometric artwork; temporal examples show a warmed-up moment. They are not a live preview of your footage. Browsing opens no additional decoders or FX renderers. Click a card to add its starting look, or use the card’s **…** menu to choose another preset. Saved chains are collapsed until needed; choose their family or expand the group.
+
+### Clip Editor positions and scope
+
+Double-click a timeline occurrence to open the Clip Editor with the main preview still visible. **This clip only** means other occurrences and pool entries retain their own appearance and playback choices. The main inspector remains the place for batch edits. Trim, speed, direction, opacity, blend and Warp are available here; **Appearance** opens crop, scale, levels, monochrome and text. Scroll down for the filmstrip and waveform. Source is the original media position, Clip starts at zero within this occurrence, and Song is its absolute timeline position. Warp markers show their source, clip and song positions. The small cursor readout updates separately from thumbnails and controls.
+
+### Test an audio mapping without changing the project
+
+Open the music-note mapping control beside a parameter. Its input meter shows activity after sensitivity and before Rise/Fall. Continuous audio mappings follow band energy; the lane’s **Rhythm & movement** controls trigger clip/FX events instead. **Test full response · preview only** temporarily holds this mapping at full input. Play to see its envelope; turn it off to restore the real source. Closing the mapping panel clears the test. Tests are scoped to the occurrence and effect, are never encoded in projects or export renderers, and are suspended during live recording.
+
+### Compare a timeline experiment
+
+After a shuffle, rhythmic FX addition, random FX pool choice or prepared footage variation, use **Review: Experiment / Original** beside Experiment. Compare either version, then Keep or Discard. Only changed occurrences and linked audio/masks are retained for review; unrelated edits remain intact. If you edit an affected section after creating the experiment, comparison refuses to overwrite that newer edit. Undo remains available. Save records the currently displayed version; the temporary comparison itself is not a second saved project. Prepared variation files remain project media and are not purged automatically.
+
+### New map and print controls
+
+Time Map’s **Smooth time transitions** blends neighboring sampled moments; turn it off for hard ribbons. **Keep history across cuts** deliberately lets the previous shot echo into the next. Turn it off for clean shot starts; only that Time Map’s history is reset. Seeks always start fresh. The readiness readout explains warm-up and available history.
+
+Both map effects can use a **Named lane** before that lane’s FX/blending, or an **Imported image**. Lane maps reuse decoded pictures and avoid recursive processing; missing/inactive lanes use this image. Imported artwork is normalized to at most 512 pixels on its longest edge and embedded in the project, so it remains available after moving the source image. Show map only lets you inspect the actual routing.
+
+Dither’s **Use custom three-color palette** prints with three inks. Copy project Colorizer colors or choose Dark, Middle and Light inks independently. At full Dither amount only those inks appear; lower amounts mix the original back in. Monochrome takes priority. **Three-ink print** and **Crisp newsprint** are useful static starting looks.
+
+CRT’s **Bloom highlight threshold** restricts glow to bright marks, keeping dark signal unlit. **Bloom spread** sets its radius in 720p-relative pixels. Zero threshold preserves the older full-image bloom for saved looks. Screen texture, scanlines, interlaced field contrast, persistence and incoming-palette preservation remain independently adjustable.
+
+### Choose preview-copy quality and estimate storage
+
+The lightning-button preparation panel offers **Compact · 360p H.264**, **Smooth seeking · 360p ProRes**, and **More detail · 720p H.264**. Compact saves disk space; ProRes favors independent-frame seeking. Small media is not upscaled; very wide/tall images have a bounded long edge. Quality applies to the next preparation; different qualities keep separate cache files. **Estimate project preview storage** reads durations only when requested and gives an approximate total, excluding unreadable files. It is not a reservation or promise of exact size. The 4 GB shared budget still applies, originals remain required, and offline export uses originals.
+
+
+### Six starting looks and effect dependencies
+
+In **+ Add → Effect browser**, expand **Six starting looks**. Clean phosphor, Unstable broadcast, Luminous scanlines, Temporal ribbons, Displaced print and Digital afterimage are restrained chains made from existing effects. Their thumbnails illustrate the base effect, not the whole combination. Adding a starting look keeps your current effects and appends ordinary editable FX slots. Click each new effect to adjust its controls or Wet / dry, or use its bypass button. Undo removes the addition.
+
+Time-based effects need moving footage and accumulated history. Their controls now say so. Two-picture effects explain when to overlap an active lower video lane; audio-driven effects show audio readiness. These hints do not start playback or prepare media automatically.
+
+Imported map artwork is embedded once per unique image when saving a project. The project limit is 64 unique maps and 24 MiB of compressed artwork, with each imported image reduced to a longest edge of 512 pixels. Original map files are not modified. Standalone exported effect settings retain their own map artwork.
+
+Preview-only mapping tests clear when you close the mapping panel or switch clip/effect scope. A test can demonstrate the full response even with no input, but it is never saved or used in offline export.
